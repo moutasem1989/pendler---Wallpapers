@@ -29,21 +29,18 @@ namespace pendler
         public MainPage()
         {
             this.InitializeComponent();
+            if ((string)ApplicationData.Current.LocalSettings.Values["SliderValue"] == null)
+            {
+                ApplicationData.Current.LocalSettings.Values["SliderValue"] = "30";
+                BackgroundSlider.Value = Int32.Parse((string)ApplicationData.Current.LocalSettings.Values["SliderValue"]);
+            }
+            else
+            {
+                BackgroundSlider.Value = Int32.Parse((string)ApplicationData.Current.LocalSettings.Values["SliderValue"]);
+            }
             ApplicationViewTitleBar appTitleBar = ApplicationView.GetForCurrentView().TitleBar;
-
-            // Make the title bar transparent
             appTitleBar.BackgroundColor = Colors.Transparent;
-
-            // Get the core appication view title bar
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-
-            /*
-                ExtendViewIntoTitleBar
-                    Gets or sets a value that specifies whether this title
-                    bar should replace the default window title bar.
-            */
-
-            // Extend the core application view into title bar
             coreTitleBar.ExtendViewIntoTitleBar = true;
             GetTaskAsync();
         }
@@ -51,8 +48,8 @@ namespace pendler
         public async void GetTaskAsync()
         {
             ProgressBar.Visibility = Visibility.Visible;
-            this.DynamicOperation.Text = "Add Wallpaper Collections to your libraries.";
-            FindNullSettings();
+            this.DynamicOperation.Text = "Add or create collections of images to be used for Dynamic and Weather wallpapers.";
+            await FindNullSettings();
             LoadCheckedToggles();
             await LoadDynamicIcon();
             await LoadModernIcon();
@@ -68,24 +65,24 @@ namespace pendler
             {
                 
                 ImageIntro01.Source = new BitmapImage(new Uri("ms-appx:///Assets/monitor.png"));
-                TextIntro01.Text = "Welcome to you wallpaper customization corner!";
+                TextIntro01.Text = "Welcome to Wallpapers!";
                 ImageIntro02.Source = new BitmapImage(new Uri("ms-appx:///Assets/lock.png"));
-                TextIntro02.Text = "No Syncing, no cloud and no special permissions to put your privacy on the line...";
+                TextIntro02.Text = "Privacy: Open Source with no server syncing or special access permissions - All data remain local.";
                 ImageIntro03.Source = new BitmapImage(new Uri("ms-appx:///Assets/day.png"));
-                TextIntro03.Text = "Here you can create Wallpaper that corresponds to the time of the day.";
+                TextIntro03.Text = "Create Dynamic Wallpaper corresponding to Sunrise and Sunset.";
                 ImageIntro04.Source = new BitmapImage(new Uri("ms-appx:///Assets/umbrella.png"));
-                TextIntro04.Text = "... or maybe linking Wallpaper to the current weather ?";
+                TextIntro04.Text = "Use Weather information as wallpaper.";
                 ImageIntro05.Source = new BitmapImage(new Uri("ms-appx:///Assets/paint-brush.png"));
-                TextIntro05.Text = "Did we mention you can bring your own taste in colours patterns as well ?";
+                TextIntro05.Text = "Choose Wallpaper pattern with custom dynamic colours for easy personalization experience.";
                 ImageIntro06.Source = new BitmapImage(new Uri("ms-appx:///Assets/placeholder.png"));
-                TextIntro06.Text = "Use low accuracy location data to do all of the necessary calculations...";
+                TextIntro06.Text = "Use low accuracy location data to do all of the necessary calculations.";
                 ImageIntro06.Source = new BitmapImage(new Uri("ms-appx:///Assets/placeholder.png"));
                 ImageIntro07.Source = new BitmapImage(new Uri("ms-appx:///Assets/project.png"));
 
                 await FirstRunIntroDialog.ShowAsync();
             }
         }
-        private void FindNullSettings()
+        private async Task FindNullSettings()
         {
             if (ApplicationData.Current.LocalSettings.Values["NullSettings"] == null)
             {
@@ -106,9 +103,9 @@ namespace pendler
                 ApplicationData.Current.LocalSettings.Values["Accuracy"] = "0";
                 ApplicationData.Current.LocalSettings.Values["WeatherImageID"] = 0;
                 ApplicationData.Current.LocalSettings.Values["DynamicImageID"] = 0;
-                ApplicationData.Current.LocalSettings.Values["NullSettings"] = "true";
                 ApplicationData.Current.LocalSettings.Values["SliderValue"] = Convert.ToDouble(20);
-                RERegisterBackgroundTask();
+                await RERegisterBackgroundTask();
+                ApplicationData.Current.LocalSettings.Values["NullSettings"] = "true";
             }
         }
         private void LoadCheckedToggles()
@@ -315,15 +312,19 @@ namespace pendler
             else { WeatherDeleteButton.IsEnabled = false; }
 
         }
-        private void RERegisterBackgroundTask()
+        private async Task RERegisterBackgroundTask()
         {
-            BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
-            builder.Name = "BackgroundTrigger";
-            builder.TaskEntryPoint = "RuntimeComponent_BackgroundTasks.ModernWallpaper";
-            builder.SetTrigger(new TimeTrigger(Convert.ToUInt32(BackgroundSlider.Value), false));
-            builder.AddCondition(new SystemCondition(SystemConditionType.BackgroundWorkCostNotHigh));
-            BackgroundTaskRegistration task = builder.Register();
-            ApplicationData.Current.LocalSettings.Values["taskRegistered"] = "true";
+            var result = await BackgroundExecutionManager.RequestAccessAsync();
+            if (result != BackgroundAccessStatus.DeniedByUser)
+            {
+                BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
+                builder.Name = "BackgroundTrigger";
+                builder.TaskEntryPoint = "RuntimeComponent_BackgroundTasks.ModernWallpaper";
+                builder.SetTrigger(new TimeTrigger(Convert.ToUInt32(BackgroundSlider.Value), false));
+                builder.AddCondition(new SystemCondition(SystemConditionType.BackgroundWorkCostNotHigh));
+                BackgroundTaskRegistration task = builder.Register();
+                ApplicationData.Current.LocalSettings.Values["taskRegistered"] = "true";
+            }
         }
         private void UNRegisterBackgroundTask()
         {
@@ -805,20 +806,16 @@ namespace pendler
             ApplicationData.Current.LocalSettings.Values["FirstRunIntro"] = "true";
             await Libraries.LocationManager.GetLocationTask();
         }
-
-        private void ChangingSlidBar(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        private async void UpdateWallpaper(object sender, RoutedEventArgs e)
         {
-            if (notfirstloaded == false)
-            {
-                BackgroundSlider.Value = (double)ApplicationData.Current.LocalSettings.Values["SliderValue"];
-                notfirstloaded = true;
-            }
-            else
-            {
-                UNRegisterBackgroundTask();
-                ApplicationData.Current.LocalSettings.Values["SliderValue"] = BackgroundSlider.Value;
-                RERegisterBackgroundTask();
-            }
+            await Libraries.BackgroundSequance.RunBackgroundTaskAsync();
+        }
+
+        private void BackgroundTaskApplyClick(object sender, RoutedEventArgs e)
+        {
+            UNRegisterBackgroundTask();
+            ApplicationData.Current.LocalSettings.Values["SliderValue"] = BackgroundSlider.Value.ToString();
+            RERegisterBackgroundTask();
         }
     }
 }

@@ -10,22 +10,22 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>2c44e7d1-e3c5-4317-b0c2-d031f6a97cef</PackageIdentityName>
     <PackageIdentityPublisher>CN=mouta</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\mouta\Documents\pendler\pendler\pendler\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\mouta\Documents\pendler---Wallpapers\pendler\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\pendler.exe">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\pendler.exe">
       <PackagePath>entrypoint\pendler.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mouta\.nuget\packages\angle\2.0.0\lib\netstandard1.2\Innovative.Geometry.Angle.dll">
@@ -67,7 +67,7 @@
     <AppxPackagedFile Include="C:\Users\mouta\.nuget\packages\xamlbrewer.uwp.animatedsplashscreen\1.0.0\lib\uap10.0\XamlBrewer.Uwp.AnimatedSplashScreen.dll">
       <PackagePath>XamlBrewer.Uwp.AnimatedSplashScreen.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\Libraries\bin\x64\Debug\Libraries.dll">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\Libraries\bin\x64\Debug\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mouta\.nuget\packages\win2d.uwp\1.20.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
@@ -76,367 +76,367 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\RuntimeComponent_BackgroundTasks\bin\x64\Debug\RuntimeComponent_BackgroundTasks.winmd">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\RuntimeComponent_BackgroundTasks\bin\x64\Debug\RuntimeComponent_BackgroundTasks.winmd">
       <PackagePath>RuntimeComponent_BackgroundTasks.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\day.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\day.png">
       <PackagePath>Assets\day.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\ImageIconCreate.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\ImageIconCreate.png">
       <PackagePath>Assets\ImageIconCreate.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\LargeTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\LargeTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\LargeTile.scale-125.png">
       <PackagePath>Assets\LargeTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\LargeTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\LargeTile.scale-150.png">
       <PackagePath>Assets\LargeTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\LargeTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\LargeTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\lock.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\lock.png">
       <PackagePath>Assets\lock.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\ModernIcon.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\ModernIcon.png">
       <PackagePath>Assets\ModernIcon.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\monitor.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\monitor.png">
       <PackagePath>Assets\monitor.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\paint-brush.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\paint-brush.png">
       <PackagePath>Assets\paint-brush.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\placeholder.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\placeholder.png">
       <PackagePath>Assets\placeholder.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\project.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\project.png">
       <PackagePath>Assets\project.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\projector.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\projector.png">
       <PackagePath>Assets\projector.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SmallTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SmallTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SmallTile.scale-125.png">
       <PackagePath>Assets\SmallTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SmallTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SmallTile.scale-150.png">
       <PackagePath>Assets\SmallTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SmallTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SmallTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SplashScreen.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SplashScreen.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SplashScreen.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square150x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square150x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square150x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square150x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\StoreLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\StoreLogo.scale-125.png">
       <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\StoreLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\StoreLogo.scale-150.png">
       <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\StoreLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\StoreLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\time-lapse.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\time-lapse.png">
       <PackagePath>Assets\time-lapse.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\umbrella.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\umbrella.png">
       <PackagePath>Assets\umbrella.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Wide310x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Wide310x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Wide310x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\windy.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\windy.png">
       <PackagePath>Assets\windy.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0001.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0001.jpg">
       <PackagePath>ModernThumb\0001.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0002.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0002.jpg">
       <PackagePath>ModernThumb\0002.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0003.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0003.jpg">
       <PackagePath>ModernThumb\0003.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0004.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0004.jpg">
       <PackagePath>ModernThumb\0004.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0006.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0006.jpg">
       <PackagePath>ModernThumb\0006.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0008.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0008.jpg">
       <PackagePath>ModernThumb\0008.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0009.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0009.jpg">
       <PackagePath>ModernThumb\0009.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0010.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0010.jpg">
       <PackagePath>ModernThumb\0010.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0011.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0011.jpg">
       <PackagePath>ModernThumb\0011.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0012.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0012.jpg">
       <PackagePath>ModernThumb\0012.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0013.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0013.jpg">
       <PackagePath>ModernThumb\0013.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0014.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0014.jpg">
       <PackagePath>ModernThumb\0014.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0015.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0015.jpg">
       <PackagePath>ModernThumb\0015.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0016.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0016.jpg">
       <PackagePath>ModernThumb\0016.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0017.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0017.jpg">
       <PackagePath>ModernThumb\0017.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0018.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0018.jpg">
       <PackagePath>ModernThumb\0018.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0019.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0019.jpg">
       <PackagePath>ModernThumb\0019.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0020.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0020.jpg">
       <PackagePath>ModernThumb\0020.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0021.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0021.jpg">
       <PackagePath>ModernThumb\0021.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\ModernThumb\0022.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\ModernThumb\0022.jpg">
       <PackagePath>ModernThumb\0022.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0001.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0001.jpg">
       <PackagePath>Modern\0001.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0002.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0002.jpg">
       <PackagePath>Modern\0002.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0003.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0003.jpg">
       <PackagePath>Modern\0003.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0004.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0004.jpg">
       <PackagePath>Modern\0004.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0006.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0006.jpg">
       <PackagePath>Modern\0006.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0008.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0008.jpg">
       <PackagePath>Modern\0008.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0009.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0009.jpg">
       <PackagePath>Modern\0009.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0010.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0010.jpg">
       <PackagePath>Modern\0010.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0011.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0011.jpg">
       <PackagePath>Modern\0011.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0012.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0012.jpg">
       <PackagePath>Modern\0012.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0013.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0013.jpg">
       <PackagePath>Modern\0013.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0014.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0014.jpg">
       <PackagePath>Modern\0014.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0015.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0015.jpg">
       <PackagePath>Modern\0015.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0016.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0016.jpg">
       <PackagePath>Modern\0016.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0017.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0017.jpg">
       <PackagePath>Modern\0017.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0018.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0018.jpg">
       <PackagePath>Modern\0018.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0019.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0019.jpg">
       <PackagePath>Modern\0019.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0020.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0020.jpg">
       <PackagePath>Modern\0020.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0021.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0021.jpg">
       <PackagePath>Modern\0021.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Modern\0022.jpg">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Modern\0022.jpg">
       <PackagePath>Modern\0022.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\pendler.xr.xml">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\pendler.xr.xml">
       <PackagePath>pendler.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\Microsoft.UI.Xaml\DensityStyles\Compact.xbf">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\Microsoft.UI.Xaml\DensityStyles\Compact.xbf">
       <PackagePath>Microsoft.UI.Xaml\DensityStyles\Compact.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\CreatePage.xbf">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\CreatePage.xbf">
       <PackagePath>CreatePage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\Dictionary.xbf">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\Dictionary.xbf">
       <PackagePath>Dictionary.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.17763.0\\redist\Debug\X64\ucrtbased.dll">
@@ -451,10 +451,10 @@
     <AppxPackagedFile Include="C:\Users\mouta\.nuget\packages\xamarin.forms\4.3.0.908675\lib\uap10.0\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler\pendler\pendler\bin\x64\Debug\Core\pendler.exe">
+    <AppxPackagedFile Include="C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\x64\Debug\Core\pendler.exe">
       <PackagePath>pendler.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

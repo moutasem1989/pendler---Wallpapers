@@ -8714,11 +8714,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj",
+      "projectUniqueName": "C:\\Users\\mouta\\Documents\\pendler---Wallpapers\\Libraries\\Libraries.csproj",
       "projectName": "Libraries",
-      "projectPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj",
+      "projectPath": "C:\\Users\\mouta\\Documents\\pendler---Wallpapers\\Libraries\\Libraries.csproj",
       "packagesPath": "C:\\Users\\mouta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\obj\\",
+      "outputPath": "C:\\Users\\mouta\\Documents\\pendler---Wallpapers\\Libraries\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
