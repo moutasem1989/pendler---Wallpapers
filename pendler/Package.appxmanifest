@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity
+    Name="2c44e7d1-e3c5-4317-b0c2-d031f6a97cef"
+    Publisher="CN=mouta"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="2c44e7d1-e3c5-4317-b0c2-d031f6a97cef" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>pendler</DisplayName>
+    <PublisherDisplayName>mouta</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="pendler.App">
+      <uap:VisualElements
+        DisplayName="Dynamic Wallpaper"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="Use collections of images as dynamic wallpaper."
+        BackgroundColor="#2d2d2d">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#000000"/>
+      </uap:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="RuntimeComponent_BackgroundTasks.ModernWallpaper">
+          <BackgroundTasks>
+            <Task Type="systemEvent"/>
+            <Task Type="deviceUse"/>
+            <Task Type="location"/>
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <uap:Capability Name="picturesLibrary"/>
+    <uap:Capability Name="removableStorage"/>
+    <DeviceCapability Name="location"/>
+  </Capabilities>
+</Package>

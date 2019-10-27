@@ -1,0 +1,484 @@
+﻿<Page
+    x:Class="pendler.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:pendler"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Page.Resources>
+        <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="RedO" BackgroundSource="HostBackdrop" TintColor="Red" TintOpacity="0.8" FallbackColor="Red"/>
+        <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="GreenO" BackgroundSource="HostBackdrop" TintColor="Green" TintOpacity="0.8" FallbackColor="Green"/>
+        <Storyboard x:Name="animatingColumOpen">
+            <DoubleAnimation EnableDependentAnimation="True" Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="Width" From="0" To="500" >
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="animatingColumClose">
+            <DoubleAnimation EnableDependentAnimation="True" Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="Width" From="500" To="0" >
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <FlipView VerticalAlignment="Stretch" HorizontalAlignment="Center" Background="Transparent">
+            <Grid  Width="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="DynamicIcon" Click="DynamicIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="DynamicWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Button>
+                <ToggleButton x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
+                <ToggleButton x:Name="LockDynamicToggled" Tapped="LockDynamic" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                <TextBlock Text="Dynamic Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+            </Grid>
+            <Grid Width="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="WeatherIcon" Click="WeatherIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="WeahterWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Button>
+                <ToggleButton x:Name="DeskWeatherToggled" Tapped="DeskWeather" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
+                <ToggleButton x:Name="LockWeatherToggled" Tapped="LockWeather" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                <TextBlock Text="Weather Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+            </Grid>
+            <Grid Width="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="ModernIcon" Click="ModernIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="ModernWallpaperIcon" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Button>
+                <ToggleButton x:Name="DeskModernToggled" Tapped="DeskModern" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
+                <ToggleButton x:Name="LockModernToggled" Tapped="LockModern" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                <TextBlock Text="Modern Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+            </Grid>
+        </FlipView>
+        <Grid x:Name="SettingsGrid" Width="0" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+                <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
+                <TextBlock Text="To use the features in this app, running background processes and access to geolocation data are required." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <Slider Width="400" HorizontalAlignment="Center" Header="Wallpaper refresh (Min.)" StepFrequency="10" TickFrequency="20" Minimum="20" Maximum="200" ValueChanged="ChangingSlidBar" x:Name="BackgroundSlider" TickPlacement="Outside"/>
+                <TextBlock Text="To use the features in this app, running background processes and access to geolocation data are required." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <TextBlock x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <Button Width="450" Height="35" Click="CheckLocation" Content="Update Geolocation" Margin="0,10,0,0"/>
+                <Button Width="450" Height="35" Click="CheckPermission" Content="Open app permissions" Margin="0,10,0,30"/>
+                <TextBlock Text="To use the features in this app, running background processes and access to geolocation data are required." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <TextBlock x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
+                <Button Width="125" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content="Add HEIC container"/>
+                <Button Width="125" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content="Add ZIP archive"/>
+                <Button Width="125" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary" Content="Add a Directory"/>
+                <Button Width="125" Height="70" Content="Create" Click="GoToCreatePage"/>
+            </StackPanel>
+            <Windows10FallCreatorsUpdate:ProgressBar IsIndeterminate="True" x:Name="ProgressBar" Grid.Row="3" Grid.Column="3"/>
+        </Grid>
+        <Button x:Name="ButtonChangeColomWidth" Content="Settings" Background="Transparent" Click="ChangeColomWidth" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+        <ContentDialog x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="417"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="389"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Modern Wallpaper" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
+                <GridView ItemClick="ModernItemClicked" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="489" Height="414" ItemsSource="{x:Bind ModernWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="ModernGridView">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="local:ModernWallpaperBitmaps">
+                            <Ellipse Height="105" Width="105" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind ModernWallpaperImageIcon}" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                <Button Click="CancelModernContentDialog" Content="Cancel" Grid.Row="3" Grid.Column="1" Width="194" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <Grid VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Padding="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="190"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="190"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="AcentSwitcher" Orientation="Vertical" Grid.Column="0">
+                        <Button x:Name="AccentColorButton" Content="Accent" Width="190" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button.Flyout>
+                                <Flyout x:Name="Fly6" Closing="FlyClosing">
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
+                                    <StackPanel>
+                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AccentColorChanged" x:Name="AccentColorPicker"/>
+                                        <Button Background="Transparent" Content="Make Accent Dynamic" Click="AcentDynamic"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="AcentGradient1Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button.Flyout>
+                                    <Flyout x:Name="Fly5" Closing="FlyClosing">
+                                        <Flyout.FlyoutPresenterStyle>
+                                            <Style TargetType="FlyoutPresenter">
+                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                            </Style>
+                                        </Flyout.FlyoutPresenterStyle>
+                                        <StackPanel>
+                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient1Changed" x:Name="AcentGradient1Picker"/>
+                                            <Button Background="Transparent" Content="Make Accent Constant" Click="AcentConstant"/>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button x:Name="AcentGradSwitcher" Click="SwitchAcentGradient" Width="150" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0">
+                                <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="35">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Offset="0.0" x:Name="AcentGradient1"/>
+                                            <GradientStop Offset="1.0" x:Name="AcentGradient2"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Button>
+                            <Button x:Name="AcentGradient2Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button.Flyout>
+                                    <Flyout x:Name="Fly4" Closing="FlyClosing">
+                                        <Flyout.FlyoutPresenterStyle>
+                                            <Style TargetType="FlyoutPresenter">
+                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                            </Style>
+                                        </Flyout.FlyoutPresenterStyle>
+                                        <StackPanel>
+                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient2Changed" x:Name="AcentGradient2Picker"/>
+                                            <Button Background="Transparent" Content="Make Accent Constant" Click="AcentConstant"/>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button x:Name="SwitchColoursButton" Grid.Column="1" Width="9" Height="35" Click="SwitchColors"/>
+                    <StackPanel x:Name="ColorSwitcher" Grid.Column="2" Orientation="Vertical">
+                        <Button x:Name="ColorColorButton" Content="Color" Width="190" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button.Flyout>
+                                <Flyout x:Name="Fly3" Closing="FlyClosing">
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
+                                    <StackPanel>
+                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorColorChanged" x:Name="ColorColorPicker"/>
+                                        <Button Background="Transparent" Content="Make Color Dynamic" Click="ColorDynamic"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button x:Name="ColorGradient1Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button.Flyout>
+                                    <Flyout x:Name="Fly2" Closing="FlyClosing">
+                                        <Flyout.FlyoutPresenterStyle>
+                                            <Style TargetType="FlyoutPresenter">
+                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                            </Style>
+                                        </Flyout.FlyoutPresenterStyle>
+                                        <StackPanel>
+                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient1Changed" x:Name="ColorGradient1Picker"/>
+                                            <Button Background="Transparent" Content="Make Color Constant" Click="ColorConstant"/>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button x:Name="ColorGradSwitcher" Padding="0" Click="SwitchColorGradient" Width="150" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="35">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                            <GradientStop Offset="0.0" x:Name="ColorGradient1"/>
+                                            <GradientStop Offset="1.0" x:Name="ColorGradient2"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Button>
+                            <Button x:Name="ColorGradient2Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button.Flyout>
+                                    <Flyout x:Name="Fly1" Closing="FlyClosing">
+                                        <Flyout.FlyoutPresenterStyle>
+                                            <Style TargetType="FlyoutPresenter">
+                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                            </Style>
+                                        </Flyout.FlyoutPresenterStyle>
+                                        <StackPanel>
+                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient2Changed" x:Name="ColorGradient2Picker"/>
+                                            <Button Background="Transparent" Content="Make Color Constant" Click="ColorConstant"/>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+                <Button Click="ApplyModernTheme" Content="Accept" Grid.Row="3" Grid.Column="1" Width="194" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            </Grid>
+        </ContentDialog>
+
+        <ContentDialog x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="417"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Weather Wallpapers" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
+                <GridView ItemClick="WeatherItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="489" Height="414" ItemsSource="{x:Bind WeatherWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="WeatherGridView">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="local:WeatherWallpaperBitmaps">
+                            <Ellipse Height="160" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind WeatherWallpaperImageIcon}" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                <Button Click="CancelWeatherContentDialog" Content="Cancel" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Button  x:Name="WeatherDeleteButton" Content="Remove selected" Grid.Row="2" Grid.Column="1" Width="200" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Flyout>
+                        <Flyout x:Name="AreYouSureFlyOut2">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <StackPanel>
+                                <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
+                                <Button Margin="20" Background="Transparent" Content="Delete" Click="DeleteSelectedWeather" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button Click="UseWeatherSelected" Content="Accept" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Grid>
+        </ContentDialog>
+
+        <ContentDialog  x:Name="DynamicContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="417"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Dynamic Wallpapers" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
+                <GridView ItemClick="DynamicItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="489" Height="414" ItemsSource="{x:Bind DynamicWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="DynamicGridView">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="local:DynamicWallpaperBitmaps">
+                            <Ellipse Height="160" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind DynamicWallpaperImageIcon}" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                <Button Click="CancelDynamicContentDialog" Content="Cancel" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <Button x:Name="DynamicDeleteButton" Content="Delete selected" Grid.Row="2" Grid.Column="1" Width="200" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Flyout>
+                        <Flyout x:Name="AreYouSureFlyOut">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <StackPanel>
+                                <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
+                                <Button Margin="20" Background="Transparent" Content="Delete" Click="DeleteSelectedDynamic" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button Click="UseSelectedDynamic" Content="Accept" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Grid>
+        </ContentDialog>
+        <ContentDialog x:Name="FirstRunIntroDialog" Height="500" Width="500" Background="{ThemeResource SystemControlAcrylicElementBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <FlipView Height="500" Width="500" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro01" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro01" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro02" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro02" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro03" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro03" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro04" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro04" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro05" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro05" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro06" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro06" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro07" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button Click="Start" Background="Red" Content="Lets Start !" Grid.Column="1" Grid.Row="3" Height="50" Width="400" Name="TextIntro07" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="40"/>
+                </Grid>
+            </FlipView>
+        </ContentDialog>
+    </Grid>
+</Page>

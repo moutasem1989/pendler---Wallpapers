@@ -1,0 +1,4 @@
+C:\Users\mouta\Documents\pendler\pendler\Libraries\Libraries.csproj;x64
+C:\Users\mouta\Documents\pendler\pendler\Libraries\Libraries.csproj;x64
+C:\Users\mouta\Documents\pendler\pendler\pendler\pendler.csproj;x64
+C:\Users\mouta\Documents\pendler\pendler\RuntimeComponent_BackgroundTasks\RuntimeComponent_BackgroundTasks.csproj;x64

@@ -1,0 +1,136 @@
+﻿<Page
+    x:Class="pendler.CreatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:pendler"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="630"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="500"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="30">
+                    <TextBlock Text="Dynamic Wallpaper" FontSize="20" Margin="10"/>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (01):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickDynamic01" Click="XClickDynamic01" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageDynamic01" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (02):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic02" Click="XClickDynamic02" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic02" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (03):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic03" Click="XClickDynamic03" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic03" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (04):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic04" Click="XClickDynamic04" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic04" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (05):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic05" Click="XClickDynamic05" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic05" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (06):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic06" Click="XClickDynamic06" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic06" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (07):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic07" Click="XClickDynamic07" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic07" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (08):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic08" Click="XClickDynamic08" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic08" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (09):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic09" Click="XClickDynamic09" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic09" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (10):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic10" Click="XClickDynamic10" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic10" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (11):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic11" Click="XClickDynamic11" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic11" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (12):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic12" Click="XClickDynamic12" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic12" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (13):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic13" Click="XClickDynamic13" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic13" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (14):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic14" Click="XClickDynamic14" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic14" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (15):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic15" Click="XClickDynamic15" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic15" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>                    <StackPanel Orientation="Horizontal" Width="430">                        <TextBlock Text="Image (16):" VerticalAlignment="Center" Width="90"/>                        <Button x:Name="ClickDynamic16" Click="XClickDynamic16" Width="240" Height="30" HorizontalAlignment="Right"/>                        <Image x:Name="ImageDynamic16" Stretch="UniformToFill" Height="30" Width="100"/>                    </StackPanel>
+                    <Button x:Name="AddDynamicTheme" Click="SaveDynamicCollection" Content="Add Dynamic Theme" Margin="0,10,0,0" HorizontalAlignment="Center" Width="430" Background="Transparent"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2" Margin="30">
+                    <TextBlock Text="Weather Wallpaper" FontSize="20" Margin="10"/>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (01):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather01" Click="XClickWeather01" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather01" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (02):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather02" Click="XClickWeather02" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather02" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (03):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather03" Click="XClickWeather03" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather03" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (04):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather04" Click="XClickWeather04" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather04" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (05):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather05" Click="XClickWeather05" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather05" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (06):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather06" Click="XClickWeather06" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather06" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (07):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather07" Click="XClickWeather07" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather07" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (08):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather08" Click="XClickWeather08" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather08" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (09):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather09" Click="XClickWeather09" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather09" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (10):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather10" Click="XClickWeather10" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather10" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (11):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather11" Click="XClickWeather11" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather11" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (12):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather12" Click="XClickWeather12" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather12" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (13):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather13" Click="XClickWeather13" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather13" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (14):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather14" Click="XClickWeather14" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather14" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (15):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather15" Click="XClickWeather15" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather15" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (16):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather16" Click="XClickWeather16" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather16" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    
+                    
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="3" Margin="0,75,30,30">
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (17):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather17" Click="XClickWeather17" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather17" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="430">
+                        <TextBlock Text="Image (18):" VerticalAlignment="Center" Width="90"/>
+                        <Button x:Name="ClickWeather18" Click="XClickWeather18" Width="240" Height="30" HorizontalAlignment="Right"/>
+                        <Image x:Name="ImageWeather18" Stretch="UniformToFill" Height="30" Width="100"/>
+                    </StackPanel>
+                    <Button x:Name="AddWeatherTheme" Click="SaveWeatherCollection" Content="Add Weather Theme" Margin="0,10,0,100" HorizontalAlignment="Center" Width="430" Background="Transparent"/>
+                    <TextBlock Text="To create a wallpaper collection, start by selecting the images you want to add. only when the full collection of images are selected for either library is the save button available. Once successfully saved, you will find the collection in your libraries." HorizontalAlignment="Left" VerticalAlignment="Top" Width="430" TextWrapping="Wrap" Margin="5"/>
+                    <Button Click="GoBackToMainPage" Content="Go back to the main page" Margin="0,10,0,0" HorizontalAlignment="Center" Width="430" Background="Transparent"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,166 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\mouta\\Documents\\pendler\\pendler\\RuntimeComponent_BackgroundTasks\\RuntimeComponent_BackgroundTasks.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj",
+        "projectName": "Libraries",
+        "projectPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj",
+        "packagesPath": "C:\\Users\\mouta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mouta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.17763"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.17763": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.17763": {
+          "dependencies": {
+            "Magick.NET-Q16-AnyCPU": {
+              "target": "Package",
+              "version": "[7.14.4, )"
+            },
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.8, )"
+            },
+            "Microsoft.Toolkit.Uwp.Notifications": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "SolarCalculator": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            },
+            "WeatherNet.uwp": {
+              "target": "Package",
+              "version": "[2.1.2, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\mouta\\Documents\\pendler\\pendler\\RuntimeComponent_BackgroundTasks\\RuntimeComponent_BackgroundTasks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\RuntimeComponent_BackgroundTasks\\RuntimeComponent_BackgroundTasks.csproj",
+        "projectName": "RuntimeComponent_BackgroundTasks",
+        "projectPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\RuntimeComponent_BackgroundTasks\\RuntimeComponent_BackgroundTasks.csproj",
+        "packagesPath": "C:\\Users\\mouta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\RuntimeComponent_BackgroundTasks\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\mouta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "uap10.0.17763"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.17763": {
+            "projectReferences": {
+              "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj": {
+                "projectPath": "C:\\Users\\mouta\\Documents\\pendler\\pendler\\Libraries\\Libraries.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "uap10.0.17763": {
+          "dependencies": {
+            "Microsoft.NETCore.UniversalWindowsPlatform": {
+              "target": "Package",
+              "version": "[6.2.8, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
