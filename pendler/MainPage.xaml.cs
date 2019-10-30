@@ -23,20 +23,20 @@ namespace pendler
         public ObservableCollection<DynamicWallpaperBitmaps> DynamicWallpaperBitmap = new ObservableCollection<DynamicWallpaperBitmaps>();
         public ObservableCollection<ModernWallpaperBitmaps> ModernWallpaperBitmap = new ObservableCollection<ModernWallpaperBitmaps>();
         public ObservableCollection<WeatherWallpaperBitmaps> WeatherWallpaperBitmap = new ObservableCollection<WeatherWallpaperBitmaps>();
-
+        public static string imageType { get; set; }
         public bool notfirstloaded { get; private set; }
 
         public MainPage()
         {
             this.InitializeComponent();
-            if ((string)ApplicationData.Current.LocalSettings.Values["SliderValue"] == null)
+            if (ApplicationData.Current.LocalSettings.Values["SliderValue"] == null)
             {
-                ApplicationData.Current.LocalSettings.Values["SliderValue"] = "30";
-                BackgroundSlider.Value = Int32.Parse((string)ApplicationData.Current.LocalSettings.Values["SliderValue"]);
+                ApplicationData.Current.LocalSettings.Values["SliderValue"] = Convert.ToDouble(30);
+                BackgroundSlider.Value = (double)ApplicationData.Current.LocalSettings.Values["SliderValue"];
             }
             else
             {
-                BackgroundSlider.Value = Int32.Parse((string)ApplicationData.Current.LocalSettings.Values["SliderValue"]);
+                BackgroundSlider.Value = (double)ApplicationData.Current.LocalSettings.Values["SliderValue"];
             }
             ApplicationViewTitleBar appTitleBar = ApplicationView.GetForCurrentView().TitleBar;
             appTitleBar.BackgroundColor = Colors.Transparent;
@@ -44,7 +44,6 @@ namespace pendler
             coreTitleBar.ExtendViewIntoTitleBar = true;
             GetTaskAsync();
         }
-
         public async void GetTaskAsync()
         {
             ProgressBar.Visibility = Visibility.Visible;
@@ -87,17 +86,16 @@ namespace pendler
             if (ApplicationData.Current.LocalSettings.Values["NullSettings"] == null)
             {
                 var random = new Random();
-                if (ApplicationData.Current.LocalSettings.Values["Acent"] == null) { ApplicationData.Current.LocalSettings.Values["Acent"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["Color"] == null) { ApplicationData.Current.LocalSettings.Values["Color"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicColorA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorA"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicColorB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorB"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicImageID"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicImageID"] = 0; }
-                if (ApplicationData.Current.LocalSettings.Values["WeatherImageID"] == null) { ApplicationData.Current.LocalSettings.Values["WeatherImageID"] = 0; }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicFolder"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicFolder"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["WeatherFolder"] == null) { ApplicationData.Current.LocalSettings.Values["WeatherFolder"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["ModernFolder"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFolder"] = String.Format("#{0:x6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["Acent"] == null) { ApplicationData.Current.LocalSettings.Values["Acent"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["Color"] == null) { ApplicationData.Current.LocalSettings.Values["Color"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["DynamicColorA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorA"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["DynamicColorB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorB"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["DynamicFolder"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["WeatherFolder"] == null) { ApplicationData.Current.LocalSettings.Values["WeatherFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["ModernFolder"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+                if (ApplicationData.Current.LocalSettings.Values["ModernFile"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFile"] = String.Format("{0:X6}", random.Next(0x1000000)); }
                 ApplicationData.Current.LocalSettings.Values["Latitude"] = "0";
                 ApplicationData.Current.LocalSettings.Values["Longitude"] = "0";
                 ApplicationData.Current.LocalSettings.Values["Accuracy"] = "0";
@@ -251,66 +249,45 @@ namespace pendler
             await ModernContentDialog.ShowAsync();
             ModernIcon.IsEnabled = true;
         }
-        private async System.Threading.Tasks.Task LookingForModernThumbs()
+        private async Task LookingForModernThumbs()
         {
+            LoadImageColors.Visibility = Visibility.Visible;
             ModernWallpaperBitmap.Clear();
             IStorageItem storageItem = await Windows.Storage.ApplicationData.Current.LocalFolder.TryGetItemAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
             Libraries.ImageColourManagement.GetColorsForModernWallpaper();
             if (storageItem != null)
             {
-                await IfModerrnFolderExists();
-            }
-            else
-            {
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0001.jpg", "AA0001");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0002.jpg", "AA0002");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0003.jpg", "AA0003");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0004.jpg", "AA0004");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0006.jpg", "AA0006");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0008.jpg", "AA0008");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0009.jpg", "AA0009");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0010.jpg", "AA0010");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0011.jpg", "AA0011");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0012.jpg", "AA0012");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0013.jpg", "AA0013");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0014.jpg", "AA0014");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0015.jpg", "AA0015");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0016.jpg", "AA0016");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0017.jpg", "AA0017");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0018.jpg", "AA0018");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0019.jpg", "AA0019");
-                await Libraries.ImageColourManagement.ApplyColor("ms-appx:///ModernThumb/0020.jpg", "AA0020");
-                await IfModerrnFolderExists();
-            }
-        }
-        private async System.Threading.Tasks.Task IfModerrnFolderExists()
-        {
-            StorageFolder folder = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
-            var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
-            var subFolders = await folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
-            foreach (StorageFolder subFolder in subFolders)
-            {
-                if (subFolder.Name.Contains("AA"))
+                StorageFolder folder = await ApplicationData.Current.LocalFolder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
+                var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
+                var subFolders = await folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
+                foreach (StorageFolder subFolder in subFolders)
                 {
-                    IStorageItem thumnail = await subFolder.TryGetItemAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-                    if (thumnail != null)
+                    string imagePathe = $@"{subFolder.Path}/";
+                    string[] allImages = Directory.GetFiles(imagePathe, $"X{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                    if (allImages.Length == 0)
                     {
-                        ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(new BitmapImage(new Uri(subFolder.Path + $"/{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg")), subFolder.Name.ToString()));
+                        string[] oreginalImage = Directory.GetFiles(imagePathe, $"{(string)ApplicationData.Current.LocalSettings.Values["ModernFile"]}.*");
+                        await Libraries.ImageColourManagement.ApplyColor(oreginalImage[0], subFolder.Name);
+                        string[] newAllImages = Directory.GetFiles(imagePathe, $"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                        BitmapImage bitmap = new BitmapImage(new Uri(newAllImages[0]));
+                        bitmap.DecodePixelHeight = 50;
+                        ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(bitmap, subFolder.Name.ToString()));
                     }
                     else
                     {
-                        await Libraries.ImageColourManagement.ApplyColor($"ms-appx:///ModernThumb/{subFolder.Name.Remove(0, 2)}.jpg", subFolder.Name);
-                        ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(new BitmapImage(new Uri(subFolder.Path + $"/{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg")), subFolder.Name.ToString()));
+                        BitmapImage bitmap = new BitmapImage(new Uri(allImages[0]));
+                        bitmap.DecodePixelHeight = 50;
+                        ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(bitmap, subFolder.Name.ToString()));
                     }
                 }
             }
+            LoadImageColors.Visibility = Visibility.Collapsed;
         }
         private async void WeatherIconClick(object sender, RoutedEventArgs e)
         {
             await WeatherContentDialog.ShowAsync();
             if (WeatherWallpaperBitmap.Count != 0 ) { WeatherDeleteButton.IsEnabled = true; }
             else { WeatherDeleteButton.IsEnabled = false; }
-
         }
         private async Task RERegisterBackgroundTask()
         {
@@ -333,17 +310,20 @@ namespace pendler
                     bgTask.Value.Unregister(true);
             ApplicationData.Current.LocalSettings.Values["taskRegistered"] = null;
         }
-        private void CancelModernContentDialog(object sender, RoutedEventArgs e)
+        private async void CancelModernContentDialog(object sender, RoutedEventArgs e)
         {
             ModernContentDialog.Hide();
+            await LoadModernIcon();
         }
-        private void CancelDynamicContentDialog(object sender, RoutedEventArgs e)
+        private async void CancelDynamicContentDialog(object sender, RoutedEventArgs e)
         {
             DynamicContentDialog.Hide();
+            await LoadDynamicIcon();
         }
-        private void CancelWeatherContentDialog(object sender, RoutedEventArgs e)
+        private async void CancelWeatherContentDialog(object sender, RoutedEventArgs e)
         {
             WeatherContentDialog.Hide();
+            await LoadWeatherIcon();
         }
         private void AccentColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
@@ -475,7 +455,7 @@ namespace pendler
         {
             var moderntheme = (ModernWallpaperBitmaps)e.ClickedItem;
             var clickedname = moderntheme.FolderName;
-            ApplicationData.Current.LocalSettings.Values["ModernClicked"] = clickedname.Remove(0, 2);
+            ApplicationData.Current.LocalSettings.Values["ModernClicked"] = clickedname;
         }
         private async void ApplyModernTheme(object sender, RoutedEventArgs e)
         {
@@ -486,8 +466,9 @@ namespace pendler
             await Libraries.ModernWallpaperImageHandler.HandleModernImage();
             await LoadModernIcon();
         }
-        private async System.Threading.Tasks.Task LoadModernIcon()
+        private async Task LoadModernIcon()
         {
+            GeneralProgressBar.Visibility = Visibility.Visible;
             ModernWallpaperIcon.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/ModernIcon.png"));
             ModernWallpaperIcon.Opacity = 0.5;
             DeskModernToggled.IsEnabled = false;
@@ -496,32 +477,35 @@ namespace pendler
             {
                 string themeFolder = ApplicationData.Current.LocalSettings.Values["ModernTheme"].ToString();
                 StorageFolder modernFolderGripp = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
-                StorageFolder subFolder = await modernFolderGripp.GetFolderAsync("BB" + themeFolder);
+                StorageFolder subFolder = await modernFolderGripp.GetFolderAsync(themeFolder);
                 Libraries.ImageColourManagement.GetColorsForModernWallpaper();
-                IStorageItem imageItem = await subFolder.TryGetItemAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-                if (imageItem != null)
+
+                string imagePathe = $@"{subFolder.Path}/";
+                string[] allImages = Directory.GetFiles(imagePathe, $"X{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                if (allImages.Length == 0)
                 {
-                    StorageFile imageSource = await subFolder.GetFileAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-                    BitmapImage bitmapImage = new BitmapImage(new Uri(imageSource.Path, UriKind.Absolute));
-                    bitmapImage.DecodePixelWidth = 400;
-                    ModernWallpaperIcon.ImageSource = bitmapImage;
+                    string[] oreginalImage = Directory.GetFiles(imagePathe, $"{(string)ApplicationData.Current.LocalSettings.Values["ModernFile"]}.*");
+                    await Libraries.ImageColourManagement.ApplyColor(oreginalImage[0], subFolder.Name);
+                    string[] newAllImages = Directory.GetFiles(imagePathe, $"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                    BitmapImage bitmap = new BitmapImage(new Uri(newAllImages[0]));
+                    bitmap.DecodePixelHeight = 100;
+                    ModernWallpaperIcon.ImageSource = bitmap;
                 }
                 else
                 {
-                    await Libraries.ImageColourManagement.ApplyColor($"ms-appx:///Modern/{themeFolder}.jpg", "BB" + themeFolder);
-                    StorageFile imageSource = await subFolder.GetFileAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-                    BitmapImage bitmapImage = new BitmapImage(new Uri(imageSource.Path, UriKind.Absolute));
-                    bitmapImage.DecodePixelWidth = 400;
-                    ModernWallpaperIcon.ImageSource = bitmapImage;
+                    BitmapImage bitmap = new BitmapImage(new Uri(allImages[0]));
+                    bitmap.DecodePixelHeight = 100;
+                    ModernWallpaperIcon.ImageSource = bitmap;
                 }
-
                 ModernWallpaperIcon.Opacity = 1;
                 DeskModernToggled.IsEnabled = true;
                 LockModernToggled.IsEnabled = true;
             }
+            GeneralProgressBar.Visibility = Visibility.Collapsed;
         }
-        private async System.Threading.Tasks.Task LoadDynamicIcon()
+        private async Task LoadDynamicIcon()
         {
+            GeneralProgressBar.Visibility = Visibility.Visible;
             DynamicWallpaperIcon.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/time-lapse.png"));
             DynamicWallpaperIcon.Opacity = 0.5;
             DeskDynamicToggled.IsEnabled = false;
@@ -544,9 +528,11 @@ namespace pendler
                     LockDynamicToggled.IsEnabled = true;
                 }
             }
+            GeneralProgressBar.Visibility = Visibility.Collapsed;
         }
-        private async System.Threading.Tasks.Task LoadWeatherIcon()
+        private async Task LoadWeatherIcon()
         {
+            GeneralProgressBar.Visibility = Visibility.Visible;
             WeahterWallpaperIcon.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/windy.png"));
             WeahterWallpaperIcon.Opacity = 0.5;
             DeskWeatherToggled.IsEnabled = false;
@@ -567,6 +553,7 @@ namespace pendler
                     LockWeatherToggled.IsEnabled = true;
                 }
             }
+            GeneralProgressBar.Visibility = Visibility.Collapsed;
         }
         private async Task LookUpLibrariesDynamic()
         {
@@ -778,13 +765,11 @@ namespace pendler
         {
             await Launcher.LaunchUriAsync(new Uri("ms-settings:appsfeatures-app"));
         }
-
         private async void CheckLocation(object sender, RoutedEventArgs e)
         {
             await Libraries.LocationManager.GetLocationTask();
             CurrentLocation.Text = (string)ApplicationData.Current.LocalSettings.Values["WeatherMessege"];
         }
-
         private void ChangeColomWidth(object sender, RoutedEventArgs e)
         {
             
@@ -799,7 +784,6 @@ namespace pendler
                 ButtonChangeColomWidth.Content = "Collaps Settings";
             }
         }
-
         private async void Start(object sender, RoutedEventArgs e)
         {
             FirstRunIntroDialog.Hide();
@@ -810,12 +794,50 @@ namespace pendler
         {
             await Libraries.BackgroundSequance.RunBackgroundTaskAsync();
         }
-
-        private void BackgroundTaskApplyClick(object sender, RoutedEventArgs e)
+        private async void BackgroundTaskApplyClick(object sender, RoutedEventArgs e)
         {
             UNRegisterBackgroundTask();
-            ApplicationData.Current.LocalSettings.Values["SliderValue"] = BackgroundSlider.Value.ToString();
-            RERegisterBackgroundTask();
+            ApplicationData.Current.LocalSettings.Values["SliderValue"] = BackgroundSlider.Value;
+            await RERegisterBackgroundTask();
+        }
+        private async void AddModernImage(object sender, RoutedEventArgs e)
+        {
+            LoadImageColors.Visibility = Visibility.Visible;
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".bmp");
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var random = new Random();
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"], CreationCollisionOption.OpenIfExists);
+                StorageFolder destination = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.GenerateUniqueName);
+                await file.CopyAsync(destination, $"{(string)ApplicationData.Current.LocalSettings.Values["ModernFile"]}{file.FileType}", NameCollisionOption.ReplaceExisting);
+                await LookingForModernThumbs();
+            }
+            LoadImageColors.Visibility = Visibility.Collapsed;
+        }
+        private async void DeleteModernWallpaper(object sender, RoutedEventArgs e)
+        {
+            var theme = (string)ApplicationData.Current.LocalSettings.Values["ModernTheme"];
+            var clicked = (string)ApplicationData.Current.LocalSettings.Values["ModernClicked"];
+
+            if (clicked != null)
+            {
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"], CreationCollisionOption.OpenIfExists);
+                Directory.Delete($@"{Folder.Path}/{(string)ApplicationData.Current.LocalSettings.Values["ModernClicked"]}", true);
+                if (clicked == theme)
+                {
+                    ApplicationData.Current.LocalSettings.Values["ModernTheme"] = null;
+                }
+                ApplicationData.Current.LocalSettings.Values["ModernClicked"] = null;
+
+                await LookingForModernThumbs();
+            }
         }
     }
 }

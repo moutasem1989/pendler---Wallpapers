@@ -60,22 +60,10 @@ namespace pendler
         {
             this.InitializeComponent();
             ApplicationViewTitleBar appTitleBar = ApplicationView.GetForCurrentView().TitleBar;
-
-            // Make the title bar transparent
             appTitleBar.BackgroundColor = Colors.Transparent;
-
-            // Get the core appication view title bar
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-
-            /*
-                ExtendViewIntoTitleBar
-                    Gets or sets a value that specifies whether this title
-                    bar should replace the default window title bar.
-            */
-
-            // Extend the core application view into title bar
             coreTitleBar.ExtendViewIntoTitleBar = true;
-            /*imageURI = "ms-appx:///Assets/projector.png";*/
+            imageURI = "ms-appx:///Assets/projector.png";
             ClickDynamic01.Content = "Sunset";
             ClickDynamic02.Content = "Sunrise";
             ClickDynamic03.Content = "Sunrise";

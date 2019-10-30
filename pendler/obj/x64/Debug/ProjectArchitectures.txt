@@ -1,4 +1,0 @@
-C:\Users\mouta\Documents\pendler---Wallpapers\Libraries\Libraries.csproj;x64
-C:\Users\mouta\Documents\pendler---Wallpapers\Libraries\Libraries.csproj;x64
-C:\Users\mouta\Documents\pendler---Wallpapers\pendler\pendler.csproj;x64
-C:\Users\mouta\Documents\pendler---Wallpapers\RuntimeComponent_BackgroundTasks\RuntimeComponent_BackgroundTasks.csproj;x64

@@ -30,10 +30,11 @@ namespace Libraries
             }
             using (MagickImageCollection collection = new MagickImageCollection(fileBytes))
             {
-                if(collection.Count==18)
+                var random = new Random();
+                if (collection.Count==18)
                 {
                     StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
-                    StorageFolder storage = await Folder.CreateFolderAsync(file.Name, CreationCollisionOption.ReplaceExisting);
+                    StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
                     int i = 0;
                     foreach( IMagickImage image in collection)
                     {
@@ -49,7 +50,7 @@ namespace Libraries
                 else if (collection.Count == 16)
                 {
                     StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
-                    StorageFolder storage = await Folder.CreateFolderAsync(file.Name, CreationCollisionOption.ReplaceExisting);
+                    StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
                     int i = 0;
                     foreach (IMagickImage image in collection)
                     {
@@ -83,6 +84,7 @@ namespace Libraries
 
         public static async Task Zipcollection(StorageFile file)
         {
+            var random = new Random();
             Stream stream = await file.OpenStreamForReadAsync();
             ZipArchive archive = new ZipArchive(stream);
             int images = 0;
@@ -95,14 +97,14 @@ namespace Libraries
             if (images == 18)
             {
                 StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
-                StorageFolder storage = await Folder.CreateFolderAsync(file.Name, CreationCollisionOption.ReplaceExisting);
+                StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
                 await ExtractEnteries(storage, archive);
                 ApplicationData.Current.LocalSettings.Values["DynamicOperation"] = "Operation completed. Zip Archive added to Weather Library.";
             }
             else if (images == 16)
             {
                 StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
-                StorageFolder storage = await Folder.CreateFolderAsync(file.Name, CreationCollisionOption.ReplaceExisting);
+                StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
                 await ExtractEnteries(storage, archive);
                 ApplicationData.Current.LocalSettings.Values["DynamicOperation"] = "Operation completed. Zip Archive added to Dynamic Library.";
             }
@@ -191,7 +193,8 @@ namespace Libraries
 
         public static async Task CopyImages(StorageFolder Folder, StorageFolder directory, IReadOnlyList<StorageFile> readOnlyList)
         {
-            StorageFolder storage = await Folder.CreateFolderAsync(directory.Name, CreationCollisionOption.ReplaceExisting);
+            var random = new Random();
+            StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
             foreach (StorageFile file in readOnlyList)
             {
                 if (file.FileType.Contains("png") || file.FileType.Contains("jpeg") || file.FileType.Contains("jpg") || file.FileType.Contains("bmp"))

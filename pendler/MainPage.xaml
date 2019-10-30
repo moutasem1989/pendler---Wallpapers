@@ -31,8 +31,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-
+        <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="Collapsed" x:Name="GeneralProgressBar" IsEnabled="True"/>
         <FlipView VerticalAlignment="Stretch" HorizontalAlignment="Center" Background="Transparent">
             <Grid  Width="500">
                 <Grid.RowDefinitions>
@@ -102,21 +103,21 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
                 <TextBlock Text="Looking for information about Wallpapers used, Icons or Libraries used?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                <HyperlinkButton Content="Wallpapers creators" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers/wiki/Wallpapers-creators"/>
                 <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
                 <HyperlinkButton Content="Source Code on GitHub" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers"/>
                 <HyperlinkButton Content="Magick.NET for HEIF Decoding" NavigateUri="https://github.com/dlemstra/Magick.NET"/>
-                <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net"/>
-                <TextBlock Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
+                <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
                     <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="20" Maximum="200" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
                     <Button Background="Transparent" Content="Update" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right"/>
                 </StackPanel>
-                <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                <TextBlock x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                <Button Width="450" Height="35" Click="CheckLocation" Content="Check Geolocation" Margin="0,10,0,0"/>
-                <Button Width="450" Height="35" Click="CheckPermission" Content="Open app permissions" Margin="0,10,0,30"/>
-                <TextBlock x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450" Height="35" Margin="0,10,0,30">
+                    <Button HorizontalAlignment="Left" Width="220" Height="35" Click="CheckLocation" Content="Check Geolocation" Margin="0,0,20,0"/>
+                    <Button HorizontalAlignment="Right" Width="220" Height="35" Click="CheckPermission" Content="Open app permissions" Margin="0,0,0,0"/>
+                </StackPanel>
+                <TextBlock TextAlignment="Center" Height="40" x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
                 <Button Width="125" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content="Add HEIC container">
@@ -153,6 +154,7 @@
                     <RowDefinition Height="417"/>
                     <RowDefinition Height="45"/>
                     <RowDefinition Height="45"/>
+                    <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
@@ -171,7 +173,7 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button Click="CancelModernContentDialog" Content="Cancel" Grid.Row="3" Grid.Column="1" Width="194" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                
                 <Grid VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Padding="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="190"/>
@@ -299,7 +301,13 @@
                     </StackPanel>
 
                 </Grid>
-                <Button Click="ApplyModernTheme" Content="Accept" Grid.Row="3" Grid.Column="1" Width="194" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
+                    <Button Click="CancelModernContentDialog" Content="Cancel" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button Click="DeleteModernWallpaper" Content="Remove" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button Click="AddModernImage" Content="Add" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button Click="ApplyModernTheme" Content="Accept" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <ProgressBar VerticalAlignment="Bottom" Grid.Column="0" Grid.ColumnSpan="3" x:Name="LoadImageColors" IsEnabled="True" Visibility="Collapsed" Grid.Row="3" IsIndeterminate="True"/>
             </Grid>
         </ContentDialog>
         <ContentDialog x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">

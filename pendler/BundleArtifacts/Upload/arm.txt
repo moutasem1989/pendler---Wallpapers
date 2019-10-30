@@ -1,0 +1,2 @@
+MainPackage=C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\ARM\Release\Upload\pendler_1.0.5.0_ARM.msix
+SymbolPackage=C:\Users\mouta\Documents\pendler---Wallpapers\pendler\bin\ARM\Release\Upload\pendler_1.0.5.0\pendler_1.0.5.0_ARM.appxsym

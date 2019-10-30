@@ -4,6 +4,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
+using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Xaml.Media.Imaging;
@@ -16,10 +17,14 @@ namespace Libraries
         public static string ModernColor { get; set; }
         public static async Task<BitmapImage> ApplyColor(string sourceIm, string folderName)
         {
-            var sourceImage = new Uri($"{sourceIm}");
+            String fixSourceIm = sourceIm.Replace(@"/", @"\");
+            StorageFile storageFile = await StorageFile.GetFileFromPathAsync(fixSourceIm);
+            ImageProperties properties = await storageFile.Properties.GetImagePropertiesAsync();
+            WriteableBitmap source = new WriteableBitmap((int)properties.Width, (int)properties.Height);
+            source.SetSource(await storageFile.OpenAsync(FileAccessMode.Read));
+
             Color replaceBlack = Windows.UI.Color.FromArgb(255, byte.Parse(ModernColor.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(ModernColor.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(ModernColor.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
             Color replaceWhite = Windows.UI.Color.FromArgb(255, byte.Parse(ModernAcent.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(ModernAcent.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(ModernAcent.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-            WriteableBitmap source = await GetImageFile(sourceImage);
             byte[] byteArray = null;
             using (Stream stream = source.PixelBuffer.AsStream())
             {
@@ -103,7 +108,7 @@ namespace Libraries
             StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             StorageFolder createFlatUIFolder = await localFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"], CreationCollisionOption.OpenIfExists);
             StorageFolder desegnatedFolder = await createFlatUIFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
-            var bmif = await desegnatedFolder.CreateFileAsync($"{fileName}.jpg", CreationCollisionOption.ReplaceExisting);
+            var bmif = await desegnatedFolder.CreateFileAsync($"{fileName}.temp", CreationCollisionOption.ReplaceExisting);
             using (IRandomAccessStream stream = await bmif.OpenAsync(FileAccessMode.ReadWrite))
             {
                 BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoderGuid, stream);

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Windows.Storage;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Libraries
 {
@@ -12,34 +14,29 @@ namespace Libraries
             if (themeFolder != null)
             {
                 StorageFolder modernFolderGripp = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
-                IStorageItem subFolder = await modernFolderGripp.TryGetItemAsync("BB" + themeFolder);
-
+                IStorageItem subFolder = await modernFolderGripp.TryGetItemAsync(themeFolder);
                 if (subFolder != null)
                 {
-                    StorageFolder subFolderGripp = await modernFolderGripp.GetFolderAsync("BB" + themeFolder);
-                    IStorageItem imageItem = await subFolderGripp.TryGetItemAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-                    if (imageItem != null)
+                    StorageFolder subFolderGripp = await modernFolderGripp.GetFolderAsync(themeFolder);
+                    string imagePathe = $@"{subFolderGripp.Path}/";
+                    string[] allImages = Directory.GetFiles(imagePathe, $"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                    if (allImages.Length == 0)
                     {
-                        StorageFile imageSource = await subFolderGripp.GetFileAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-                        await ApplyImage(imageSource);
+                        string[] oreginalImage = Directory.GetFiles(imagePathe, $"{(string)ApplicationData.Current.LocalSettings.Values["ModernFile"]}.*");
+                        await Libraries.ImageColourManagement.ApplyColor(oreginalImage[0], subFolder.Name);
+                        string[] newAllImages = Directory.GetFiles(imagePathe, $"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                        String fixSourceIm = newAllImages[0].Replace(@"/", @"\");
+                        StorageFile file = await StorageFile.GetFileFromPathAsync(fixSourceIm);
+                        await ApplyImage(file);
                     }
                     else
                     {
-                        await ColorModernImage(modernFolderGripp, themeFolder);
+                        String fixSourceIm = allImages[0].Replace(@"/", @"\");
+                        StorageFile file = await StorageFile.GetFileFromPathAsync(fixSourceIm);
+                        await ApplyImage(file);
                     }
                 }
-                else
-                {
-                    await ColorModernImage(modernFolderGripp, themeFolder);
-                }
             }
-        }
-        public static async System.Threading.Tasks.Task ColorModernImage(StorageFolder modernFolderGripp, string themeFolder)
-        {
-            StorageFolder subFolderGripp = await modernFolderGripp.CreateFolderAsync("BB" + themeFolder, CreationCollisionOption.OpenIfExists);
-            await Libraries.ImageColourManagement.ApplyColor($"ms-appx:///Modern/{themeFolder}.jpg", "BB" + themeFolder);
-            StorageFile imageSource = await subFolderGripp.GetFileAsync($"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.jpg");
-            await ApplyImage(imageSource);
         }
         public static async System.Threading.Tasks.Task ApplyImage(StorageFile file)
         {
