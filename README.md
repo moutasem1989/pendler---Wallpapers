@@ -10,8 +10,8 @@
  ### Modern:
  Use an image from your library and manipulate its high- and low lights with custom colours.
  
- ### to do:
- - add support for HEIC containers that works with the Microsoft Store.
+ ### To-do:
+ - Add support for HEIC containers that works with the Microsoft Store.
  - Port to Xamarin.
  - Fix slow image colouring.
  
