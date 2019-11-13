@@ -1,19 +1,23 @@
 # pendler - Wallpapers
  UWP Tool for Dynamic Wallpaper on Windows
  
- #Dynamic:
+ # Dynamic:
  Use image collection as a set of wallpapers changing based on the time of sunset and sunrise.
  
- #Weather:
+ # Weather:
  Use image collection as a set of wallpapers changing based on the local weather forecast.
  
- #Modern:
+ # Modern:
  Use an image from your library and manipulate its high- and low lights with custom colours.
+ 
+ # What can you do to help:
+ If you were confronted with a bug or you have a suggestion for a feature please add a new Bug report.This is and will always be a free open source software for everyone to use.
  
  #to do:
  - add support for HEIC containers that works with the Microsoft Store.
  - Port to Xamarin.
  - Fix slow image colouring.
+ - Unidentified bug is causing crashes. Help needed to debug it
  
  
  
