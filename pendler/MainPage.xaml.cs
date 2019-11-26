@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
+using Windows.Storage.Streams;
 
 namespace pendler
 {
@@ -23,12 +24,19 @@ namespace pendler
         public ObservableCollection<DynamicWallpaperBitmaps> DynamicWallpaperBitmap = new ObservableCollection<DynamicWallpaperBitmaps>();
         public ObservableCollection<ModernWallpaperBitmaps> ModernWallpaperBitmap = new ObservableCollection<ModernWallpaperBitmaps>();
         public ObservableCollection<WeatherWallpaperBitmaps> WeatherWallpaperBitmap = new ObservableCollection<WeatherWallpaperBitmaps>();
+        public ObservableCollection<TimerWallpaperBitmaps> TimerWallpaperBitmap = new ObservableCollection<TimerWallpaperBitmaps>();
         public static string imageType { get; set; }
+        public static string imageTimerRepeat { get; set; }
+        public static string imageTimerRepeatForCollection { get; set; }
         public bool notfirstloaded { get; private set; }
+        public bool SetBackgroundTaskForTimer { get; private set; }
+        private StorageFile selectedTimerImage;
 
         public MainPage()
         {
             this.InitializeComponent();
+            ApplicationView.PreferredLaunchViewSize = new Windows.Foundation.Size(500, 1000);
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             if (ApplicationData.Current.LocalSettings.Values["SliderValue"] == null)
             {
                 ApplicationData.Current.LocalSettings.Values["SliderValue"] = Convert.ToDouble(30);
@@ -47,15 +55,39 @@ namespace pendler
         public async void GetTaskAsync()
         {
             ProgressBar.Visibility = Visibility.Visible;
+            var random = new Random();
+            if (ApplicationData.Current.LocalSettings.Values["Acent"] == null) { ApplicationData.Current.LocalSettings.Values["Acent"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["Color"] == null) { ApplicationData.Current.LocalSettings.Values["Color"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["DynamicColorA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorA"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["DynamicColorB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorB"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["DynamicFolder"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["WeatherFolder"] == null) { ApplicationData.Current.LocalSettings.Values["WeatherFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["ModernFolder"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["ModernFile"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFile"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["TimerFolder"] == null) { ApplicationData.Current.LocalSettings.Values["TimerFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
             this.DynamicOperation.Text = "Add or create collections of images to be used for Dynamic and Weather wallpapers.";
             await FindNullSettings();
             LoadCheckedToggles();
             await LoadDynamicIcon();
             await LoadModernIcon();
             await LoadWeatherIcon();
+            LookForTimerImages();
             await LookUpLibrariesDynamic();
             await LookUpLibrariesWeather();
             FirstRunIntro();
+            StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["TimerFolder"], CreationCollisionOption.OpenIfExists);
+            StorageFileQueryResult result = Folder.CreateFileQuery();
+            var themeTimerFiles = await result.GetFilesAsync();
+            string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
+            foreach (StorageFile themeDynamic in themeTimerFiles)
+            {
+                if (allIDs.Contains(themeDynamic.DisplayName) != true)
+                {
+                    await themeDynamic.DeleteAsync();
+                }
+            }
             ProgressBar.Visibility = Visibility.Collapsed;
         }
         public async void FirstRunIntro()
@@ -85,23 +117,13 @@ namespace pendler
         {
             if (ApplicationData.Current.LocalSettings.Values["NullSettings"] == null)
             {
-                var random = new Random();
-                if (ApplicationData.Current.LocalSettings.Values["Acent"] == null) { ApplicationData.Current.LocalSettings.Values["Acent"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["Color"] == null) { ApplicationData.Current.LocalSettings.Values["Color"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicColorA"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorA"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicColorB"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicColorB"] = String.Format("#{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["DynamicFolder"] == null) { ApplicationData.Current.LocalSettings.Values["DynamicFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["WeatherFolder"] == null) { ApplicationData.Current.LocalSettings.Values["WeatherFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["ModernFolder"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
-                if (ApplicationData.Current.LocalSettings.Values["ModernFile"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFile"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+                
                 ApplicationData.Current.LocalSettings.Values["Latitude"] = "0";
                 ApplicationData.Current.LocalSettings.Values["Longitude"] = "0";
                 ApplicationData.Current.LocalSettings.Values["Accuracy"] = "0";
                 ApplicationData.Current.LocalSettings.Values["WeatherImageID"] = 0;
                 ApplicationData.Current.LocalSettings.Values["DynamicImageID"] = 0;
-                ApplicationData.Current.LocalSettings.Values["SliderValue"] = Convert.ToDouble(20);
+                ApplicationData.Current.LocalSettings.Values["AllTimerIDs"] = "";
                 await RERegisterBackgroundTask();
                 ApplicationData.Current.LocalSettings.Values["NullSettings"] = "true";
             }
@@ -114,7 +136,9 @@ namespace pendler
             if ((string)ApplicationData.Current.LocalSettings.Values["LockModernToggled"] == "true") { LockModernToggled.IsChecked = true; } else { LockModernToggled.IsChecked = false; }
             if ((string)ApplicationData.Current.LocalSettings.Values["DeskWeatherToggled"] == "true") { DeskWeatherToggled.IsChecked = true; } else { DeskWeatherToggled.IsChecked = false; }
             if ((string)ApplicationData.Current.LocalSettings.Values["LockWeatherToggled"] == "true") { LockWeatherToggled.IsChecked = true; } else { LockWeatherToggled.IsChecked = false; }
-            ButtonChangeColomWidth.Content = "Expand Settings";
+
+            ImageTimerSelecter.Content = "Select Image";
+            SelectedImage.Source = null;
             ProgressBar.Visibility = Visibility.Collapsed;
         }
         private void ColorButtonsColors()
@@ -289,6 +313,7 @@ namespace pendler
             if (WeatherWallpaperBitmap.Count != 0 ) { WeatherDeleteButton.IsEnabled = true; }
             else { WeatherDeleteButton.IsEnabled = false; }
         }
+
         private async Task RERegisterBackgroundTask()
         {
             var result = await BackgroundExecutionManager.RequestAccessAsync();
@@ -772,17 +797,7 @@ namespace pendler
         }
         private void ChangeColomWidth(object sender, RoutedEventArgs e)
         {
-            
-            if (SettingsGrid.Width == 500)
-            {
-                animatingColumClose.Begin();
-                ButtonChangeColomWidth.Content = "Expand Settings";
-            }
-            else
-            {
-                animatingColumOpen.Begin();
-                ButtonChangeColomWidth.Content = "Collaps Settings";
-            }
+            SplitViewXaml.IsPaneOpen = true;
         }
         private async void Start(object sender, RoutedEventArgs e)
         {
@@ -838,6 +853,178 @@ namespace pendler
 
                 await LookingForModernThumbs();
             }
+        }
+        private async void SelectTimerImageToAdd(object sender, RoutedEventArgs e)
+        {
+            if (selectedTimerImage == null)
+            {
+                var picker = new Windows.Storage.Pickers.FileOpenPicker();
+                picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+                picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+                picker.FileTypeFilter.Add(".png");
+                picker.FileTypeFilter.Add(".jpeg");
+                picker.FileTypeFilter.Add(".jpg");
+                picker.FileTypeFilter.Add(".bmp");
+                StorageFile file = await picker.PickSingleFileAsync();
+                if (file != null)
+                {
+                    selectedTimerImage = file;
+                    ImageTimerSelecter.Content = SelectedImage;
+                    BitmapImage bitmapImage = await StorageFileToBitmapImage(file);
+                    bitmapImage.DecodePixelHeight = 50;
+                    SelectedImage.Source = bitmapImage;
+                }
+                else
+                {
+                    selectedTimerImage = null;
+                    ImageTimerSelecter.Content = "Select Image";
+                    SelectedImage.Source = null;
+                }
+            }
+            else if (selectedTimerImage.Path.Contains((string)ApplicationData.Current.LocalSettings.Values["TimerFolder"]))
+            {
+                await selectedTimerImage.DeleteAsync();
+                selectedTimerImage = null;
+                ImageTimerSelecter.Content = "Select Image";
+                SelectedImage.Source = null;
+            }
+            else
+            {
+                selectedTimerImage = null;
+                ImageTimerSelecter.Content = "Select Image";
+                SelectedImage.Source = null;
+            }
+        }
+        public static async Task<BitmapImage> StorageFileToBitmapImage(StorageFile storageFile)
+        {
+            using (IRandomAccessStream fileStream = await storageFile.OpenAsync(FileAccessMode.Read))
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.DecodePixelHeight = 50;
+                await bitmap.SetSourceAsync(fileStream);
+                return bitmap;
+            }
+        }
+        private async void AddTimerImage(object sender, RoutedEventArgs e)
+        {
+            if (selectedTimerImage != null && (TimerDesk.IsChecked == true || TimerLock.IsChecked == true))
+            {
+                var random = new Random();
+                string imageAlarmID = String.Format("{0:X6}", random.Next(0x1000000));
+                string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
+                ApplicationData.Current.LocalSettings.Values["AllTimerIDs"] = allIDs + "#" + imageAlarmID;
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["TimerFolder"], CreationCollisionOption.OpenIfExists);
+                StorageFile storage = await selectedTimerImage.CopyAsync(Folder, imageAlarmID + selectedTimerImage.FileType, NameCollisionOption.GenerateUniqueName);
+                string pathToImage = $@"{storage.Path}";
+                ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Image"] = pathToImage;
+                ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Time_H"] = TimePicker.Time.Hours;
+                ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Time_M"] = TimePicker.Time.Minutes;
+                imageTimerRepeat = null;
+                imageTimerRepeatForCollection = null;
+                if (Monday.IsChecked==true) { imageTimerRepeat = imageTimerRepeat + "#0"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Mon"; }
+                if (Tusday.IsChecked == true) { imageTimerRepeat = imageTimerRepeat + "#1"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Tus"; }
+                if (Wednesday.IsChecked == true) { imageTimerRepeat = imageTimerRepeat + "#2"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Wed"; }
+                if (Thursday.IsChecked == true) { imageTimerRepeat = imageTimerRepeat + "#3"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Thu"; }
+                if (Friday.IsChecked == true) { imageTimerRepeat = imageTimerRepeat + "#4"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Fri"; }
+                if (Saturday.IsChecked == true) { imageTimerRepeat = imageTimerRepeat + "#5"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Sat"; }
+                if (Sunday.IsChecked == true) { imageTimerRepeat = imageTimerRepeat + "#6"; imageTimerRepeatForCollection = imageTimerRepeatForCollection + " Sun"; }
+
+                ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Repeat"] = imageTimerRepeat;
+                ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}TimeCollection"] = $"{TimePicker.Time.Hours} : {TimePicker.Time.Minutes}";
+                if (TimerDesk.IsChecked == true && TimerLock.IsChecked == true)
+                {
+                    imageTimerRepeatForCollection = imageTimerRepeatForCollection + " for Desktop and Lockscreen";
+                }
+                else if (TimerDesk.IsChecked == true && TimerLock.IsChecked == false)
+                {
+                    imageTimerRepeatForCollection = imageTimerRepeatForCollection + " for Desktop only";
+                }
+                else
+                {
+                    imageTimerRepeatForCollection = imageTimerRepeatForCollection + " for Lockscreen only";
+                }
+                ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}RepeatCollection"] = imageTimerRepeatForCollection;
+                if (TimerDesk.IsChecked == true) { ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Desk"] = "true"; }
+                else { ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Desk"] = null; }
+                if (TimerLock.IsChecked == true) { ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Lock"] = "true"; }
+                else { ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Lock"] = null; }
+                selectedTimerImage = null;
+                ImageTimerSelecter.Content = "Select Image";
+                SelectedImage.Source = null;
+                LookForTimerImages();
+            }
+        }
+        private async void LookForTimerImages()
+        {
+            TimerWallpaperBitmap.Clear();
+            SetBackgroundTaskForTimer = false;
+            string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
+            String[] imageAlarmIDs = allIDs.Split("#", StringSplitOptions.RemoveEmptyEntries);
+            if (imageAlarmIDs.Length != 0)
+            {
+                foreach (String iD in imageAlarmIDs)
+                {
+                    string imagePath = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}Image"];
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(imagePath);
+                    if (file != null)
+                    {
+
+                        BitmapImage bitmap = await StorageFileToBitmapImage(file);
+                        bitmap.DecodePixelHeight = 50;
+                        string repeatCollection = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}RepeatCollection"];
+                        string timerCollection = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}TimeCollection"];
+                        TimerWallpaperBitmap.Add(new TimerWallpaperBitmaps(bitmap, iD, timerCollection, repeatCollection)) ;
+                        if (ApplicationData.Current.LocalSettings.Values[$"{iD}Desk"] != null || ApplicationData.Current.LocalSettings.Values[$"{iD}Lock"] != null)
+                        { SetBackgroundTaskForTimer = true; }
+                    }
+                    else
+                    {
+                        string newAllIDs = allIDs.Replace($"#{iD}", "");
+                        ApplicationData.Current.LocalSettings.Values["AllTimerIDs"] = newAllIDs;
+                    }
+                }
+            }
+            if (SetBackgroundTaskForTimer = true && BackgroundSlider.Value != 15)
+            {
+                BackgroundSlider.Value = Convert.ToDouble(15);
+                ApplicationData.Current.LocalSettings.Values["SliderValue"] = Convert.ToDouble(15);
+                UNRegisterBackgroundTask();
+                await RERegisterBackgroundTask();
+            }
+        }
+
+        private async void TimerItemClick(object sender, ItemClickEventArgs e)
+        {
+            var timerID = (TimerWallpaperBitmaps)e.ClickedItem;
+            var clickedname = timerID.TimerID;
+            string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
+            string newAllIDs = allIDs.Replace($"#{clickedname}", "");
+            ApplicationData.Current.LocalSettings.Values["AllTimerIDs"] = newAllIDs;
+            string repeat = (string)ApplicationData.Current.LocalSettings.Values[$"{clickedname}Repeat"];
+            if (repeat != null)
+            {
+                if (repeat.Contains("Monday")) { Monday.IsChecked = true; } else { Monday.IsChecked = false; }
+                if (repeat.Contains("Tusday")) { Tusday.IsChecked = true; } else { Tusday.IsChecked = false; }
+                if (repeat.Contains("Wednesday")) { Wednesday.IsChecked = true; } else { Wednesday.IsChecked = false; }
+                if (repeat.Contains("Thursday")) { Thursday.IsChecked = true; } else { Thursday.IsChecked = false; }
+                if (repeat.Contains("Friday")) { Friday.IsChecked = true; } else { Friday.IsChecked = false; }
+                if (repeat.Contains("Saturday")) { Saturday.IsChecked = true; } else { Saturday.IsChecked = false; }
+                if (repeat.Contains("Sunday")) { Sunday.IsChecked = true; } else { Sunday.IsChecked = false; }
+            }
+            if (ApplicationData.Current.LocalSettings.Values[$"{clickedname}Desk"] != null) { TimerDesk.IsChecked = true; } else { TimerDesk.IsChecked = false; }
+            if (ApplicationData.Current.LocalSettings.Values[$"{clickedname}Lock"] != null) { TimerLock.IsChecked = true; } else { TimerLock.IsChecked = false; }
+            int hours = (int)ApplicationData.Current.LocalSettings.Values[$"{clickedname}Time_H"];
+            int minuts = (int)ApplicationData.Current.LocalSettings.Values[$"{clickedname}Time_M"];
+            TimeSpan timeSpan = new TimeSpan(hours, minuts, 0);
+            TimePicker.Time = timeSpan;
+            string imagePath = (string)ApplicationData.Current.LocalSettings.Values[$"{clickedname}Image"];
+            StorageFile file = await StorageFile.GetFileFromPathAsync(imagePath);
+            selectedTimerImage = file;
+            BitmapImage bitmap = await StorageFileToBitmapImage(file); ;
+            bitmap.DecodePixelHeight = 50;
+            ImageTimerSelecter.Content = SelectedImage;
+            SelectedImage.Source = bitmap;
+            LookForTimerImages();
         }
     }
 }

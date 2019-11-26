@@ -11,20 +11,6 @@
     <Page.Resources>
         <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="RedO" BackgroundSource="HostBackdrop" TintColor="Red" TintOpacity="0.8" FallbackColor="Red"/>
         <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="GreenO" BackgroundSource="HostBackdrop" TintColor="Green" TintOpacity="0.8" FallbackColor="Green"/>
-        <Storyboard x:Name="animatingColumOpen">
-            <DoubleAnimation EnableDependentAnimation="True" Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="Width" From="0" To="500" >
-                <DoubleAnimation.EasingFunction>
-                    <CircleEase EasingMode="EaseInOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>
-        <Storyboard x:Name="animatingColumClose">
-            <DoubleAnimation EnableDependentAnimation="True" Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="Width" From="500" To="0" >
-                <DoubleAnimation.EasingFunction>
-                    <CircleEase EasingMode="EaseInOut" />
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>
     </Page.Resources>
 
     <Grid>
@@ -34,118 +20,179 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="Collapsed" x:Name="GeneralProgressBar" IsEnabled="True"/>
-        <FlipView VerticalAlignment="Stretch" HorizontalAlignment="Center" Background="Transparent">
-            <Grid  Width="500">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="600"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
-                <Button x:Name="DynamicIcon" Click="DynamicIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="DynamicWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                </Button>
-                <ToggleButton x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
-                <ToggleButton x:Name="LockDynamicToggled" Tapped="LockDynamic" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
-                <TextBlock Text="Dynamic Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
-            </Grid>
-            <Grid Width="500">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="600"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
-                <Button x:Name="WeatherIcon" Click="WeatherIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="WeahterWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                </Button>
-                <ToggleButton x:Name="DeskWeatherToggled" Tapped="DeskWeather" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
-                <ToggleButton x:Name="LockWeatherToggled" Tapped="LockWeather" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
-                <TextBlock Text="Weather Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
-            </Grid>
-            <Grid Width="500">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="600"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
-                <Button x:Name="ModernIcon" Click="ModernIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="ModernWallpaperIcon" Stretch="UniformToFill"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                </Button>
-                <ToggleButton x:Name="DeskModernToggled" Tapped="DeskModern" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
-                <ToggleButton x:Name="LockModernToggled" Tapped="LockModern" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
-                <TextBlock Text="Modern Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
-            </Grid>
-        </FlipView>
-        <Grid x:Name="SettingsGrid" Width="0" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="{ThemeResource SystemControlAcrylicElementBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="600"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="10"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
-                <TextBlock Text="Looking for information about Wallpapers used, Icons or Libraries used?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
-                <HyperlinkButton Content="Source Code on GitHub" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers"/>
-                <HyperlinkButton Content="Magick.NET for HEIF Decoding" NavigateUri="https://github.com/dlemstra/Magick.NET"/>
-                <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
-                <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
-                    <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="20" Maximum="200" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
-                    <Button Background="Transparent" Content="Update" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right"/>
-                </StackPanel>
-                <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450" Height="35" Margin="0,10,0,30">
-                    <Button HorizontalAlignment="Left" Width="220" Height="35" Click="CheckLocation" Content="Check Geolocation" Margin="0,0,20,0"/>
-                    <Button HorizontalAlignment="Right" Width="220" Height="35" Click="CheckPermission" Content="Open app permissions" Margin="0,0,0,0"/>
-                </StackPanel>
-                <TextBlock TextAlignment="Center" Height="40" x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
-                <Button Width="125" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content="Add HEIC container">
-                    <Button.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="H"/>
-                    </Button.KeyboardAccelerators>
-                </Button>
-                <Button Width="125" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content="Add ZIP archive">
-                    <Button.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="Z"/>
-                    </Button.KeyboardAccelerators>
-                </Button>
-                <Button Width="125" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary" Content="Add a Directory">
-                    <Button.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="D"/>
-                    </Button.KeyboardAccelerators>
-                </Button>
-                <Button Width="125" Height="70" Content="Create" Click="GoToCreatePage">
-                    <Button.KeyboardAccelerators>
-                        <KeyboardAccelerator Key="C"/>
-                    </Button.KeyboardAccelerators>
-                </Button>
-            </StackPanel>
-            <Windows10FallCreatorsUpdate:ProgressBar IsIndeterminate="True" x:Name="ProgressBar" Grid.Row="3" Grid.Column="3"/>
-        </Grid>
+        <SplitView OpenPaneLength="500" x:Name="SplitViewXaml" Background="Transparent" PaneBackground="{ThemeResource SystemControlAcrylicElementBrush}">
+            <SplitView.Content>
+                <FlipView VerticalAlignment="Stretch" HorizontalAlignment="Center" Background="Transparent">
+                    <Grid  Width="500">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="DynamicIcon" Click="DynamicIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="DynamicWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Button>
+                        <ToggleButton x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <ToggleButton x:Name="LockDynamicToggled" Tapped="LockDynamic" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Dynamic Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                    </Grid>
+                    <Grid Width="500">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="WeatherIcon" Click="WeatherIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="WeahterWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Button>
+                        <ToggleButton x:Name="DeskWeatherToggled" Tapped="DeskWeather" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <ToggleButton x:Name="LockWeatherToggled" Tapped="LockWeather" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Weather Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                    </Grid>
+                    <Grid Width="500">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="ModernIcon" Click="ModernIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="ModernWallpaperIcon" Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Button>
+                        <ToggleButton x:Name="DeskModernToggled" Tapped="DeskModern" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <ToggleButton x:Name="LockModernToggled" Tapped="LockModern" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Modern Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                    </Grid>
+                    <Grid Width="500">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <GridView VerticalAlignment="Bottom" Grid.Row="0" ItemClick="TimerItemClick" Width="500" Height="500" ItemsSource="{x:Bind TimerWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="TimerGridView">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="local:TimerWallpaperBitmaps">
+                                    <StackPanel Orientation="Horizontal" Width="500">
+                                        <Ellipse Height="70" Width="70" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="{x:Bind TimerWallpaperImageIcon}" Stretch="UniformToFill"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock FontSize="30" Text="{x:Bind TimerSetTime}"/>
+                                            <TextBlock Text="{x:Bind TimerRepeat}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Height="35">
+                            <ToggleButton Height="35" Width="127" Content="Desktop" x:Name="TimerDesk"/>
+                            <TimePicker ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="245"/>
+                            <Button x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="128" Height="35" Padding="0" BorderThickness="0">
+                                <Button.Content>
+                                    <Image x:Name="SelectedImage" Height="35" Width="128" Stretch="UniformToFill"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Height="35">
+                            <ToggleButton Height="35" Width="127" Content="Lockscreen" x:Name="TimerLock"/>
+                            <ToggleButton Height="35" Width="35" Content="M" x:Name="Monday"/>
+                            <ToggleButton Height="35" Width="35" Content="T" x:Name="Tusday"/>
+                            <ToggleButton Height="35" Width="35" Content="W" x:Name="Wednesday"/>
+                            <ToggleButton Height="35" Width="35" Content="T" x:Name="Thursday"/>
+                            <ToggleButton Height="35" Width="35" Content="F" x:Name="Friday"/>
+                            <ToggleButton Height="35" Width="35" Content="S" x:Name="Saturday"/>
+                            <ToggleButton Height="35" Width="35" Content="S" x:Name="Sunday"/>
+                            <Button Content="Add" Click="AddTimerImage" Width="128" Height="35"/>
+                        </StackPanel>
+                        <TextBlock Text="Timer Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                    </Grid>
+                </FlipView>
+            </SplitView.Content>
+            <SplitView.Pane>
+                <Grid x:Name="SettingsGrid" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="600"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+                        <TextBlock Text="Looking for information about Wallpapers used, Icons or Libraries used?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                        <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
+                        <HyperlinkButton Content="Source Code on GitHub" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers"/>
+                        <HyperlinkButton Content="Magick.NET for HEIF Decoding" NavigateUri="https://github.com/dlemstra/Magick.NET"/>
+                        <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
+                        <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
+                            <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
+                            <Button Background="Transparent" Content="Update" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
+                            <Button HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Content="Check Geolocation" Margin="0,0,20,0"/>
+                            <Button HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Content="Open app permissions" Margin="0,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock TextAlignment="Center" Height="40" x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
+                        <Button Width="125" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content="Add HEIC container">
+                            <Button.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="H"/>
+                            </Button.KeyboardAccelerators>
+                        </Button>
+                        <Button Width="125" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content="Add ZIP archive">
+                            <Button.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="Z"/>
+                            </Button.KeyboardAccelerators>
+                        </Button>
+                        <Button Width="125" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary" Content="Add a Directory">
+                            <Button.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="D"/>
+                            </Button.KeyboardAccelerators>
+                        </Button>
+                        <Button Width="125" Height="70" Content="Create" Click="GoToCreatePage">
+                            <Button.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="C"/>
+                            </Button.KeyboardAccelerators>
+                        </Button>
+                    </StackPanel>
+                    <Windows10FallCreatorsUpdate:ProgressBar IsIndeterminate="True" x:Name="ProgressBar" Grid.Row="3" Grid.Column="3"/>
+                </Grid>
+            </SplitView.Pane>
+        </SplitView>
         <StackPanel Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button x:Name="ButtonChangeColomWidth" Content="Expand Settings" Background="Transparent" Click="ChangeColomWidth" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <Button Content="Update Wallpaper" Background="Transparent" Click="UpdateWallpaper" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Button Width="30" Padding="0" x:Name="ButtonChangeColomWidth" Background="Transparent" Click="ChangeColomWidth" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button.Content>
+                    <SymbolIcon Symbol="Setting"/>
+                </Button.Content>
+            </Button>
+            <Button Width="30" Padding="0" Background="Transparent" Click="UpdateWallpaper" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button.Content>
+                    <SymbolIcon Symbol="Refresh"/>
+                </Button.Content>
+            </Button>
         </StackPanel>
         <ContentDialog x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center">

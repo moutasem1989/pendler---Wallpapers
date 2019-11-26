@@ -11,7 +11,7 @@
     <PackageLogoSource>C:\Users\mouta\Documents\pendler\monitor.png</PackageLogoSource>
     <AppxShowAllApps>False</AppxShowAllApps>
     <UapAppxPackageBuildMode>StoreOnly</UapAppxPackageBuildMode>
-    <AppxBuildConfigurationSelection>x86|x64|arm|arm64</AppxBuildConfigurationSelection>
+    <AppxBuildConfigurationSelection>x86|arm64</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
