@@ -16,6 +16,9 @@ using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
 using Windows.Storage.Streams;
+using Windows.Graphics.Imaging;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Collections.Generic;
 
 namespace pendler
 {
@@ -67,27 +70,34 @@ namespace pendler
             if (ApplicationData.Current.LocalSettings.Values["ModernFolder"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
             if (ApplicationData.Current.LocalSettings.Values["ModernFile"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFile"] = String.Format("{0:X6}", random.Next(0x1000000)); }
             if (ApplicationData.Current.LocalSettings.Values["TimerFolder"] == null) { ApplicationData.Current.LocalSettings.Values["TimerFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+            ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
+            ApplicationData.Current.LocalSettings.Values["WeatherClicked"] = null;
             this.DynamicOperation.Text = "Add or create collections of images to be used for Dynamic and Weather wallpapers.";
-            await FindNullSettings();
-            LoadCheckedToggles();
-            await LoadDynamicIcon();
-            await LoadModernIcon();
-            await LoadWeatherIcon();
-            LookForTimerImages();
-            await LookUpLibrariesDynamic();
-            await LookUpLibrariesWeather();
-            FirstRunIntro();
-            StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["TimerFolder"], CreationCollisionOption.OpenIfExists);
-            StorageFileQueryResult result = Folder.CreateFileQuery();
-            var themeTimerFiles = await result.GetFilesAsync();
-            string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
-            foreach (StorageFile themeDynamic in themeTimerFiles)
+            try
             {
-                if (allIDs.Contains(themeDynamic.DisplayName) != true)
+                await FindNullSettings();
+                LoadCheckedToggles();
+                await LoadDynamicIcon();
+                await LoadModernIcon();
+                await LoadWeatherIcon();
+                LookForTimerImages();
+                await LookUpLibrariesDynamic();
+                await LookUpLibrariesWeather();
+                FirstRunIntro();
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["TimerFolder"], CreationCollisionOption.OpenIfExists);
+                StorageFileQueryResult result = Folder.CreateFileQuery();
+                var themeTimerFiles = await result.GetFilesAsync();
+                string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
+                foreach (StorageFile themeDynamic in themeTimerFiles)
                 {
-                    await themeDynamic.DeleteAsync();
+                    if (allIDs.Contains(themeDynamic.DisplayName) != true)
+                    {
+                        await themeDynamic.DeleteAsync();
+                    }
                 }
             }
+            catch (Exception ex) { ErrorTextBlock.Text = "Error aa0x: " + ex.ToString(); }
+            
             ProgressBar.Visibility = Visibility.Collapsed;
         }
         public async void FirstRunIntro()
@@ -136,8 +146,9 @@ namespace pendler
             if ((string)ApplicationData.Current.LocalSettings.Values["LockModernToggled"] == "true") { LockModernToggled.IsChecked = true; } else { LockModernToggled.IsChecked = false; }
             if ((string)ApplicationData.Current.LocalSettings.Values["DeskWeatherToggled"] == "true") { DeskWeatherToggled.IsChecked = true; } else { DeskWeatherToggled.IsChecked = false; }
             if ((string)ApplicationData.Current.LocalSettings.Values["LockWeatherToggled"] == "true") { LockWeatherToggled.IsChecked = true; } else { LockWeatherToggled.IsChecked = false; }
-
-            ImageTimerSelecter.Content = "Select Image";
+            var buttonSymbol = new SymbolIcon();
+            buttonSymbol.Symbol = Symbol.Pictures;
+            ImageTimerSelecter.Content = buttonSymbol;
             SelectedImage.Source = null;
             ProgressBar.Visibility = Visibility.Collapsed;
         }
@@ -183,12 +194,12 @@ namespace pendler
             var b1 = gc1.Replace("#", "");
             string gc2 = (string)ApplicationData.Current.LocalSettings.Values["DynamicColorB"];
             var b2 = gc2.Replace("#", "");
-            Color acent = Windows.UI.Color.FromArgb(255, byte.Parse(a.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-            Color color = Windows.UI.Color.FromArgb(255, byte.Parse(b.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-            Color acent1 = Windows.UI.Color.FromArgb(255, byte.Parse(a1.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a1.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a1.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-            Color acent2 = Windows.UI.Color.FromArgb(255, byte.Parse(a2.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a2.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a2.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-            Color color1 = Windows.UI.Color.FromArgb(255, byte.Parse(b1.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b1.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b1.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
-            Color color2 = Windows.UI.Color.FromArgb(255, byte.Parse(b2.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b2.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b2.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+            Windows.UI.Color acent = Windows.UI.Color.FromArgb(255, byte.Parse(a.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, byte.Parse(b.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+            Windows.UI.Color acent1 = Windows.UI.Color.FromArgb(255, byte.Parse(a1.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a1.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a1.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+            Windows.UI.Color acent2 = Windows.UI.Color.FromArgb(255, byte.Parse(a2.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a2.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(a2.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+            Windows.UI.Color color1 = Windows.UI.Color.FromArgb(255, byte.Parse(b1.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b1.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b1.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
+            Windows.UI.Color color2 = Windows.UI.Color.FromArgb(255, byte.Parse(b2.Substring(0, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b2.Substring(2, 2), System.Globalization.NumberStyles.HexNumber), byte.Parse(b2.Substring(4, 2), System.Globalization.NumberStyles.HexNumber));
             AcentGradient1.Color = acent1;
             AcentGradient2.Color = acent2;
             ColorGradient1.Color = color1;
@@ -275,37 +286,44 @@ namespace pendler
         }
         private async Task LookingForModernThumbs()
         {
-            LoadImageColors.Visibility = Visibility.Visible;
-            ModernWallpaperBitmap.Clear();
-            IStorageItem storageItem = await Windows.Storage.ApplicationData.Current.LocalFolder.TryGetItemAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
-            Libraries.ImageColourManagement.GetColorsForModernWallpaper();
-            if (storageItem != null)
+            try
             {
-                StorageFolder folder = await ApplicationData.Current.LocalFolder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
-                var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
-                var subFolders = await folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
-                foreach (StorageFolder subFolder in subFolders)
+                LoadImageColors.Visibility = Visibility.Visible;
+                ModernWallpaperBitmap.Clear();
+                IStorageItem storageItem = await Windows.Storage.ApplicationData.Current.LocalFolder.TryGetItemAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
+                Libraries.ImageColourManagement.GetColorsForModernWallpaper();
+                if (storageItem != null)
                 {
-                    string imagePathe = $@"{subFolder.Path}/";
-                    string[] allImages = Directory.GetFiles(imagePathe, $"X{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
-                    if (allImages.Length == 0)
+                    StorageFolder folder = await ApplicationData.Current.LocalFolder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["ModernFolder"]);
+                    var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
+                    var subFolders = await folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
+                    foreach (StorageFolder subFolder in subFolders)
                     {
-                        string[] oreginalImage = Directory.GetFiles(imagePathe, $"{(string)ApplicationData.Current.LocalSettings.Values["ModernFile"]}.*");
-                        await Libraries.ImageColourManagement.ApplyColor(oreginalImage[0], subFolder.Name);
-                        string[] newAllImages = Directory.GetFiles(imagePathe, $"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
-                        BitmapImage bitmap = new BitmapImage(new Uri(newAllImages[0]));
-                        bitmap.DecodePixelHeight = 50;
-                        ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(bitmap, subFolder.Name.ToString()));
-                    }
-                    else
-                    {
-                        BitmapImage bitmap = new BitmapImage(new Uri(allImages[0]));
-                        bitmap.DecodePixelHeight = 50;
-                        ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(bitmap, subFolder.Name.ToString()));
+                        string imagePathe = $@"{subFolder.Path}/";
+                        string[] allImages = Directory.GetFiles(imagePathe, $"X{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                        if (allImages.Length == 0)
+                        {
+                            string[] oreginalImage = Directory.GetFiles(imagePathe, $"{(string)ApplicationData.Current.LocalSettings.Values["ModernFile"]}.*");
+                            await Libraries.ImageColourManagement.ApplyColor(oreginalImage[0], subFolder.Name);
+                            string[] newAllImages = Directory.GetFiles(imagePathe, $"{Libraries.ImageColourManagement.ModernAcent}-{Libraries.ImageColourManagement.ModernColor}.*");
+                            BitmapImage bitmap = new BitmapImage(new Uri(newAllImages[0]));
+                            bitmap.DecodePixelHeight = 50;
+                            ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(bitmap, subFolder.Name.ToString()));
+                        }
+                        else
+                        {
+                            BitmapImage bitmap = new BitmapImage(new Uri(allImages[0]));
+                            bitmap.DecodePixelHeight = 50;
+                            ModernWallpaperBitmap.Add(new ModernWallpaperBitmaps(bitmap, subFolder.Name.ToString()));
+                        }
                     }
                 }
+                LoadImageColors.Visibility = Visibility.Collapsed;
             }
-            LoadImageColors.Visibility = Visibility.Collapsed;
+            catch (Exception ex)
+            {
+                ErrorTextBlock.Text = "Error 003x: " + ex.ToString();
+            }
         }
         private async void WeatherIconClick(object sender, RoutedEventArgs e)
         {
@@ -313,7 +331,6 @@ namespace pendler
             if (WeatherWallpaperBitmap.Count != 0 ) { WeatherDeleteButton.IsEnabled = true; }
             else { WeatherDeleteButton.IsEnabled = false; }
         }
-
         private async Task RERegisterBackgroundTask()
         {
             var result = await BackgroundExecutionManager.RequestAccessAsync();
@@ -352,14 +369,14 @@ namespace pendler
         }
         private void AccentColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
-            Color color = Color.FromArgb(255, AccentColorPicker.Color.R, AccentColorPicker.Color.G, AccentColorPicker.Color.B);
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, AccentColorPicker.Color.R, AccentColorPicker.Color.G, AccentColorPicker.Color.B);
             ApplicationData.Current.LocalSettings.Values["Acent"] = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             ApplicationData.Current.LocalSettings.Values["DynamicAccent"] = null;
             AccentColorButton.Background = new SolidColorBrush(color);
         }
         private void ColorColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
-            Color color = Color.FromArgb(255, ColorColorPicker.Color.R, ColorColorPicker.Color.G, ColorColorPicker.Color.B);
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, ColorColorPicker.Color.R, ColorColorPicker.Color.G, ColorColorPicker.Color.B);
             ApplicationData.Current.LocalSettings.Values["Color"] = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             ApplicationData.Current.LocalSettings.Values["DynamicColor"] = null;
             ColorColorButton.Background = new SolidColorBrush(color);
@@ -390,7 +407,7 @@ namespace pendler
         }
         private void ColorGradient1Changed(ColorPicker sender, ColorChangedEventArgs args)
         {
-            Color color = Color.FromArgb(255, ColorGradient1Picker.Color.R, ColorGradient1Picker.Color.G, ColorGradient1Picker.Color.B);
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, ColorGradient1Picker.Color.R, ColorGradient1Picker.Color.G, ColorGradient1Picker.Color.B);
             ApplicationData.Current.LocalSettings.Values["DynamicColorA"] = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             ApplicationData.Current.LocalSettings.Values["DynamicColor"] = "true";
             ColorGradient1Button.Background = new SolidColorBrush(color);
@@ -398,7 +415,7 @@ namespace pendler
         }
         private void ColorGradient2Changed(ColorPicker sender, ColorChangedEventArgs args)
         {
-            Color color = Color.FromArgb(255, ColorGradient2Picker.Color.R, ColorGradient2Picker.Color.G, ColorGradient2Picker.Color.B);
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, ColorGradient2Picker.Color.R, ColorGradient2Picker.Color.G, ColorGradient2Picker.Color.B);
             ApplicationData.Current.LocalSettings.Values["DynamicColorB"] = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             ApplicationData.Current.LocalSettings.Values["DynamicColor"] = "true";
             ColorGradient2Button.Background = new SolidColorBrush(color);
@@ -417,7 +434,7 @@ namespace pendler
         }
         private void AcentGradient1Changed(ColorPicker sender, ColorChangedEventArgs args)
         {
-            Color color = Color.FromArgb(255, AcentGradient1Picker.Color.R, AcentGradient1Picker.Color.G, AcentGradient1Picker.Color.B);
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, AcentGradient1Picker.Color.R, AcentGradient1Picker.Color.G, AcentGradient1Picker.Color.B);
             ApplicationData.Current.LocalSettings.Values["DynamicAccentA"] = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             ApplicationData.Current.LocalSettings.Values["DynamicAccent"] = "true";
             AcentGradient1Button.Background = new SolidColorBrush(color);
@@ -425,7 +442,7 @@ namespace pendler
         }
         private void AcentGradient2Changed(ColorPicker sender, ColorChangedEventArgs args)
         {
-            Color color = Color.FromArgb(255, AcentGradient2Picker.Color.R, AcentGradient2Picker.Color.G, AcentGradient2Picker.Color.B);
+            Windows.UI.Color color = Windows.UI.Color.FromArgb(255, AcentGradient2Picker.Color.R, AcentGradient2Picker.Color.G, AcentGradient2Picker.Color.B);
             ApplicationData.Current.LocalSettings.Values["DynamicAccentB"] = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
             ApplicationData.Current.LocalSettings.Values["DynamicAccent"] = "true";
             AcentGradient2Button.Background = new SolidColorBrush(color);
@@ -582,47 +599,71 @@ namespace pendler
         }
         private async Task LookUpLibrariesDynamic()
         {
-            DynamicWallpaperBitmap.Clear();
-            StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
-            var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
-            var themeDynamicFolders = await Folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
-            foreach (StorageFolder themeDynamic in themeDynamicFolders)
+            try
             {
-                string[] allImages = Directory.GetFiles(themeDynamic.Path, $"X{ApplicationData.Current.LocalSettings.Values["DynamicImageID"].ToString()}.*");
-                string ImageWithExtention = allImages[0];
-                BitmapImage bitmapImage = new BitmapImage(new Uri(ImageWithExtention));
-                bitmapImage.DecodePixelWidth = 200;
-                DynamicWallpaperBitmap.Add(new DynamicWallpaperBitmaps(bitmapImage, themeDynamic.Name));
+                DynamicWallpaperBitmap.Clear();
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
+                var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
+                var themeDynamicFolders = await Folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
+                foreach (StorageFolder themeDynamic in themeDynamicFolders)
+                {
+                    if (Directory.GetFiles(themeDynamic.Path, "*", SearchOption.AllDirectories).Length == 16)
+                    {
+                        string[] allImages = Directory.GetFiles(themeDynamic.Path, $"X{ApplicationData.Current.LocalSettings.Values["DynamicImageID"].ToString()}.*");
+                        string ImageWithExtention = allImages[0];
+                        BitmapImage bitmapImage = new BitmapImage(new Uri(ImageWithExtention));
+                        bitmapImage.DecodePixelWidth = 200;
+                        DynamicWallpaperBitmap.Add(new DynamicWallpaperBitmaps(bitmapImage, themeDynamic.Name));
+                    }
+                    else { await themeDynamic.DeleteAsync(); }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorTextBlock.Text = "Error 001x: " + ex.ToString();
             }
         }
         private async Task LookUpLibrariesWeather()
         {
-            WeatherWallpaperBitmap.Clear();
-            StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
-            var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
-            var themeWeatherFolders = await Folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
-            foreach (StorageFolder themeWeather in themeWeatherFolders)
+            try
             {
-                string[] allImages = Directory.GetFiles(themeWeather.Path, $"X{ApplicationData.Current.LocalSettings.Values["WeatherImageID"].ToString()}.*");
-                string ImageWithExtention = allImages[0];
-                BitmapImage bitmapImage = new BitmapImage(new Uri(ImageWithExtention));
-                bitmapImage.DecodePixelWidth = 200;
-                WeatherWallpaperBitmap.Add(new WeatherWallpaperBitmaps(bitmapImage, themeWeather.Name));
+                WeatherWallpaperBitmap.Clear();
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
+                var queryOption = new QueryOptions { FolderDepth = FolderDepth.Deep };
+                var themeWeatherFolders = await Folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
+                foreach (StorageFolder themeWeather in themeWeatherFolders)
+                {
+                    if (Directory.GetFiles(themeWeather.Path, "*", SearchOption.AllDirectories).Length == 18)
+                    {
+                        string[] allImages = Directory.GetFiles(themeWeather.Path, $"X{ApplicationData.Current.LocalSettings.Values["WeatherImageID"].ToString()}.*");
+                        string ImageWithExtention = allImages[0];
+                        BitmapImage bitmapImage = new BitmapImage(new Uri(ImageWithExtention));
+                        bitmapImage.DecodePixelWidth = 200;
+                        WeatherWallpaperBitmap.Add(new WeatherWallpaperBitmaps(bitmapImage, themeWeather.Name));
+                    }
+                    else { await themeWeather.DeleteAsync(); }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorTextBlock.Text = "Error 002x: " + ex.ToString();
             }
         }
         private async void AddHEICFileToLibrary(object sender, RoutedEventArgs e)
         {
+            /*
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
             picker.FileTypeFilter.Add(".heic");
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            StorageFolder folder = null;
             if (file != null)
             {
                 AddHeifButton.IsEnabled = false;
                 ProgressBar.Visibility = Visibility.Visible;
                 ApplicationData.Current.LocalSettings.Values["HEICfile"] = file.Path;
-                this.DynamicOperation.Text = "This may take several minutes. If completed successfully you will see the Wallpaper in one of your Libraries.";
+                this.DynamicOperation.Text = "This may take some time. If completed successfully you will see the Wallpaper in one of your Libraries.";
                 try
                 {
                     await System.Threading.Tasks.Task.Run(() => Libraries.HeifImageReader.Heifercollection());
@@ -637,8 +678,8 @@ namespace pendler
                     this.DynamicOperation.Text = "Error Reading HEIC Container";
                     ProgressBar.Visibility = Visibility.Collapsed;
                     AddHeifButton.IsEnabled = true;
-                    StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
-                    Directory.Delete($@"{Folder.Path}/{(string)ApplicationData.Current.LocalSettings.Values["HEICfile"]}", true);
+                    StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync((string)ApplicationData.Current.LocalSettings.Values["HEICThemePath"]);
+                    await storageFolder.DeleteAsync();
                 }
                 
             }
@@ -646,7 +687,7 @@ namespace pendler
             {
                 this.DynamicOperation.Text = "Operation cancelled.";
             }
-            
+            */
         }
         private async void AddZipFileToLibrary(object sender, RoutedEventArgs e)
         {
@@ -856,6 +897,8 @@ namespace pendler
         }
         private async void SelectTimerImageToAdd(object sender, RoutedEventArgs e)
         {
+            var buttonSymbol = new SymbolIcon();
+            buttonSymbol.Symbol = Symbol.Pictures;
             if (selectedTimerImage == null)
             {
                 var picker = new Windows.Storage.Pickers.FileOpenPicker();
@@ -877,7 +920,8 @@ namespace pendler
                 else
                 {
                     selectedTimerImage = null;
-                    ImageTimerSelecter.Content = "Select Image";
+
+                    ImageTimerSelecter.Content = buttonSymbol;
                     SelectedImage.Source = null;
                 }
             }
@@ -885,13 +929,13 @@ namespace pendler
             {
                 await selectedTimerImage.DeleteAsync();
                 selectedTimerImage = null;
-                ImageTimerSelecter.Content = "Select Image";
+                ImageTimerSelecter.Content = buttonSymbol;
                 SelectedImage.Source = null;
             }
             else
             {
                 selectedTimerImage = null;
-                ImageTimerSelecter.Content = "Select Image";
+                ImageTimerSelecter.Content = buttonSymbol;
                 SelectedImage.Source = null;
             }
         }
@@ -949,7 +993,10 @@ namespace pendler
                 if (TimerLock.IsChecked == true) { ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Lock"] = "true"; }
                 else { ApplicationData.Current.LocalSettings.Values[$"{imageAlarmID}Lock"] = null; }
                 selectedTimerImage = null;
-                ImageTimerSelecter.Content = "Select Image";
+
+                var buttonSymbol = new SymbolIcon();
+                buttonSymbol.Symbol = Symbol.Pictures;
+                ImageTimerSelecter.Content = buttonSymbol;
                 SelectedImage.Source = null;
                 LookForTimerImages();
             }
@@ -992,7 +1039,6 @@ namespace pendler
                 await RERegisterBackgroundTask();
             }
         }
-
         private async void TimerItemClick(object sender, ItemClickEventArgs e)
         {
             var timerID = (TimerWallpaperBitmaps)e.ClickedItem;
@@ -1003,13 +1049,13 @@ namespace pendler
             string repeat = (string)ApplicationData.Current.LocalSettings.Values[$"{clickedname}Repeat"];
             if (repeat != null)
             {
-                if (repeat.Contains("Monday")) { Monday.IsChecked = true; } else { Monday.IsChecked = false; }
-                if (repeat.Contains("Tusday")) { Tusday.IsChecked = true; } else { Tusday.IsChecked = false; }
-                if (repeat.Contains("Wednesday")) { Wednesday.IsChecked = true; } else { Wednesday.IsChecked = false; }
-                if (repeat.Contains("Thursday")) { Thursday.IsChecked = true; } else { Thursday.IsChecked = false; }
-                if (repeat.Contains("Friday")) { Friday.IsChecked = true; } else { Friday.IsChecked = false; }
-                if (repeat.Contains("Saturday")) { Saturday.IsChecked = true; } else { Saturday.IsChecked = false; }
-                if (repeat.Contains("Sunday")) { Sunday.IsChecked = true; } else { Sunday.IsChecked = false; }
+                if (repeat.Contains("0")) { Monday.IsChecked = true; } else { Monday.IsChecked = false; }
+                if (repeat.Contains("1")) { Tusday.IsChecked = true; } else { Tusday.IsChecked = false; }
+                if (repeat.Contains("2")) { Wednesday.IsChecked = true; } else { Wednesday.IsChecked = false; }
+                if (repeat.Contains("3")) { Thursday.IsChecked = true; } else { Thursday.IsChecked = false; }
+                if (repeat.Contains("4")) { Friday.IsChecked = true; } else { Friday.IsChecked = false; }
+                if (repeat.Contains("5")) { Saturday.IsChecked = true; } else { Saturday.IsChecked = false; }
+                if (repeat.Contains("6")) { Sunday.IsChecked = true; } else { Sunday.IsChecked = false; }
             }
             if (ApplicationData.Current.LocalSettings.Values[$"{clickedname}Desk"] != null) { TimerDesk.IsChecked = true; } else { TimerDesk.IsChecked = false; }
             if (ApplicationData.Current.LocalSettings.Values[$"{clickedname}Lock"] != null) { TimerLock.IsChecked = true; } else { TimerLock.IsChecked = false; }
@@ -1025,6 +1071,165 @@ namespace pendler
             ImageTimerSelecter.Content = SelectedImage;
             SelectedImage.Source = bitmap;
             LookForTimerImages();
+        }
+        private async void AddTIFFileToLibrary(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".tif");
+            picker.FileTypeFilter.Add(".tiff");
+            Windows.Storage.StorageFile MyOriginalfile = await picker.PickSingleFileAsync();
+            if (MyOriginalfile != null)
+            {
+                AddTIFButton.IsEnabled = false;
+                ProgressBar.Visibility = Visibility.Visible;
+                this.DynamicOperation.Text = "This won't take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
+                try
+                {
+                    uint frameCount;
+                    var random = new Random();
+                    StorageFolder storage = null;
+                    using (IRandomAccessStream randomAccessStream = await MyOriginalfile.OpenAsync(FileAccessMode.Read, StorageOpenOptions.None))
+                    {
+                        Windows.Graphics.Imaging.BitmapDecoder bitmapDecoder = await Windows.Graphics.Imaging.BitmapDecoder.CreateAsync(Windows.Graphics.Imaging.BitmapDecoder.TiffDecoderId, randomAccessStream);
+                        frameCount = bitmapDecoder.FrameCount;
+                        if (frameCount == 16)
+                        {
+                            StorageFolder mainfolder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
+                            storage = await mainfolder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
+                        }
+                        else if (frameCount == 18)
+                        {
+                            StorageFolder mainfolder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
+                            storage = await mainfolder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
+                        }
+                        if (storage != null)
+                        {
+                            for (int frame = 0; frame < frameCount; frame++)
+                            {
+                                var bitmapFrame = await bitmapDecoder.GetFrameAsync(Convert.ToUInt32(frame));
+                                var softImage = await bitmapFrame.GetSoftwareBitmapAsync();
+                                var bmif = await storage.CreateFileAsync($"X{frame}.png", CreationCollisionOption.ReplaceExisting);
+                                SaveSoftwareBitmapToFile(softImage, bmif);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex) { ErrorTextBlock.Text = "Error 005x: " + ex.ToString(); }
+                ProgressBar.Visibility = Visibility.Collapsed;
+                AddTIFButton.IsEnabled = true;
+                await LookUpLibrariesDynamic();
+                await LookUpLibrariesWeather();
+            }
+            else
+            {
+                this.DynamicOperation.Text = "Operation cancelled.";
+            }
+        }
+        private async void SaveSoftwareBitmapToFile(SoftwareBitmap softwareBitmap, StorageFile outputFile)
+        {
+            using (IRandomAccessStream stream = await outputFile.OpenAsync(FileAccessMode.ReadWrite))
+            {
+                // Create an encoder with the desired format
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
+                // Set the software bitmap
+                encoder.SetSoftwareBitmap(softwareBitmap);
+                encoder.BitmapTransform.InterpolationMode = BitmapInterpolationMode.Fant;
+                encoder.IsThumbnailGenerated = true;
+                try
+                {
+                    await encoder.FlushAsync();
+                }
+                catch (Exception err)
+                {
+                    const int WINCODEC_ERR_UNSUPPORTEDOPERATION = unchecked((int)0x88982F81);
+                    switch (err.HResult)
+                    {
+                        case WINCODEC_ERR_UNSUPPORTEDOPERATION:
+                            // If the encoder does not support writing a thumbnail, then try again
+                            // but disable thumbnail generation.
+                            encoder.IsThumbnailGenerated = false;
+                            break;
+                        default:
+                            throw;
+                    }
+                }
+                if (encoder.IsThumbnailGenerated == false)
+                {
+                    await encoder.FlushAsync();
+                }
+            }
+        }
+        private async Task ExportTheme(StorageFolder storageFolder, int num)
+        {
+            StorageFile saveTIFF = null;
+            WriteableBitmap[] writeableimage = new WriteableBitmap[num];
+            var savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation =
+                Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".tif" });
+            savePicker.SuggestedFileName = "Dynamic Theme";
+            saveTIFF = await savePicker.PickSaveFileAsync();
+            if (saveTIFF != null)
+            {
+                using (IRandomAccessStream ras = await saveTIFF.OpenAsync(FileAccessMode.ReadWrite, StorageOpenOptions.None))
+                {
+                    BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.TiffEncoderId, ras);
+                    Windows.Storage.CachedFileManager.DeferUpdates(saveTIFF);
+                    for (int frame = 0; frame < num; frame++)
+                    {
+                        string[] allImages = Directory.GetFiles(storageFolder.Path, $"X{frame}.*");
+                        string ImageWithExtention = Path.GetFullPath(allImages[0]);
+                        if (File.Exists(ImageWithExtention))
+                        {
+                            StorageFile file = await StorageFile.GetFileFromPathAsync(ImageWithExtention);
+                            using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read))
+                            {
+                                SoftwareBitmap softwareBitmap;
+                                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
+                                softwareBitmap = await decoder.GetSoftwareBitmapAsync();
+                                writeableimage[frame] = new WriteableBitmap(softwareBitmap.PixelWidth, softwareBitmap.PixelHeight);
+                                writeableimage[frame].SetSource(stream);
+                                var addFrame = writeableimage[frame].PixelBuffer.AsStream();
+                                byte[] frameBuffer = new byte[addFrame.Length];
+                                await addFrame.ReadAsync(frameBuffer, 0, frameBuffer.Length);
+                                encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore, (uint)writeableimage[frame].PixelWidth, (uint)writeableimage[frame].PixelHeight, 96.0, 96.0, frameBuffer);
+                                await encoder.GoToNextFrameAsync();
+                                writeableimage[frame] = null;
+                                Array.Clear(frameBuffer, 0, frameBuffer.Length);
+                            }
+                        }
+                    }
+                    await encoder.FlushAsync();
+                }
+            }
+        }
+        private async void ExportWeatherTheme(object sender, RoutedEventArgs e)
+        {
+            if (ApplicationData.Current.LocalSettings.Values["WeatherClicked"] != null)
+            {
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
+                StorageFolder themeFolder = await Folder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherClicked"]);
+                WeatherExportButton.IsEnabled = false;
+                try { await Task.Run(() => ExportTheme(themeFolder, 18)); }
+                catch (Exception exception) { }
+                WeatherExportButton.IsEnabled = true;
+                ApplicationData.Current.LocalSettings.Values["WeatherClicked"] = null;
+            }
+        }
+        private async void ExportDynamicTheme(object sender, RoutedEventArgs e)
+        {
+            if (ApplicationData.Current.LocalSettings.Values["DynamicClicked"] != null)
+            {
+                StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
+                StorageFolder themeFolder = await Folder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicClicked"]);
+                DynamicExportButton.IsEnabled = false;
+                try { await Task.Run(() => ExportTheme(themeFolder, 16)); }
+                catch (Exception exception) { }
+                DynamicExportButton.IsEnabled = true;
+                ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
+            }
         }
     }
 }

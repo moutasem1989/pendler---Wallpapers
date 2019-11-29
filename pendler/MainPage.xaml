@@ -38,8 +38,24 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
-                        <ToggleButton x:Name="LockDynamicToggled" Tapped="LockDynamic" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <ToggleButton x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                            <ToggleButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="GoToStart"/>
+                                    <Rectangle Fill="Transparent" Width="50"/>
+                                    <TextBlock Text="Desktop"/>
+                                </StackPanel>
+                            </ToggleButton.Content>
+                            </ToggleButton>
+                            <ToggleButton x:Name="LockDynamicToggled" Tapped="LockDynamic" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                                <ToggleButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="StopSlideShow"/>
+                                    <Rectangle Fill="Transparent" Width="50"/>
+                                    <TextBlock Text="Lockscreen"/>
+                                </StackPanel>
+                            </ToggleButton.Content>
+                            </ToggleButton>
                         <TextBlock Text="Dynamic Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
@@ -57,8 +73,24 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton x:Name="DeskWeatherToggled" Tapped="DeskWeather" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
-                        <ToggleButton x:Name="LockWeatherToggled" Tapped="LockWeather" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <ToggleButton x:Name="DeskWeatherToggled" Tapped="DeskWeather" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                            <ToggleButton.Content>
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="GoToStart" />
+                                    <Rectangle Fill="Transparent" Width="50"/>
+                                    <TextBlock Text="Desktop"/>
+                                </StackPanel>
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton x:Name="LockWeatherToggled" Tapped="LockWeather" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                            <ToggleButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="StopSlideShow" />
+                                    <Rectangle Fill="Transparent" Width="50"/>
+                                    <TextBlock Text="Lockscreen" />
+                                </StackPanel>
+                            </ToggleButton.Content>
+                        </ToggleButton>
                         <TextBlock Text="Weather Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
@@ -76,8 +108,24 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton x:Name="DeskModernToggled" Tapped="DeskModern" Content="Desktop" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center"/>
-                        <ToggleButton x:Name="LockModernToggled" Tapped="LockModern" Content="Lockscreen" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center"/>
+                        <ToggleButton x:Name="DeskModernToggled" Tapped="DeskModern" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                            <ToggleButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="GoToStart"/>
+                                    <Rectangle Fill="Transparent" Width="50"/>
+                                    <TextBlock Text="Desktop" />
+                                </StackPanel>
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton x:Name="LockModernToggled" Tapped="LockModern" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                            <ToggleButton.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="StopSlideShow"/>
+                                    <Rectangle Fill="Transparent" Width="50"/>
+                                    <TextBlock Text="Lockscreen" />
+                                </StackPanel>
+                            </ToggleButton.Content>
+                        </ToggleButton>
                         <TextBlock Text="Modern Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
@@ -106,7 +154,11 @@
                             </GridView.ItemTemplate>
                         </GridView>
                         <StackPanel Orientation="Horizontal" Grid.Row="1" Height="35">
-                            <ToggleButton Height="35" Width="127" Content="Desktop" x:Name="TimerDesk"/>
+                            <ToggleButton Height="35" Width="127" x:Name="TimerDesk">
+                                <ToggleButton.Content>
+                                    <SymbolIcon Symbol="GoToStart"/>
+                                </ToggleButton.Content>
+                            </ToggleButton>
                             <TimePicker ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="245"/>
                             <Button x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="128" Height="35" Padding="0" BorderThickness="0">
                                 <Button.Content>
@@ -115,7 +167,11 @@
                             </Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="2" Height="35">
-                            <ToggleButton Height="35" Width="127" Content="Lockscreen" x:Name="TimerLock"/>
+                            <ToggleButton Height="35" Width="127" x:Name="TimerLock">
+                                <ToggleButton.Content>
+                                    <SymbolIcon Symbol="StopSlideShow"/>
+                                </ToggleButton.Content>
+                            </ToggleButton>
                             <ToggleButton Height="35" Width="35" Content="M" x:Name="Monday"/>
                             <ToggleButton Height="35" Width="35" Content="T" x:Name="Tusday"/>
                             <ToggleButton Height="35" Width="35" Content="W" x:Name="Wednesday"/>
@@ -123,7 +179,11 @@
                             <ToggleButton Height="35" Width="35" Content="F" x:Name="Friday"/>
                             <ToggleButton Height="35" Width="35" Content="S" x:Name="Saturday"/>
                             <ToggleButton Height="35" Width="35" Content="S" x:Name="Sunday"/>
-                            <Button Content="Add" Click="AddTimerImage" Width="128" Height="35"/>
+                            <Button Click="AddTimerImage" Width="128" Height="35">
+                                <Button.Content>
+                                    <SymbolIcon Symbol="Upload"/>
+                                </Button.Content>
+                            </Button>
                         </StackPanel>
                         <TextBlock Text="Timer Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
@@ -147,32 +207,55 @@
                         <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
                             <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
-                            <Button Background="Transparent" Content="Update" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right"/>
+                            <Button Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
+                                <Button.Content>
+                                    <SymbolIcon Symbol="Sync"/>
+                                </Button.Content>
+                            </Button>
                         </StackPanel>
                         <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
-                            <Button HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Content="Check Geolocation" Margin="0,0,20,0"/>
-                            <Button HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Content="Open app permissions" Margin="0,0,0,0"/>
+                            <Button HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Margin="0,0,20,0">
+                                <Button.Content>
+                                    <SymbolIcon Symbol="World"/>
+                                </Button.Content>
+                            </Button>
+                            <Button HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Margin="0,0,0,0">
+                                <Button.Content>
+                                    <SymbolIcon Symbol="ReportHacked"/>
+                                </Button.Content>
+                            </Button>
                         </StackPanel>
                         <TextBlock TextAlignment="Center" Height="40" x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
-                        <Button Width="125" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content="Add HEIC container">
+                        <Button Width="100" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="H"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="125" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content="Add ZIP archive">
+                        <Button Width="100" Height="70" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
+                            <Button.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="H"/>
+                            </Button.KeyboardAccelerators>
+                        </Button>
+                        <Button Width="100" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="Z"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="125" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary" Content="Add a Directory">
+                        <Button Width="100" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
+                            <Button.Content>
+                                <SymbolIcon Symbol="NewFolder"/>
+                            </Button.Content>
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="D"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="125" Height="70" Content="Create" Click="GoToCreatePage">
+                        <Button Width="100" Height="70" Click="GoToCreatePage">
+                            <Button.Content>
+                                <SymbolIcon Symbol="Add"/>
+                            </Button.Content>
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="C"/>
                             </Button.KeyboardAccelerators>
@@ -193,8 +276,9 @@
                     <SymbolIcon Symbol="Refresh"/>
                 </Button.Content>
             </Button>
+            <TextBlock x:Name="ErrorTextBlock"/>
         </StackPanel>
-        <ContentDialog x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog Padding="0" x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -238,7 +322,11 @@
                                     </Flyout.FlyoutPresenterStyle>
                                     <StackPanel>
                                         <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AccentColorChanged" x:Name="AccentColorPicker"/>
-                                        <Button Background="Transparent" Content="Make Accent Dynamic" Click="AcentDynamic"/>
+                                        <Button Background="Transparent" Click="AcentDynamic">
+                                            <Button.Content>
+                                                <SymbolIcon Symbol="Shuffle"/>
+                                            </Button.Content>
+                                        </Button>
                                     </StackPanel>
                                 </Flyout>
                             </Button.Flyout>
@@ -254,7 +342,11 @@
                                         </Flyout.FlyoutPresenterStyle>
                                         <StackPanel>
                                             <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient1Changed" x:Name="AcentGradient1Picker"/>
-                                            <Button Background="Transparent" Content="Make Accent Constant" Click="AcentConstant"/>
+                                            <Button Background="Transparent" Click="AcentConstant">
+                                                <Button.Content>
+                                                    <SymbolIcon Symbol="Shuffle"/>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
                                     </Flyout>
                                 </Button.Flyout>
@@ -279,7 +371,11 @@
                                         </Flyout.FlyoutPresenterStyle>
                                         <StackPanel>
                                             <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient2Changed" x:Name="AcentGradient2Picker"/>
-                                            <Button Background="Transparent" Content="Make Accent Constant" Click="AcentConstant"/>
+                                            <Button Background="Transparent" Click="AcentConstant">
+                                                <Button.Content>
+                                                    <SymbolIcon Symbol="Shuffle"/>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
                                     </Flyout>
                                 </Button.Flyout>
@@ -298,7 +394,11 @@
                                     </Flyout.FlyoutPresenterStyle>
                                     <StackPanel>
                                         <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorColorChanged" x:Name="ColorColorPicker"/>
-                                        <Button Background="Transparent" Content="Make Color Dynamic" Click="ColorDynamic"/>
+                                        <Button Background="Transparent" Click="ColorDynamic">
+                                            <Button.Content>
+                                                <SymbolIcon Symbol="Shuffle"/>
+                                            </Button.Content>
+                                        </Button>
                                     </StackPanel>
                                 </Flyout>
                             </Button.Flyout>
@@ -314,7 +414,11 @@
                                         </Flyout.FlyoutPresenterStyle>
                                         <StackPanel>
                                             <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient1Changed" x:Name="ColorGradient1Picker"/>
-                                            <Button Background="Transparent" Content="Make Color Constant" Click="ColorConstant"/>
+                                            <Button Background="Transparent" Click="ColorConstant">
+                                                <Button.Content>
+                                                    <SymbolIcon Symbol="Shuffle"/>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
                                     </Flyout>
                                 </Button.Flyout>
@@ -339,7 +443,11 @@
                                         </Flyout.FlyoutPresenterStyle>
                                         <StackPanel>
                                             <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient2Changed" x:Name="ColorGradient2Picker"/>
-                                            <Button Background="Transparent" Content="Make Color Constant" Click="ColorConstant"/>
+                                            <Button Background="Transparent" Click="ColorConstant">
+                                                <Button.Content>
+                                                    <SymbolIcon Symbol="Shuffle"/>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
                                     </Flyout>
                                 </Button.Flyout>
@@ -349,15 +457,31 @@
 
                 </Grid>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
-                    <Button Click="CancelModernContentDialog" Content="Cancel" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    <Button Click="DeleteModernWallpaper" Content="Remove" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Button Click="AddModernImage" Content="Add" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Button Click="ApplyModernTheme" Content="Accept" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <Button Click="CancelModernContentDialog" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Cancel"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Click="DeleteModernWallpaper" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Delete"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Click="AddModernImage" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Add"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Click="ApplyModernTheme" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Accept"/>
+                        </Button.Content>
+                    </Button>
                 </StackPanel>
                 <ProgressBar VerticalAlignment="Bottom" Grid.Column="0" Grid.ColumnSpan="3" x:Name="LoadImageColors" IsEnabled="True" Visibility="Collapsed" Grid.Row="3" IsIndeterminate="True"/>
             </Grid>
         </ContentDialog>
-        <ContentDialog x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog Padding="0" x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -381,26 +505,48 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button Click="CancelWeatherContentDialog" Content="Cancel" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                <Button  x:Name="WeatherDeleteButton" Content="Remove selected" Grid.Row="2" Grid.Column="1" Width="200" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button.Flyout>
-                        <Flyout x:Name="AreYouSureFlyOut2">
-                            <Flyout.FlyoutPresenterStyle>
-                                <Style TargetType="FlyoutPresenter">
-                                    <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                </Style>
-                            </Flyout.FlyoutPresenterStyle>
-                            <StackPanel>
-                                <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
-                                <Button Margin="20" Background="Transparent" Content="Delete" Click="DeleteSelectedWeather" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Flyout>
-                    </Button.Flyout>
+                <Button Click="CancelWeatherContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Cancel"/>
+                    </Button.Content>
                 </Button>
-                <Button Click="UseWeatherSelected" Content="Accept" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <Button  x:Name="WeatherDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Delete"/>
+                        </Button.Content>
+                        <Button.Flyout>
+                            <Flyout x:Name="AreYouSureFlyOut2">
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter">
+                                        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <StackPanel>
+                                    <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
+                                    <Button Margin="20" Background="Transparent" Click="DeleteSelectedWeather" HorizontalAlignment="Center">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Accept"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button  x:Name="WeatherExportButton" Click="ExportWeatherTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Save"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <Button Click="UseWeatherSelected" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Accept"/>
+                    </Button.Content>
+                </Button>
             </Grid>
         </ContentDialog>
-        <ContentDialog  x:Name="DynamicContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog Padding="0" x:Name="DynamicContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -424,26 +570,48 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button Click="CancelDynamicContentDialog" Content="Cancel" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                <Button x:Name="DynamicDeleteButton" Content="Delete selected" Grid.Row="2" Grid.Column="1" Width="200" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button.Flyout>
-                        <Flyout x:Name="AreYouSureFlyOut">
-                            <Flyout.FlyoutPresenterStyle>
-                                <Style TargetType="FlyoutPresenter">
-                                    <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                </Style>
-                            </Flyout.FlyoutPresenterStyle>
-                            <StackPanel>
-                                <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
-                                <Button Margin="20" Background="Transparent" Content="Delete" Click="DeleteSelectedDynamic" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Flyout>
-                    </Button.Flyout>
+                <Button Click="CancelDynamicContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Cancel"/>
+                    </Button.Content>
                 </Button>
-                <Button Click="UseSelectedDynamic" Content="Accept" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="DynamicDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Delete"/>
+                        </Button.Content>
+                        <Button.Flyout>
+                            <Flyout x:Name="AreYouSureFlyOut">
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter">
+                                        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <StackPanel>
+                                    <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
+                                    <Button Margin="20" Background="Transparent" Click="DeleteSelectedDynamic" HorizontalAlignment="Center">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Accept"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button  x:Name="DynamicExportButton" Click="ExportDynamicTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Content>
+                            <SymbolIcon Symbol="Save"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <Button Click="UseSelectedDynamic" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Accept"/>
+                    </Button.Content>
+                </Button>
             </Grid>
         </ContentDialog>
-        <ContentDialog x:Name="FirstRunIntroDialog" Height="500" Width="500" Background="{ThemeResource SystemControlAcrylicElementBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <ContentDialog Padding="0" x:Name="FirstRunIntroDialog" Height="500" Width="500" Background="{ThemeResource SystemControlAcrylicElementBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
             <FlipView Height="500" Width="500" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent">
                 <Grid>
                     <Grid.RowDefinitions>

@@ -25,7 +25,7 @@
     <AppxPackageDir>C:\Users\mouta\Documents\AppPackages\</AppxPackageDir>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|arm64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -203,26 +203,6 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\windy.png" />
-    <Content Include="ModernThumb\0001.jpg" />
-    <Content Include="ModernThumb\0002.jpg" />
-    <Content Include="ModernThumb\0003.jpg" />
-    <Content Include="ModernThumb\0004.jpg" />
-    <Content Include="ModernThumb\0006.jpg" />
-    <Content Include="ModernThumb\0008.jpg" />
-    <Content Include="ModernThumb\0009.jpg" />
-    <Content Include="ModernThumb\0010.jpg" />
-    <Content Include="ModernThumb\0011.jpg" />
-    <Content Include="ModernThumb\0012.jpg" />
-    <Content Include="ModernThumb\0013.jpg" />
-    <Content Include="ModernThumb\0014.jpg" />
-    <Content Include="ModernThumb\0015.jpg" />
-    <Content Include="ModernThumb\0016.jpg" />
-    <Content Include="ModernThumb\0017.jpg" />
-    <Content Include="ModernThumb\0018.jpg" />
-    <Content Include="ModernThumb\0019.jpg" />
-    <Content Include="ModernThumb\0020.jpg" />
-    <Content Include="ModernThumb\0021.jpg" />
-    <Content Include="ModernThumb\0022.jpg" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -259,6 +239,12 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+    <PackageReference Include="SharpDX.Direct2D1">
+      <Version>4.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Drawing.Common">
+      <Version>4.6.1</Version>
+    </PackageReference>
     <PackageReference Include="System.ValueTuple">
       <Version>4.5.0</Version>
     </PackageReference>
@@ -279,7 +265,14 @@
       <Name>RuntimeComponent_BackgroundTasks</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs.Desktop, Version=14.0">
+      <Name>Visual C++ 2015 UWP Desktop Runtime for native apps</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

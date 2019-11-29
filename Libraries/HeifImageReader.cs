@@ -35,6 +35,7 @@ namespace Libraries
                 {
                     StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
                     StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
+                    ApplicationData.Current.LocalSettings.Values["HEICThemePath"] = storage.Path;
                     int i = 0;
                     foreach( IMagickImage image in collection)
                     {
@@ -51,6 +52,7 @@ namespace Libraries
                 {
                     StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
                     StorageFolder storage = await Folder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
+                    ApplicationData.Current.LocalSettings.Values["HEICThemePath"] = storage.Path;
                     int i = 0;
                     foreach (IMagickImage image in collection)
                     {
