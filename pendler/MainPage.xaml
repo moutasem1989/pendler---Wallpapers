@@ -229,7 +229,7 @@
                         <TextBlock TextAlignment="Center" Height="40" x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
-                        <Button Width="100" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
+                        <Button IsEnabled="False" Width="100" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="H"/>
                             </Button.KeyboardAccelerators>

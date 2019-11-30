@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
-using ImageMagick;
+/*using ImageMagick;*/
 using Windows.Storage;
 using Windows.Storage.Search;
 using Windows.Storage.Streams;
@@ -14,7 +14,7 @@ namespace Libraries
     {
         public static int i { get; set; }
         public static string imageType { get; set; }
-
+        /*
         public static async Task Heifercollection()
         {
             StorageFile file = await StorageFile.GetFileFromPathAsync((string)ApplicationData.Current.LocalSettings.Values["HEICfile"]);
@@ -83,7 +83,7 @@ namespace Libraries
                 }
             }
         }
-
+        */
         public static async Task Zipcollection(StorageFile file)
         {
             var random = new Random();

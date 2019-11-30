@@ -14,44 +14,53 @@ namespace RuntimeComponent_BackgroundTasks
         protected override async void OnRun(IBackgroundTaskInstance taskInstance)
         {
             _deferral = taskInstance.GetDeferral();
-            await Libraries.BackgroundSequance.RunBackgroundTaskAsync();
-            string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
-            
-            String[] imageAlarmIDs = allIDs.Split("#", StringSplitOptions.RemoveEmptyEntries);
-            foreach (String iD in imageAlarmIDs)
+            try
             {
-                string imagePath = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}Image"];
-                StorageFile file = await StorageFile.GetFileFromPathAsync(imagePath);
-                if (file != null)
+                await Libraries.BackgroundSequance.RunBackgroundTaskAsync();
+            }
+            catch (Exception ex) { Libraries.SendToast.SendToasts("Error 1000x: Cannot Initiate Background Task! Try To Reset The App."); }
+            
+            string allIDs = (string)ApplicationData.Current.LocalSettings.Values["AllTimerIDs"];
+            try
+            {
+                String[] imageAlarmIDs = allIDs.Split("#", StringSplitOptions.RemoveEmptyEntries);
+                foreach (String iD in imageAlarmIDs)
                 {
-                    string repeating = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}Repeat"];
-                    if (repeating != null && repeating != "")
+                    string imagePath = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}Image"];
+                    StorageFile file = await StorageFile.GetFileFromPathAsync(imagePath);
+                    if (file != null)
                     {
-                        List<DayOfWeek> list = new List<DayOfWeek>();
-                        if (repeating.Contains("0")) { list.Add(DayOfWeek.Monday); }
-                        if (repeating.Contains("1")) { list.Add(DayOfWeek.Tuesday); }
-                        if (repeating.Contains("2")) { list.Add(DayOfWeek.Wednesday); }
-                        if (repeating.Contains("3")) { list.Add(DayOfWeek.Thursday); }
-                        if (repeating.Contains("4")) { list.Add(DayOfWeek.Friday); }
-                        if (repeating.Contains("5")) { list.Add(DayOfWeek.Saturday); }
-                        if (repeating.Contains("6")) { list.Add(DayOfWeek.Sunday); }
-                        DateTime dateTime = DateTime.Now;
-                        if (list.Contains(dateTime.DayOfWeek))
+                        string repeating = (string)ApplicationData.Current.LocalSettings.Values[$"{iD}Repeat"];
+                        if (repeating != null && repeating != "")
+                        {
+                            List<DayOfWeek> list = new List<DayOfWeek>();
+                            if (repeating.Contains("0")) { list.Add(DayOfWeek.Monday); }
+                            if (repeating.Contains("1")) { list.Add(DayOfWeek.Tuesday); }
+                            if (repeating.Contains("2")) { list.Add(DayOfWeek.Wednesday); }
+                            if (repeating.Contains("3")) { list.Add(DayOfWeek.Thursday); }
+                            if (repeating.Contains("4")) { list.Add(DayOfWeek.Friday); }
+                            if (repeating.Contains("5")) { list.Add(DayOfWeek.Saturday); }
+                            if (repeating.Contains("6")) { list.Add(DayOfWeek.Sunday); }
+                            DateTime dateTime = DateTime.Now;
+                            if (list.Contains(dateTime.DayOfWeek))
+                            {
+                                CheckIfItsTime(iD);
+                            }
+                        }
+                        else
                         {
                             CheckIfItsTime(iD);
                         }
                     }
                     else
                     {
-                        CheckIfItsTime(iD);
+                        string newAllIDs = allIDs.Replace($"#{iD}", "");
+                        ApplicationData.Current.LocalSettings.Values["AllTimerIDs"] = newAllIDs;
                     }
                 }
-                else
-                {
-                    string newAllIDs = allIDs.Replace($"#{iD}", "");
-                    ApplicationData.Current.LocalSettings.Values["AllTimerIDs"] = newAllIDs;
-                }
             }
+            catch (Exception ex) { Libraries.SendToast.SendToasts("Error 1010x: Timer Image Feature Is Not Working!"); }
+            
             _deferral.Complete();
         }
         private async void CheckIfItsTime(string iD)
