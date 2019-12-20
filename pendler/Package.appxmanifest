@@ -9,7 +9,7 @@
   <Identity
     Name="39765ZenobiaI.T.pendler-UWPtoolforDynamicWallpaper"
     Publisher="CN=BB5BBC30-1C6A-46CE-B4F5-4F12A2EDA8FC"
-    Version="1.1.11.0" />
+    Version="1.2.22.0" />
 
   <mp:PhoneIdentity PhoneProductId="1913757b-bb96-4d93-9745-a100b3da0598" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

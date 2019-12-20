@@ -29,6 +29,7 @@ namespace pendler
         public ObservableCollection<WeatherWallpaperBitmaps> WeatherWallpaperBitmap = new ObservableCollection<WeatherWallpaperBitmaps>();
         public ObservableCollection<TimerWallpaperBitmaps> TimerWallpaperBitmap = new ObservableCollection<TimerWallpaperBitmaps>();
         public static string imageType { get; set; }
+        public static string feedBack { get; set; }
         public static string imageTimerRepeat { get; set; }
         public static string imageTimerRepeatForCollection { get; set; }
         public bool notfirstloaded { get; private set; }
@@ -72,7 +73,6 @@ namespace pendler
             if (ApplicationData.Current.LocalSettings.Values["TimerFolder"] == null) { ApplicationData.Current.LocalSettings.Values["TimerFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
             ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
             ApplicationData.Current.LocalSettings.Values["WeatherClicked"] = null;
-            this.DynamicOperation.Text = "Add or create collections of images to be used for Dynamic and Weather wallpapers.";
             try
             {
                 await FindNullSettings();
@@ -667,6 +667,7 @@ namespace pendler
                 var themeDynamicFolders = await Folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
                 foreach (StorageFolder themeDynamic in themeDynamicFolders)
                 {
+                    ErrorTextBlock.Text = $"Loading Dynamic Libraries: {themeDynamicFolders.Count}";
                     if (Directory.GetFiles(themeDynamic.Path, "*", SearchOption.AllDirectories).Length == 16)
                     {
                         string[] allImages = Directory.GetFiles(themeDynamic.Path, $"X{ApplicationData.Current.LocalSettings.Values["DynamicImageID"].ToString()}.*");
@@ -677,6 +678,7 @@ namespace pendler
                     }
                     else { await themeDynamic.DeleteAsync(); }
                 }
+                ErrorTextBlock.Text = "";
             }
             catch (Exception ex)
             {
@@ -693,6 +695,7 @@ namespace pendler
                 var themeWeatherFolders = await Folder.CreateFolderQueryWithOptions(queryOption).GetFoldersAsync();
                 foreach (StorageFolder themeWeather in themeWeatherFolders)
                 {
+                    ErrorTextBlock.Text = $"Loading Weather Libraries: {themeWeatherFolders.Count}";
                     if (Directory.GetFiles(themeWeather.Path, "*", SearchOption.AllDirectories).Length == 18)
                     {
                         string[] allImages = Directory.GetFiles(themeWeather.Path, $"X{ApplicationData.Current.LocalSettings.Values["WeatherImageID"].ToString()}.*");
@@ -703,6 +706,7 @@ namespace pendler
                     }
                     else { await themeWeather.DeleteAsync(); }
                 }
+                ErrorTextBlock.Text = "";
             }
             catch (Exception ex)
             {
@@ -761,17 +765,18 @@ namespace pendler
             {
                 AddZipButton.IsEnabled = false;
                 ProgressBar.Visibility = Visibility.Visible;
-                DynamicOperation.Text = "This wont take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
+                ErrorTextBlock.Text = "This wont take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
                 await Task.Run(() => Libraries.HeifImageReader.Zipcollection(file));
-                DynamicOperation.Text = (string)ApplicationData.Current.LocalSettings.Values["DynamicOperation"];
+                ErrorTextBlock.Text = (string)ApplicationData.Current.LocalSettings.Values["DynamicOperation"];
                 ProgressBar.Visibility = Visibility.Collapsed;
                 AddZipButton.IsEnabled = true;
                 await LookUpLibrariesDynamic();
                 await LookUpLibrariesWeather();
+                ErrorTextBlock.Text = "";
             }
             else
             {
-                this.DynamicOperation.Text = "Operation cancelled.";
+                this.ErrorTextBlock.Text = "Operation cancelled.";
             }
         }
         private async void AddFolderToLibrary(object sender, RoutedEventArgs e)
@@ -785,7 +790,7 @@ namespace pendler
             {
                 AddDirectoryButton.IsEnabled = false;
                 ProgressBar.Visibility = Visibility.Visible;
-                DynamicOperation.Text = "This wont take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
+                ErrorTextBlock.Text = "This wont take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
                 try
                 { await Task.Run(() => Libraries.HeifImageReader.Foldercollection(folder)); }
                 catch (UnauthorizedAccessException)
@@ -802,14 +807,16 @@ namespace pendler
                     {
                         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-broadfilesystemaccess"));
                         ApplicationData.Current.LocalSettings.Values["DynamicOperation"] = "Retry operation...";
+                        ErrorTextBlock.Text = "Retry operation...";
                     }
                     else
                     {
                         ApplicationData.Current.LocalSettings.Values["DynamicOperation"] = "Cannot use this Feature...";
+                        ErrorTextBlock.Text = "Cannot use this Feature...";
                     }
                 }
-                
-                DynamicOperation.Text = (string)ApplicationData.Current.LocalSettings.Values["DynamicOperation"];
+
+                ErrorTextBlock.Text = (string)ApplicationData.Current.LocalSettings.Values["DynamicOperation"];
                 ProgressBar.Visibility = Visibility.Collapsed;
                 AddDirectoryButton.IsEnabled = true;
                 await LookUpLibrariesDynamic();
@@ -817,7 +824,7 @@ namespace pendler
             }
             else
             {
-                this.DynamicOperation.Text = "Operation cancelled.";
+                this.ErrorTextBlock.Text = "Operation cancelled.";
             }
         }
         private void DynamicItemClick(object sender, ItemClickEventArgs e)
@@ -860,6 +867,7 @@ namespace pendler
             StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
             Directory.Delete($@"{Folder.Path}/{(string)ApplicationData.Current.LocalSettings.Values["DynamicClicked"]}",true);
             ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
+            ErrorTextBlock.Text = "Theme has been deleted!";
             await LookUpLibrariesDynamic();
             AreYouSureFlyOut.Hide();
             if (DynamicWallpaperBitmap.Count != 0) { DynamicDeleteButton.IsEnabled = true; }
@@ -878,6 +886,7 @@ namespace pendler
             StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
             Directory.Delete($@"{Folder.Path}/{(string)ApplicationData.Current.LocalSettings.Values["WeatherClicked"]}", true);
             ApplicationData.Current.LocalSettings.Values["WeatherClicked"] = null;
+            ErrorTextBlock.Text = "Theme has been deleted!";
             await LookUpLibrariesWeather();
             AreYouSureFlyOut2.Hide();
             if (WeatherWallpaperBitmap.Count != 0) { WeatherDeleteButton.IsEnabled = true; }
@@ -951,7 +960,7 @@ namespace pendler
                     ApplicationData.Current.LocalSettings.Values["ModernTheme"] = null;
                 }
                 ApplicationData.Current.LocalSettings.Values["ModernClicked"] = null;
-
+                ErrorTextBlock.Text = "Theme has been deleted!";
                 await LookingForModernThumbs();
             }
         }
@@ -1149,7 +1158,7 @@ namespace pendler
             {
                 AddTIFButton.IsEnabled = false;
                 ProgressBar.Visibility = Visibility.Visible;
-                this.DynamicOperation.Text = "This won't take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
+                this.ErrorTextBlock.Text = "This won't take long. If completed successfully you will see the Wallpaper in one of your Libraries.";
                 try
                 {
                     uint frameCount;
@@ -1163,17 +1172,21 @@ namespace pendler
                         {
                             StorageFolder mainfolder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
                             storage = await mainfolder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
+                            ErrorTextBlock.Text = "Adding Images to Dynamic Library";
                         }
                         else if (frameCount == 18)
                         {
                             StorageFolder mainfolder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
                             storage = await mainfolder.CreateFolderAsync(String.Format("{0:X6}", random.Next(0x1000000)), CreationCollisionOption.ReplaceExisting);
+                            feedBack = "Adding Images to Weather Library";
                         }
                         else { ErrorTextBlock.Text = "Error 0000x: Unusable TIFF Image"; }
                         if (storage != null)
                         {
+                            string text = ErrorTextBlock.Text;
                             for (int frame = 0; frame < frameCount; frame++)
                             {
+                                ErrorTextBlock.Text = text + $" {frame} of {frameCount}";
                                 var bitmapFrame = await bitmapDecoder.GetFrameAsync(Convert.ToUInt32(frame));
                                 var softImage = await bitmapFrame.GetSoftwareBitmapAsync();
                                 var bmif = await storage.CreateFileAsync($"X{frame}.png", CreationCollisionOption.ReplaceExisting);
@@ -1181,6 +1194,7 @@ namespace pendler
                             }
                         }
                     }
+                    ErrorTextBlock.Text = "";
                 }
                 catch (Exception ex) { ErrorTextBlock.Text = "Error 0113x: Cannot Add This TIFF Image"; }
                 ProgressBar.Visibility = Visibility.Collapsed;
@@ -1190,7 +1204,7 @@ namespace pendler
             }
             else
             {
-                this.DynamicOperation.Text = "Operation cancelled.";
+                this.ErrorTextBlock.Text = "Operation cancelled.";
             }
         }
         private async void SaveSoftwareBitmapToFile(SoftwareBitmap softwareBitmap, StorageFile outputFile)
@@ -1236,17 +1250,19 @@ namespace pendler
                 var savePicker = new Windows.Storage.Pickers.FileSavePicker();
                 savePicker.SuggestedStartLocation =
                     Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
-                savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".tif" });
+                savePicker.FileTypeChoices.Add("TIFF Image", new List<string>() { ".tif" });
                 savePicker.SuggestedFileName = "Dynamic Theme";
                 saveTIFF = await savePicker.PickSaveFileAsync();
                 if (saveTIFF != null)
                 {
+                    ErrorTextBlock.Text = "Saving Theme";
                     using (IRandomAccessStream ras = await saveTIFF.OpenAsync(FileAccessMode.ReadWrite, StorageOpenOptions.None))
                     {
                         BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.TiffEncoderId, ras);
                         Windows.Storage.CachedFileManager.DeferUpdates(saveTIFF);
                         for (int frame = 0; frame < num; frame++)
                         {
+                            ErrorTextBlock.Text = "Saving Image" + $" {frame} of {num}";
                             string[] allImages = Directory.GetFiles(storageFolder.Path, $"X{frame}.*");
                             string ImageWithExtention = Path.GetFullPath(allImages[0]);
                             if (File.Exists(ImageWithExtention))
@@ -1272,8 +1288,9 @@ namespace pendler
                         await encoder.FlushAsync();
                     }
                 }
+                ErrorTextBlock.Text = "";
             }
-            catch (Exception ex) { ErrorTextBlock.Text = "Error 0115x: Cannot Save This Theme"; }
+            catch (Exception ex) { ErrorTextBlock.Text = "Error 0115x: Cannot Save This Theme " + ex.ToString(); }
         }
         private async void ExportWeatherTheme(object sender, RoutedEventArgs e)
         {
@@ -1282,7 +1299,7 @@ namespace pendler
                 StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherFolder"], CreationCollisionOption.OpenIfExists);
                 StorageFolder themeFolder = await Folder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["WeatherClicked"]);
                 WeatherExportButton.IsEnabled = false;
-                try { await Task.Run(() => ExportTheme(themeFolder, 18)); }
+                try { await ExportTheme(themeFolder, 18); }
                 catch (Exception exception) { }
                 WeatherExportButton.IsEnabled = true;
                 ApplicationData.Current.LocalSettings.Values["WeatherClicked"] = null;
@@ -1295,8 +1312,8 @@ namespace pendler
                 StorageFolder Folder = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicFolder"], CreationCollisionOption.OpenIfExists);
                 StorageFolder themeFolder = await Folder.GetFolderAsync((string)ApplicationData.Current.LocalSettings.Values["DynamicClicked"]);
                 DynamicExportButton.IsEnabled = false;
-                try { await Task.Run(() => ExportTheme(themeFolder, 16)); }
-                catch (Exception exception) { }
+                try { await ExportTheme(themeFolder, 16); }
+                catch (Exception exception) { ErrorTextBlock.Text = "Something went wrong! " + exception.ToString(); }
                 DynamicExportButton.IsEnabled = true;
                 ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
             }

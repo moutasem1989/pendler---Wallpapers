@@ -38,22 +38,14 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
                             <ToggleButton.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="GoToStart"/>
-                                    <Rectangle Fill="Transparent" Width="50"/>
-                                    <TextBlock Text="Desktop"/>
-                                </StackPanel>
+                                <SymbolIcon Symbol="GoToStart"/>
                             </ToggleButton.Content>
                             </ToggleButton>
-                            <ToggleButton x:Name="LockDynamicToggled" Tapped="LockDynamic" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
-                                <ToggleButton.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="StopSlideShow"/>
-                                    <Rectangle Fill="Transparent" Width="50"/>
-                                    <TextBlock Text="Lockscreen"/>
-                                </StackPanel>
+                        <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockDynamicToggled" Tapped="LockDynamic" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                            <ToggleButton.Content>
+                                <SymbolIcon Symbol="StopSlideShow"/>
                             </ToggleButton.Content>
                             </ToggleButton>
                         <TextBlock Text="Dynamic Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
@@ -73,22 +65,14 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton x:Name="DeskWeatherToggled" Tapped="DeskWeather" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskWeatherToggled" Tapped="DeskWeather" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
                             <ToggleButton.Content>
-                                <StackPanel Orientation="Horizontal" >
-                                    <SymbolIcon Symbol="GoToStart" />
-                                    <Rectangle Fill="Transparent" Width="50"/>
-                                    <TextBlock Text="Desktop"/>
-                                </StackPanel>
+                                <SymbolIcon Symbol="GoToStart" />
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <ToggleButton x:Name="LockWeatherToggled" Tapped="LockWeather" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockWeatherToggled" Tapped="LockWeather" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
                             <ToggleButton.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="StopSlideShow" />
-                                    <Rectangle Fill="Transparent" Width="50"/>
-                                    <TextBlock Text="Lockscreen" />
-                                </StackPanel>
+                                <SymbolIcon Symbol="StopSlideShow" />
                             </ToggleButton.Content>
                         </ToggleButton>
                         <TextBlock Text="Weather Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
@@ -108,22 +92,14 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton x:Name="DeskModernToggled" Tapped="DeskModern" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskModernToggled" Tapped="DeskModern" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
                             <ToggleButton.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="GoToStart"/>
-                                    <Rectangle Fill="Transparent" Width="50"/>
-                                    <TextBlock Text="Desktop" />
-                                </StackPanel>
+                                <SymbolIcon Symbol="GoToStart"/>
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <ToggleButton x:Name="LockModernToggled" Tapped="LockModern" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockModernToggled" Tapped="LockModern" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
                             <ToggleButton.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="StopSlideShow"/>
-                                    <Rectangle Fill="Transparent" Width="50"/>
-                                    <TextBlock Text="Lockscreen" />
-                                </StackPanel>
+                                <SymbolIcon Symbol="StopSlideShow"/>
                             </ToggleButton.Content>
                         </ToggleButton>
                         <TextBlock Text="Modern Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
@@ -154,32 +130,32 @@
                             </GridView.ItemTemplate>
                         </GridView>
                         <StackPanel Orientation="Horizontal" Grid.Row="1" Height="35">
-                            <ToggleButton Height="35" Width="127" x:Name="TimerDesk">
+                            <ToggleButton ToolTipService.ToolTip="Apply to Desktop" Height="35" Width="127" x:Name="TimerDesk">
                                 <ToggleButton.Content>
                                     <SymbolIcon Symbol="GoToStart"/>
                                 </ToggleButton.Content>
                             </ToggleButton>
                             <TimePicker ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="245"/>
-                            <Button x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="128" Height="35" Padding="0" BorderThickness="0">
+                            <Button ToolTipService.ToolTip="Select Image" x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="128" Height="35" Padding="0" BorderThickness="0">
                                 <Button.Content>
                                     <Image x:Name="SelectedImage" Height="35" Width="128" Stretch="UniformToFill"/>
                                 </Button.Content>
                             </Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="2" Height="35">
-                            <ToggleButton Height="35" Width="127" x:Name="TimerLock">
+                            <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" Height="35" Width="127" x:Name="TimerLock">
                                 <ToggleButton.Content>
                                     <SymbolIcon Symbol="StopSlideShow"/>
                                 </ToggleButton.Content>
                             </ToggleButton>
-                            <ToggleButton Height="35" Width="35" Content="M" x:Name="Monday"/>
-                            <ToggleButton Height="35" Width="35" Content="T" x:Name="Tusday"/>
-                            <ToggleButton Height="35" Width="35" Content="W" x:Name="Wednesday"/>
-                            <ToggleButton Height="35" Width="35" Content="T" x:Name="Thursday"/>
-                            <ToggleButton Height="35" Width="35" Content="F" x:Name="Friday"/>
-                            <ToggleButton Height="35" Width="35" Content="S" x:Name="Saturday"/>
-                            <ToggleButton Height="35" Width="35" Content="S" x:Name="Sunday"/>
-                            <Button Click="AddTimerImage" Width="128" Height="35">
+                            <ToggleButton ToolTipService.ToolTip="Apply on Monday" Height="35" Width="35" Content="M" x:Name="Monday"/>
+                            <ToggleButton ToolTipService.ToolTip="Apply on Tusday" Height="35" Width="35" Content="T" x:Name="Tusday"/>
+                            <ToggleButton ToolTipService.ToolTip="Apply on Wednesday" Height="35" Width="35" Content="W" x:Name="Wednesday"/>
+                            <ToggleButton ToolTipService.ToolTip="Apply on Thursday" Height="35" Width="35" Content="T" x:Name="Thursday"/>
+                            <ToggleButton ToolTipService.ToolTip="Apply on Friday" Height="35" Width="35" Content="F" x:Name="Friday"/>
+                            <ToggleButton ToolTipService.ToolTip="Apply on Saturday" Height="35" Width="35" Content="S" x:Name="Saturday"/>
+                            <ToggleButton ToolTipService.ToolTip="Apply on Sunday" Height="35" Width="35" Content="S" x:Name="Sunday"/>
+                            <Button ToolTipService.ToolTip="Add" Click="AddTimerImage" Width="128" Height="35">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Upload"/>
                                 </Button.Content>
@@ -207,7 +183,7 @@
                         <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
                             <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
-                            <Button Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
+                            <Button ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Sync"/>
                                 </Button.Content>
@@ -215,18 +191,18 @@
                         </StackPanel>
                         <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
-                            <Button HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Margin="0,0,20,0">
+                            <Button ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Margin="0,0,20,0">
                                 <Button.Content>
                                     <SymbolIcon Symbol="World"/>
                                 </Button.Content>
                             </Button>
-                            <Button HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Margin="0,0,0,0">
+                            <Button ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Margin="0,0,0,0">
                                 <Button.Content>
                                     <SymbolIcon Symbol="ReportHacked"/>
                                 </Button.Content>
                             </Button>
                         </StackPanel>
-                        <TextBlock TextAlignment="Center" Height="40" x:Name="DynamicOperation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
+                        <TextBlock Height="40" Text="Add or create collections of images to be used for Dynamic and Weather wallpapers:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
                         <Button IsEnabled="False" Width="100" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
@@ -505,13 +481,13 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button Click="CancelWeatherContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button ToolTipService.ToolTip="Cancel" Click="CancelWeatherContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Button.Content>
                         <SymbolIcon Symbol="Cancel"/>
                     </Button.Content>
                 </Button>
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                    <Button  x:Name="WeatherDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button ToolTipService.ToolTip="Delete Theme" x:Name="WeatherDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Button.Content>
                             <SymbolIcon Symbol="Delete"/>
                         </Button.Content>
@@ -533,13 +509,13 @@
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <Button  x:Name="WeatherExportButton" Click="ExportWeatherTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button ToolTipService.ToolTip="Export Theme" x:Name="WeatherExportButton" Click="ExportWeatherTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Button.Content>
                             <SymbolIcon Symbol="Save"/>
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <Button Click="UseWeatherSelected" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button ToolTipService.ToolTip="Apply Selected Theme" Click="UseWeatherSelected" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <Button.Content>
                         <SymbolIcon Symbol="Accept"/>
                     </Button.Content>
@@ -570,13 +546,13 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button Click="CancelDynamicContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button ToolTipService.ToolTip="Cancel" Click="CancelDynamicContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Button.Content>
                         <SymbolIcon Symbol="Cancel"/>
                     </Button.Content>
                 </Button>
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                    <Button x:Name="DynamicDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button ToolTipService.ToolTip="Delete Selected Theme" x:Name="DynamicDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Button.Content>
                             <SymbolIcon Symbol="Delete"/>
                         </Button.Content>
@@ -598,13 +574,13 @@
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <Button  x:Name="DynamicExportButton" Click="ExportDynamicTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button ToolTipService.ToolTip="Export Selected Theme" x:Name="DynamicExportButton" Click="ExportDynamicTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Button.Content>
                             <SymbolIcon Symbol="Save"/>
                         </Button.Content>
                     </Button>
                 </StackPanel>
-                <Button Click="UseSelectedDynamic" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button ToolTipService.ToolTip="Apply Selected Theme" Click="UseSelectedDynamic" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <Button.Content>
                         <SymbolIcon Symbol="Accept"/>
                     </Button.Content>
