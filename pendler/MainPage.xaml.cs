@@ -172,6 +172,12 @@ namespace pendler
                 await RERegisterBackgroundTask();
                 ApplicationData.Current.LocalSettings.Values["NullSettings"] = "true";
             }
+            if (ApplicationData.Current.LocalSettings.Values["ShowTip1"] == null)
+            {
+                ToggleThemeTeachingTip1.IsOpen = true;
+                ApplicationData.Current.LocalSettings.Values["ShowTip1"] = "true";
+            }
+
         }
         private void LoadCheckedToggles()
         {
@@ -1317,6 +1323,11 @@ namespace pendler
                 DynamicExportButton.IsEnabled = true;
                 ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
             }
+        }
+
+        private void Tip1Closed(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+        {
+            ToggleThemeTeachingTip2.IsOpen = true;
         }
     }
 }

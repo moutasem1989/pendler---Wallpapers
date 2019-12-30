@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
     <Page.Resources>
@@ -16,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="Collapsed" x:Name="GeneralProgressBar" IsEnabled="True"/>
@@ -40,12 +41,12 @@
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="GoToStart"/>
                             </ToggleButton.Content>
-                            </ToggleButton>
+                        </ToggleButton>
                         <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockDynamicToggled" Tapped="LockDynamic" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Right">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="StopSlideShow"/>
                             </ToggleButton.Content>
-                            </ToggleButton>
+                        </ToggleButton>
                         <TextBlock Text="Dynamic Wallpaper" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
@@ -178,7 +179,7 @@
                         <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
                             <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
-                            <Button ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
+                            <Button Height="35" Width="35" CornerRadius="17" ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Sync"/>
                                 </Button.Content>
@@ -199,23 +200,23 @@
                         </StackPanel>
                         <TextBlock Height="40" Text="Add or create collections of images to be used for Dynamic and Weather wallpapers:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
-                        <Button Margin="10,0,10,0" CornerRadius="30" IsEnabled="False" Width="70" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Center">
+                        <Button Margin="10,0,10,0" CornerRadius="17" IsEnabled="False" Width="70" Height="35" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="H"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
+                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="H"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
+                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="Z"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
+                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
                             <Button.Content>
                                 <SymbolIcon Symbol="NewFolder"/>
                             </Button.Content>
@@ -223,7 +224,7 @@
                                 <KeyboardAccelerator Key="D"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" Click="GoToCreatePage">
+                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" Click="GoToCreatePage">
                             <Button.Content>
                                 <SymbolIcon Symbol="Add"/>
                             </Button.Content>
@@ -237,34 +238,39 @@
             </SplitView.Pane>
         </SplitView>
         <StackPanel Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button Width="30" Padding="0" x:Name="ButtonChangeColomWidth" Background="Transparent" Click="ChangeColomWidth" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Button CornerRadius="15" Width="35" Padding="0" x:Name="ButtonChangeColomWidth" Background="Transparent" Click="ChangeColomWidth" Height="35" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Button.Content>
                     <SymbolIcon Symbol="Setting"/>
                 </Button.Content>
             </Button>
-            <Button Width="30" Padding="0" Background="Transparent" Click="UpdateWallpaper" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Button CornerRadius="15" Width="35" Padding="0" Background="Transparent" Click="UpdateWallpaper" Height="35" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Button.Content>
                     <SymbolIcon Symbol="Refresh"/>
                 </Button.Content>
             </Button>
-            <TextBlock x:Name="ErrorTextBlock"/>
+            <TextBlock x:Name="ErrorTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </StackPanel>
-        <ContentDialog CornerRadius="15" Padding="0" x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="15" Padding="0" x:Name="ModernContentDialog" Width="500" Height="500" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="417"/>
-                    <RowDefinition Height="45"/>
-                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="330"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="389"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="55"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Modern Wallpaper" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
-                <GridView ItemClick="ModernItemClicked" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="489" Height="414" ItemsSource="{x:Bind ModernWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="ModernGridView">
+                <TextBlock Text="Modern Wallpaper" Grid.Row="0" Grid.ColumnSpan="8" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
+                <GridView ItemClick="ModernItemClicked" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="8" Width="440" Height="414" ItemsSource="{x:Bind ModernWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="ModernGridView">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="local:ModernWallpaperBitmaps">
                             <Ellipse Height="105" Width="105" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
@@ -275,25 +281,39 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                
-                <Grid VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Padding="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="190"/>
-                        <ColumnDefinition Width="9"/>
-                        <ColumnDefinition Width="190"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel x:Name="AcentSwitcher" Orientation="Vertical" Grid.Column="0">
-                        <Button x:Name="AccentColorButton" Content="Accent" Width="190" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button CornerRadius="17" x:Name="SwitchColoursButton" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Width="35" Height="35" Click="SwitchColors" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <StackPanel Width="220" x:Name="AcentSwitcher" Orientation="Vertical" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+                    <Button CornerRadius="17" x:Name="AccentColorButton" Content="Accent" Width="170" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Flyout>
+                            <Flyout x:Name="Fly6" Closing="FlyClosing">
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter">
+                                        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <StackPanel>
+                                    <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AccentColorChanged" x:Name="AccentColorPicker"/>
+                                    <Button CornerRadius="17" Height="35" Width="35" Background="Transparent" Click="AcentDynamic">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Shuffle"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button CornerRadius="17" x:Name="AcentGradient1Button" Width="35" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Button.Flyout>
-                                <Flyout x:Name="Fly6" Closing="FlyClosing">
+                                <Flyout x:Name="Fly5" Closing="FlyClosing">
                                     <Flyout.FlyoutPresenterStyle>
                                         <Style TargetType="FlyoutPresenter">
                                             <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
                                         </Style>
                                     </Flyout.FlyoutPresenterStyle>
                                     <StackPanel>
-                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AccentColorChanged" x:Name="AccentColorPicker"/>
-                                        <Button Background="Transparent" Click="AcentDynamic">
+                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient1Changed" x:Name="AcentGradient1Picker"/>
+                                        <Button CornerRadius="17" Height="35" Width="35" Background="Transparent" Click="AcentConstant">
                                             <Button.Content>
                                                 <SymbolIcon Symbol="Shuffle"/>
                                             </Button.Content>
@@ -302,70 +322,27 @@
                                 </Flyout>
                             </Button.Flyout>
                         </Button>
-                        <StackPanel Orientation="Horizontal">
-                            <Button x:Name="AcentGradient1Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button.Flyout>
-                                    <Flyout x:Name="Fly5" Closing="FlyClosing">
-                                        <Flyout.FlyoutPresenterStyle>
-                                            <Style TargetType="FlyoutPresenter">
-                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                            </Style>
-                                        </Flyout.FlyoutPresenterStyle>
-                                        <StackPanel>
-                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient1Changed" x:Name="AcentGradient1Picker"/>
-                                            <Button Background="Transparent" Click="AcentConstant">
-                                                <Button.Content>
-                                                    <SymbolIcon Symbol="Shuffle"/>
-                                                </Button.Content>
-                                            </Button>
-                                        </StackPanel>
-                                    </Flyout>
-                                </Button.Flyout>
-                            </Button>
-                            <Button x:Name="AcentGradSwitcher" Click="SwitchAcentGradient" Width="150" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0">
-                                <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="35">
-                                    <Rectangle.Fill>
-                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                            <GradientStop Offset="0.0" x:Name="AcentGradient1"/>
-                                            <GradientStop Offset="1.0" x:Name="AcentGradient2"/>
-                                        </LinearGradientBrush>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </Button>
-                            <Button x:Name="AcentGradient2Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button.Flyout>
-                                    <Flyout x:Name="Fly4" Closing="FlyClosing">
-                                        <Flyout.FlyoutPresenterStyle>
-                                            <Style TargetType="FlyoutPresenter">
-                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                            </Style>
-                                        </Flyout.FlyoutPresenterStyle>
-                                        <StackPanel>
-                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient2Changed" x:Name="AcentGradient2Picker"/>
-                                            <Button Background="Transparent" Click="AcentConstant">
-                                                <Button.Content>
-                                                    <SymbolIcon Symbol="Shuffle"/>
-                                                </Button.Content>
-                                            </Button>
-                                        </StackPanel>
-                                    </Flyout>
-                                </Button.Flyout>
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                    <Button x:Name="SwitchColoursButton" Grid.Column="1" Width="9" Height="35" Click="SwitchColors"/>
-                    <StackPanel x:Name="ColorSwitcher" Grid.Column="2" Orientation="Vertical">
-                        <Button x:Name="ColorColorButton" Content="Color" Width="190" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button CornerRadius="17" x:Name="AcentGradSwitcher" Click="SwitchAcentGradient" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0">
+                            <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="35">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                        <GradientStop Offset="0.0" x:Name="AcentGradient1"/>
+                                        <GradientStop Offset="1.0" x:Name="AcentGradient2"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Button>
+                        <Button CornerRadius="17" x:Name="AcentGradient2Button" Width="35" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Button.Flyout>
-                                <Flyout x:Name="Fly3" Closing="FlyClosing">
+                                <Flyout x:Name="Fly4" Closing="FlyClosing">
                                     <Flyout.FlyoutPresenterStyle>
                                         <Style TargetType="FlyoutPresenter">
                                             <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
                                         </Style>
                                     </Flyout.FlyoutPresenterStyle>
                                     <StackPanel>
-                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorColorChanged" x:Name="ColorColorPicker"/>
-                                        <Button Background="Transparent" Click="ColorDynamic">
+                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="AcentGradient2Changed" x:Name="AcentGradient2Picker"/>
+                                        <Button  CornerRadius="17" Height="35" Width="35" Background="Transparent" Click="AcentConstant">
                                             <Button.Content>
                                                 <SymbolIcon Symbol="Shuffle"/>
                                             </Button.Content>
@@ -374,101 +351,120 @@
                                 </Flyout>
                             </Button.Flyout>
                         </Button>
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                            <Button x:Name="ColorGradient1Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button.Flyout>
-                                    <Flyout x:Name="Fly2" Closing="FlyClosing">
-                                        <Flyout.FlyoutPresenterStyle>
-                                            <Style TargetType="FlyoutPresenter">
-                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                            </Style>
-                                        </Flyout.FlyoutPresenterStyle>
-                                        <StackPanel>
-                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient1Changed" x:Name="ColorGradient1Picker"/>
-                                            <Button Background="Transparent" Click="ColorConstant">
-                                                <Button.Content>
-                                                    <SymbolIcon Symbol="Shuffle"/>
-                                                </Button.Content>
-                                            </Button>
-                                        </StackPanel>
-                                    </Flyout>
-                                </Button.Flyout>
-                            </Button>
-                            <Button x:Name="ColorGradSwitcher" Padding="0" Click="SwitchColorGradient" Width="150" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Height="35">
-                                    <Rectangle.Fill>
-                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                            <GradientStop Offset="0.0" x:Name="ColorGradient1"/>
-                                            <GradientStop Offset="1.0" x:Name="ColorGradient2"/>
-                                        </LinearGradientBrush>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </Button>
-                            <Button x:Name="ColorGradient2Button" Width="20" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button.Flyout>
-                                    <Flyout x:Name="Fly1" Closing="FlyClosing">
-                                        <Flyout.FlyoutPresenterStyle>
-                                            <Style TargetType="FlyoutPresenter">
-                                                <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                            </Style>
-                                        </Flyout.FlyoutPresenterStyle>
-                                        <StackPanel>
-                                            <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient2Changed" x:Name="ColorGradient2Picker"/>
-                                            <Button Background="Transparent" Click="ColorConstant">
-                                                <Button.Content>
-                                                    <SymbolIcon Symbol="Shuffle"/>
-                                                </Button.Content>
-                                            </Button>
-                                        </StackPanel>
-                                    </Flyout>
-                                </Button.Flyout>
-                            </Button>
-                        </StackPanel>
                     </StackPanel>
-
-                </Grid>
-                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
-                    <Button Click="CancelModernContentDialog" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Cancel"/>
-                        </Button.Content>
-                    </Button>
-                    <Button Click="DeleteModernWallpaper" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Delete"/>
-                        </Button.Content>
-                    </Button>
-                    <Button Click="AddModernImage" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Add"/>
-                        </Button.Content>
-                    </Button>
-                    <Button Click="ApplyModernTheme" Width="97" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Accept"/>
-                        </Button.Content>
-                    </Button>
                 </StackPanel>
-                <ProgressBar VerticalAlignment="Bottom" Grid.Column="0" Grid.ColumnSpan="3" x:Name="LoadImageColors" IsEnabled="True" Visibility="Collapsed" Grid.Row="3" IsIndeterminate="True"/>
+                <StackPanel Width="220" x:Name="ColorSwitcher" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="4" Orientation="Vertical" HorizontalAlignment="Center">
+                    <Button CornerRadius="17" x:Name="ColorColorButton" Content="Color" Width="170" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button.Flyout>
+                            <Flyout x:Name="Fly3" Closing="FlyClosing">
+                                <Flyout.FlyoutPresenterStyle>
+                                    <Style TargetType="FlyoutPresenter">
+                                        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                    </Style>
+                                </Flyout.FlyoutPresenterStyle>
+                                <StackPanel>
+                                    <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorColorChanged" x:Name="ColorColorPicker"/>
+                                    <Button CornerRadius="17" Height="35" Width="35" Background="Transparent" Click="ColorDynamic">
+                                        <Button.Content>
+                                            <SymbolIcon Symbol="Shuffle"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button CornerRadius="17" x:Name="ColorGradient1Button" Width="35" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button.Flyout>
+                                <Flyout x:Name="Fly2" Closing="FlyClosing">
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
+                                    <StackPanel>
+                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient1Changed" x:Name="ColorGradient1Picker"/>
+                                        <Button  CornerRadius="17" Height="35" Width="35" Background="Transparent" Click="ColorConstant">
+                                            <Button.Content>
+                                                <SymbolIcon Symbol="Shuffle"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <Button CornerRadius="17" x:Name="ColorGradSwitcher" Padding="0" Click="SwitchColorGradient" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="35">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                        <GradientStop Offset="0.0" x:Name="ColorGradient1"/>
+                                        <GradientStop Offset="1.0" x:Name="ColorGradient2"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Button>
+                        <Button CornerRadius="17" x:Name="ColorGradient2Button" Width="35" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button.Flyout>
+                                <Flyout x:Name="Fly1" Closing="FlyClosing">
+                                    <Flyout.FlyoutPresenterStyle>
+                                        <Style TargetType="FlyoutPresenter">
+                                            <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                        </Style>
+                                    </Flyout.FlyoutPresenterStyle>
+                                    <StackPanel>
+                                        <Windows10FallCreatorsUpdate:ColorPicker IsColorPreviewVisible="False" ColorSpectrumShape="Ring" IsColorSliderVisible="True" IsColorChannelTextInputVisible="False" IsHexInputVisible="False" IsAlphaEnabled="False" IsAlphaSliderVisible="True" IsAlphaTextInputVisible="True" ColorChanged="ColorGradient2Changed" x:Name="ColorGradient2Picker"/>
+                                        <Button CornerRadius="17" Height="35" Width="35" Background="Transparent" Click="ColorConstant">
+                                            <Button.Content>
+                                                <SymbolIcon Symbol="Shuffle"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="17" Click="CancelModernContentDialog" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Cancel"/>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="17" Click="DeleteModernWallpaper" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Delete"/>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Row="3" Grid.Column="4"  Grid.ColumnSpan="2" CornerRadius="17" Click="AddModernImage" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Add"/>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Row="3" Grid.Column="6"  Grid.ColumnSpan="2" CornerRadius="17" Click="ApplyModernTheme" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Accept"/>
+                    </Button.Content>
+                </Button>
+                <ProgressBar VerticalAlignment="Bottom" Grid.Column="0" Grid.ColumnSpan="8" x:Name="LoadImageColors" IsEnabled="True" Visibility="Collapsed" Grid.Row="3" IsIndeterminate="True"/>
             </Grid>
         </ContentDialog>
-        <ContentDialog CornerRadius="15" Padding="0" x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
-            <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <ContentDialog VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="15" Padding="0" x:Name="WeatherContentDialog" Width="500" Height="500" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid Width="440" Height="440" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="417"/>
-                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="365"/>
+                    <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Weather Wallpapers" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
-                <GridView ItemClick="WeatherItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="489" Height="414" ItemsSource="{x:Bind WeatherWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="WeatherGridView">
+                <GridView ItemClick="WeatherItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Width="440" Height="365" ItemsSource="{x:Bind WeatherWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="WeatherGridView">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="local:WeatherWallpaperBitmaps">
-                            <Ellipse Height="160" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                            <Ellipse Height="105" Width="105" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="{x:Bind WeatherWallpaperImageIcon}" Stretch="UniformToFill"/>
                                 </Ellipse.Fill>
@@ -476,64 +472,63 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button ToolTipService.ToolTip="Cancel" Click="CancelWeatherContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button CornerRadius="17" ToolTipService.ToolTip="Cancel" Click="CancelWeatherContentDialog" Grid.Row="2" Grid.Column="0" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button.Content>
                         <SymbolIcon Symbol="Cancel"/>
                     </Button.Content>
                 </Button>
-                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                    <Button ToolTipService.ToolTip="Delete Theme" x:Name="WeatherDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Delete"/>
-                        </Button.Content>
-                        <Button.Flyout>
-                            <Flyout x:Name="AreYouSureFlyOut2">
-                                <Flyout.FlyoutPresenterStyle>
-                                    <Style TargetType="FlyoutPresenter">
-                                        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                    </Style>
-                                </Flyout.FlyoutPresenterStyle>
-                                <StackPanel>
-                                    <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
-                                    <Button Margin="20" Background="Transparent" Click="DeleteSelectedWeather" HorizontalAlignment="Center">
-                                        <Button.Content>
-                                            <SymbolIcon Symbol="Accept"/>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
-                            </Flyout>
-                        </Button.Flyout>
-                    </Button>
-                    <Button ToolTipService.ToolTip="Export Theme" x:Name="WeatherExportButton" Click="ExportWeatherTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Save"/>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-                <Button ToolTipService.ToolTip="Apply Selected Theme" Click="UseWeatherSelected" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button CornerRadius="17" Grid.Row="2" Grid.Column="1" ToolTipService.ToolTip="Delete Theme" x:Name="WeatherDeleteButton" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Delete"/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout x:Name="AreYouSureFlyOut2">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <StackPanel>
+                                <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
+                                <Button Margin="20" Background="Transparent" Click="DeleteSelectedWeather" HorizontalAlignment="Center">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Accept"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button CornerRadius="17" Grid.Row="2" Grid.Column="2" ToolTipService.ToolTip="Export Theme" x:Name="WeatherExportButton" Click="ExportWeatherTheme" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Save"/>
+                    </Button.Content>
+                </Button>
+                <Button CornerRadius="17" ToolTipService.ToolTip="Apply Selected Theme" Click="UseWeatherSelected" Grid.Row="2" Grid.Column="3" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button.Content>
                         <SymbolIcon Symbol="Accept"/>
                     </Button.Content>
                 </Button>
             </Grid>
         </ContentDialog>
-        <ContentDialog CornerRadius="15" Padding="0" x:Name="DynamicContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
-            <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <ContentDialog VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="15" Padding="0" x:Name="DynamicContentDialog" Width="500" Height="500" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid Width="440" Height="440" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="417"/>
-                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="365"/>
+                    <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Dynamic Wallpapers" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
-                <GridView ItemClick="DynamicItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="489" Height="414" ItemsSource="{x:Bind DynamicWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="DynamicGridView">
+                <GridView ItemClick="DynamicItemClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Width="440" Height="365" ItemsSource="{x:Bind DynamicWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="DynamicGridView" VerticalAlignment="Center">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="local:DynamicWallpaperBitmaps">
-                            <Ellipse Height="160" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                            <Ellipse Height="105" Width="105" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="{x:Bind DynamicWallpaperImageIcon}" Stretch="UniformToFill"/>
                                 </Ellipse.Fill>
@@ -541,41 +536,39 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
-                <Button ToolTipService.ToolTip="Cancel" Click="CancelDynamicContentDialog" Grid.Row="2" Grid.Column="0" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button CornerRadius="17" ToolTipService.ToolTip="Cancel" Click="CancelDynamicContentDialog" Grid.Row="2" Grid.Column="0" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button.Content>
                         <SymbolIcon Symbol="Cancel"/>
                     </Button.Content>
                 </Button>
-                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                    <Button ToolTipService.ToolTip="Delete Selected Theme" x:Name="DynamicDeleteButton" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Delete"/>
-                        </Button.Content>
-                        <Button.Flyout>
-                            <Flyout x:Name="AreYouSureFlyOut">
-                                <Flyout.FlyoutPresenterStyle>
-                                    <Style TargetType="FlyoutPresenter">
-                                        <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
-                                    </Style>
-                                </Flyout.FlyoutPresenterStyle>
-                                <StackPanel>
-                                    <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
-                                    <Button Margin="20" Background="Transparent" Click="DeleteSelectedDynamic" HorizontalAlignment="Center">
-                                        <Button.Content>
-                                            <SymbolIcon Symbol="Accept"/>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
-                            </Flyout>
-                        </Button.Flyout>
-                    </Button>
-                    <Button ToolTipService.ToolTip="Export Selected Theme" x:Name="DynamicExportButton" Click="ExportDynamicTheme" Width="100" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Save"/>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-                <Button ToolTipService.ToolTip="Apply Selected Theme" Click="UseSelectedDynamic" Grid.Row="2" Grid.Column="2" Width="125" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button Grid.Row="2" Grid.Column="1" CornerRadius="17" ToolTipService.ToolTip="Delete Selected Theme" x:Name="DynamicDeleteButton" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Delete"/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout x:Name="AreYouSureFlyOut">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Background" Value="{ThemeResource SystemControlAcrylicElementMediumHighBrush}" />
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <StackPanel>
+                                <TextBlock Text="Are you sure?" Margin="20" HorizontalAlignment="Center"/>
+                                <Button CornerRadius="17" Margin="20" Background="Transparent" Click="DeleteSelectedDynamic" HorizontalAlignment="Center">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Accept"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button Grid.Row="2" Grid.Column="2" CornerRadius="17" ToolTipService.ToolTip="Export Selected Theme" x:Name="DynamicExportButton" Click="ExportDynamicTheme" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Save"/>
+                    </Button.Content>
+                </Button>
+                <Button CornerRadius="17" ToolTipService.ToolTip="Apply Selected Theme" Click="UseSelectedDynamic" Grid.Row="2" Grid.Column="3" Width="70" Height="35" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button.Content>
                         <SymbolIcon Symbol="Accept"/>
                     </Button.Content>
@@ -597,7 +590,7 @@
                         <ColumnDefinition Width="400"/>
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro01" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro01" Stretch="Uniform" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     <TextBlock TextAlignment="Center" Grid.Column="1" Grid.Row="3" Height="100" Width="400" Name="TextIntro01" TextWrapping="WrapWholeWords" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20"/>
                 </Grid>
                 <Grid>
@@ -694,9 +687,19 @@
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="1" Grid.Row="1" Height="200" Width="300" Name="ImageIntro07" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Button Click="Start" Background="Red" Content="Lets Start !" Grid.Column="1" Grid.Row="3" Height="50" Width="400" Name="TextIntro07" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="25"/>
+                    <Button Click="Start" Background="Red" Content="Lets Start !" Grid.Column="1" Grid.Row="3" CornerRadius="25" Height="50" Width="400" Name="TextIntro07" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="25"/>
                 </Grid>
             </FlipView>
         </ContentDialog>
+        <controls:TeachingTip CloseButtonClick="Tip1Closed" Target="{x:Bind ButtonChangeColomWidth}"  x:Name="ToggleThemeTeachingTip1" Title="Help us Debug this app!" Subtitle="if the app crashed or did something it wasn't supposed to do, try telling us about it at our GitHub page.">
+            <controls:TeachingTip.IconSource>
+                <controls:SymbolIconSource Symbol="Important" />
+            </controls:TeachingTip.IconSource>
+        </controls:TeachingTip>
+        <controls:TeachingTip Target="{x:Bind DynamicIcon}"  x:Name="ToggleThemeTeachingTip2" Title="Cannot find a theme?" Subtitle="to make your first theme, look for (mojave-dynamic-heic) on GitHub. Create a new theme and add the Images!">
+            <controls:TeachingTip.IconSource>
+                <controls:SymbolIconSource Symbol="Like" />
+            </controls:TeachingTip.IconSource>
+        </controls:TeachingTip>
     </Grid>
 </Page>
