@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\day.png" />
+    <Content Include="Assets\ImageIcon.png" />
     <Content Include="Assets\ImageIconCreate.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />

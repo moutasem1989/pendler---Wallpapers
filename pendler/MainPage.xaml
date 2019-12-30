@@ -27,87 +27,84 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="600"/>
                             <RowDefinition Height="35"/>
-                            <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
-                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Button x:Name="DynamicIcon" Click="DynamicIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Padding="0" CornerRadius="150" x:Name="DynamicIcon" Click="DynamicIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse Height="300" Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Ellipse.Fill>
                                     <ImageBrush x:Name="DynamicWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskDynamicToggled" Tapped="DeskDynamic" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Left">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="GoToStart"/>
                             </ToggleButton.Content>
                             </ToggleButton>
-                        <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockDynamicToggled" Tapped="LockDynamic" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockDynamicToggled" Tapped="LockDynamic" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Right">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="StopSlideShow"/>
                             </ToggleButton.Content>
                             </ToggleButton>
-                        <TextBlock Text="Dynamic Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                        <TextBlock Text="Dynamic Wallpaper" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="600"/>
                             <RowDefinition Height="35"/>
-                            <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
-                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Button x:Name="WeatherIcon" Click="WeatherIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Padding="0" CornerRadius="150" x:Name="WeatherIcon" Click="WeatherIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse Height="300" Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Ellipse.Fill>
                                     <ImageBrush x:Name="WeahterWallpaperIcon" Opacity="0.5" Stretch="UniformToFill"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskWeatherToggled" Tapped="DeskWeather" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskWeatherToggled" Tapped="DeskWeather" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Left">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="GoToStart" />
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockWeatherToggled" Tapped="LockWeather" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockWeatherToggled" Tapped="LockWeather" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Right">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="StopSlideShow" />
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <TextBlock Text="Weather Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                        <TextBlock Text="Weather Wallpaper" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="600"/>
                             <RowDefinition Height="35"/>
-                            <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
-                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Button x:Name="ModernIcon" Click="ModernIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Ellipse Height="280" Width="280" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Padding="0" CornerRadius="150" x:Name="ModernIcon" Click="ModernIconClick" BorderThickness="0" Height="300" Width="300" Background="Transparent" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Ellipse Height="300" Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Ellipse.Fill>
                                     <ImageBrush x:Name="ModernWallpaperIcon" Stretch="UniformToFill"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Button>
-                        <ToggleButton ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskModernToggled" Tapped="DeskModern" Grid.Row="1" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Desktop" x:Name="DeskModernToggled" Tapped="DeskModern" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Left">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="GoToStart"/>
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockModernToggled" Tapped="LockModern" Grid.Row="2" Height="35" Width="500" HorizontalAlignment="Center">
+                        <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply to Lockscreen" x:Name="LockModernToggled" Tapped="LockModern" Grid.Row="1" Height="35" Width="240" HorizontalAlignment="Right">
                             <ToggleButton.Content>
                                 <SymbolIcon Symbol="StopSlideShow"/>
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <TextBlock Text="Modern Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                        <TextBlock Text="Modern Wallpaper" Grid.Row="2" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                     <Grid Width="500">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="600"/>
                             <RowDefinition Height="35"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="10"/>
                             <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="10"/>
@@ -129,39 +126,37 @@
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
-                        <StackPanel Orientation="Horizontal" Grid.Row="1" Height="35">
-                            <ToggleButton ToolTipService.ToolTip="Apply to Desktop" Height="35" Width="127" x:Name="TimerDesk">
-                                <ToggleButton.Content>
-                                    <SymbolIcon Symbol="GoToStart"/>
-                                </ToggleButton.Content>
-                            </ToggleButton>
-                            <TimePicker ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="245"/>
-                            <Button ToolTipService.ToolTip="Select Image" x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="128" Height="35" Padding="0" BorderThickness="0">
-                                <Button.Content>
-                                    <Image x:Name="SelectedImage" Height="35" Width="128" Stretch="UniformToFill"/>
-                                </Button.Content>
-                            </Button>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Row="2" Height="35">
-                            <ToggleButton ToolTipService.ToolTip="Apply to Lockscreen" Height="35" Width="127" x:Name="TimerLock">
-                                <ToggleButton.Content>
-                                    <SymbolIcon Symbol="StopSlideShow"/>
-                                </ToggleButton.Content>
-                            </ToggleButton>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Monday" Height="35" Width="35" Content="M" x:Name="Monday"/>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Tusday" Height="35" Width="35" Content="T" x:Name="Tusday"/>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Wednesday" Height="35" Width="35" Content="W" x:Name="Wednesday"/>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Thursday" Height="35" Width="35" Content="T" x:Name="Thursday"/>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Friday" Height="35" Width="35" Content="F" x:Name="Friday"/>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Saturday" Height="35" Width="35" Content="S" x:Name="Saturday"/>
-                            <ToggleButton ToolTipService.ToolTip="Apply on Sunday" Height="35" Width="35" Content="S" x:Name="Sunday"/>
-                            <Button ToolTipService.ToolTip="Add" Click="AddTimerImage" Width="128" Height="35">
+                        <ToggleButton Grid.Row="1" CornerRadius="17" HorizontalAlignment="Left" ToolTipService.ToolTip="Apply to Desktop" Height="35" Width="240" x:Name="TimerDesk">
+                            <ToggleButton.Content>
+                                <SymbolIcon Symbol="GoToStart"/>
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <ToggleButton CornerRadius="17" Grid.Row="1" HorizontalAlignment="Right" ToolTipService.ToolTip="Apply to Lockscreen" Height="35" Width="240" x:Name="TimerLock">
+                            <ToggleButton.Content>
+                                <SymbolIcon Symbol="StopSlideShow"/>
+                            </ToggleButton.Content>
+                        </ToggleButton>
+                        <TimePicker Padding="0" BorderThickness="0" Grid.Row="3" CornerRadius="17" ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="280" HorizontalAlignment="Right"/>
+                        <Button Grid.Row="3" CornerRadius="17" HorizontalAlignment="Left" ToolTipService.ToolTip="Select Image" x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="200" Height="35" Padding="0" BorderThickness="0">
+                            <Button.Content>
+                                <Image x:Name="SelectedImage" Height="35" Width="240" Stretch="UniformToFill"/>
+                            </Button.Content>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Grid.Row="5" Width="500" Height="35">
+                            <ToggleButton CornerRadius="17" ToolTipService.ToolTip="Apply on Monday" Height="35" Width="35" Content="M" x:Name="Monday"/>
+                            <ToggleButton CornerRadius="17" Margin="10,0,0,0" ToolTipService.ToolTip="Apply on Tusday" Height="35" Width="35" Content="T" x:Name="Tusday"/>
+                            <ToggleButton CornerRadius="17" Margin="10,0,0,0" ToolTipService.ToolTip="Apply on Wednesday" Height="35" Width="35" Content="W" x:Name="Wednesday"/>
+                            <ToggleButton CornerRadius="17" Margin="10,0,0,0" ToolTipService.ToolTip="Apply on Thursday" Height="35" Width="35" Content="T" x:Name="Thursday"/>
+                            <ToggleButton CornerRadius="17" Margin="10,0,0,0" ToolTipService.ToolTip="Apply on Friday" Height="35" Width="35" Content="F" x:Name="Friday"/>
+                            <ToggleButton CornerRadius="17" Margin="10,0,0,0" ToolTipService.ToolTip="Apply on Saturday" Height="35" Width="35" Content="S" x:Name="Saturday"/>
+                            <ToggleButton CornerRadius="17" Margin="10,0,0,0" ToolTipService.ToolTip="Apply on Sunday" Height="35" Width="35" Content="S" x:Name="Sunday"/>
+                            <Button CornerRadius="17" Margin="20,0,0,0" ToolTipService.ToolTip="Add" Click="AddTimerImage" Width="175" Height="35">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Upload"/>
                                 </Button.Content>
                             </Button>
                         </StackPanel>
-                        <TextBlock Text="Timer Wallpaper" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Margin="10"/>
+                        <TextBlock Text="Timer Wallpaper" Grid.Row="6" VerticalAlignment="Center" FontSize="20" Margin="10"/>
                     </Grid>
                 </FlipView>
             </SplitView.Content>
@@ -191,12 +186,12 @@
                         </StackPanel>
                         <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
-                            <Button ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Margin="0,0,20,0">
+                            <Button CornerRadius="17" ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Margin="0,0,20,0">
                                 <Button.Content>
                                     <SymbolIcon Symbol="World"/>
                                 </Button.Content>
                             </Button>
-                            <Button ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Margin="0,0,0,0">
+                            <Button CornerRadius="17" ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Margin="0,0,0,0">
                                 <Button.Content>
                                     <SymbolIcon Symbol="ReportHacked"/>
                                 </Button.Content>
@@ -204,23 +199,23 @@
                         </StackPanel>
                         <TextBlock Height="40" Text="Add or create collections of images to be used for Dynamic and Weather wallpapers:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
-                        <Button IsEnabled="False" Width="100" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="2">
+                        <Button Margin="10,0,10,0" CornerRadius="30" IsEnabled="False" Width="70" Height="70" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="H"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="100" Height="70" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
+                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="H"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="100" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
+                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
                             <Button.KeyboardAccelerators>
                                 <KeyboardAccelerator Key="Z"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="100" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
+                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
                             <Button.Content>
                                 <SymbolIcon Symbol="NewFolder"/>
                             </Button.Content>
@@ -228,7 +223,7 @@
                                 <KeyboardAccelerator Key="D"/>
                             </Button.KeyboardAccelerators>
                         </Button>
-                        <Button Width="100" Height="70" Click="GoToCreatePage">
+                        <Button Margin="10,0,10,0" CornerRadius="30" Width="70" Height="70" Click="GoToCreatePage">
                             <Button.Content>
                                 <SymbolIcon Symbol="Add"/>
                             </Button.Content>
@@ -254,7 +249,7 @@
             </Button>
             <TextBlock x:Name="ErrorTextBlock"/>
         </StackPanel>
-        <ContentDialog Padding="0" x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog CornerRadius="15" Padding="0" x:Name="ModernContentDialog" Width="510" Height="630" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -457,7 +452,7 @@
                 <ProgressBar VerticalAlignment="Bottom" Grid.Column="0" Grid.ColumnSpan="3" x:Name="LoadImageColors" IsEnabled="True" Visibility="Collapsed" Grid.Row="3" IsIndeterminate="True"/>
             </Grid>
         </ContentDialog>
-        <ContentDialog Padding="0" x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog CornerRadius="15" Padding="0" x:Name="WeatherContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -522,7 +517,7 @@
                 </Button>
             </Grid>
         </ContentDialog>
-        <ContentDialog Padding="0" x:Name="DynamicContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <ContentDialog CornerRadius="15" Padding="0" x:Name="DynamicContentDialog" Width="510" Height="580" Background="{ThemeResource SystemControlAcrylicElementBrush}">
             <Grid Width="489" Height="499" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -587,7 +582,7 @@
                 </Button>
             </Grid>
         </ContentDialog>
-        <ContentDialog Padding="0" x:Name="FirstRunIntroDialog" Height="500" Width="500" Background="{ThemeResource SystemControlAcrylicElementBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <ContentDialog CornerRadius="15" Padding="0" x:Name="FirstRunIntroDialog" Height="500" Width="500" Background="{ThemeResource SystemControlAcrylicElementBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
             <FlipView Height="500" Width="500" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent">
                 <Grid>
                     <Grid.RowDefinitions>

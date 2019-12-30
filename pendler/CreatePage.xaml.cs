@@ -63,7 +63,7 @@ namespace pendler
             appTitleBar.BackgroundColor = Colors.Transparent;
             CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
-            imageURI = "ms-appx:///Assets/projector.png";
+            imageURI = "ms-appx:///Assets/ImageIcon.png";
             ClickDynamic01.Content = "Sunset";
             ClickDynamic02.Content = "Sunrise";
             ClickDynamic03.Content = "Sunrise";
