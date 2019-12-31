@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="Collapsed" x:Name="GeneralProgressBar" IsEnabled="True"/>
@@ -26,7 +26,7 @@
                 <FlipView VerticalAlignment="Stretch" HorizontalAlignment="Center" Background="Transparent">
                     <Grid  Width="500">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="500"/>
                             <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
@@ -51,7 +51,7 @@
                     </Grid>
                     <Grid Width="500">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="500"/>
                             <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
@@ -76,7 +76,7 @@
                     </Grid>
                     <Grid Width="500">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="500"/>
                             <RowDefinition Height="35"/>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
@@ -101,7 +101,7 @@
                     </Grid>
                     <Grid Width="500">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="600"/>
+                            <RowDefinition Height="500"/>
                             <RowDefinition Height="35"/>
                             <RowDefinition Height="10"/>
                             <RowDefinition Height="35"/>
@@ -110,7 +110,7 @@
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <GridView VerticalAlignment="Bottom" Grid.Row="0" ItemClick="TimerItemClick" Width="500" Height="500" ItemsSource="{x:Bind TimerWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="TimerGridView">
+                        <GridView VerticalAlignment="Center" Grid.Row="0" ItemClick="TimerItemClick" Width="500" Height="450" ItemsSource="{x:Bind TimerWallpaperBitmap}" IsItemClickEnabled="True" HorizontalAlignment="Center" Name="TimerGridView">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="local:TimerWallpaperBitmaps">
                                     <StackPanel Orientation="Horizontal" Width="500">
@@ -137,8 +137,8 @@
                                 <SymbolIcon Symbol="StopSlideShow"/>
                             </ToggleButton.Content>
                         </ToggleButton>
-                        <TimePicker Padding="0" BorderThickness="0" Grid.Row="3" CornerRadius="17" ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="280" HorizontalAlignment="Right"/>
-                        <Button Grid.Row="3" CornerRadius="17" HorizontalAlignment="Left" ToolTipService.ToolTip="Select Image" x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="200" Height="35" Padding="0" BorderThickness="0">
+                        <TimePicker Padding="0" BorderThickness="0" Grid.Row="3" CornerRadius="17" ClockIdentifier="24HourClock" MinuteIncrement="15" Name="TimePicker" Height="35" Width="240" HorizontalAlignment="Right"/>
+                        <Button Grid.Row="3" CornerRadius="17" HorizontalAlignment="Left" ToolTipService.ToolTip="Select Image" x:Name="ImageTimerSelecter" Click="SelectTimerImageToAdd" Width="240" Height="35" Padding="0" BorderThickness="0">
                             <Button.Content>
                                 <Image x:Name="SelectedImage" Height="35" Width="240" Stretch="UniformToFill"/>
                             </Button.Content>
@@ -178,8 +178,8 @@
                         <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
                         <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
-                            <Slider Width="350" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
-                            <Button Height="35" Width="35" CornerRadius="17" ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
+                            <Slider Width="380" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
+                            <Button Height="40" Width="40" CornerRadius="17" ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
                                 <Button.Content>
                                     <SymbolIcon Symbol="Sync"/>
                                 </Button.Content>
@@ -237,7 +237,7 @@
                 </Grid>
             </SplitView.Pane>
         </SplitView>
-        <StackPanel Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Button CornerRadius="15" Width="35" Padding="0" x:Name="ButtonChangeColomWidth" Background="Transparent" Click="ChangeColomWidth" Height="35" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Button.Content>
                     <SymbolIcon Symbol="Setting"/>
@@ -696,9 +696,14 @@
                 <controls:SymbolIconSource Symbol="Important" />
             </controls:TeachingTip.IconSource>
         </controls:TeachingTip>
-        <controls:TeachingTip Target="{x:Bind DynamicIcon}"  x:Name="ToggleThemeTeachingTip2" Title="Cannot find a theme?" Subtitle="to make your first theme, look for (mojave-dynamic-heic) on GitHub. Create a new theme and add the Images!">
+        <controls:TeachingTip CloseButtonClick="Tip2Closed" Target="{x:Bind DynamicIcon}"  x:Name="ToggleThemeTeachingTip2" Title="Cannot find a theme?" Subtitle="to make your first theme, look for (mojave-dynamic-heic) on GitHub. Create a new theme and add the Images!">
             <controls:TeachingTip.IconSource>
                 <controls:SymbolIconSource Symbol="Like" />
+            </controls:TeachingTip.IconSource>
+        </controls:TeachingTip>
+        <controls:TeachingTip Target="{x:Bind ButtonChangeColomWidth}"  x:Name="ToggleThemeTeachingTip3" Title="Side Panel!" Subtitle="Here you can import themes for Dynamic Wallpaper and Weather Wallpaper features. You can also access the Create Page to make your own.">
+            <controls:TeachingTip.IconSource>
+                <controls:SymbolIconSource Symbol="Important" />
             </controls:TeachingTip.IconSource>
         </controls:TeachingTip>
     </Grid>

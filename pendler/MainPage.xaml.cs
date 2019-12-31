@@ -314,8 +314,6 @@ namespace pendler
         private async void DynamicIconClick(object sender, RoutedEventArgs e)
         {
             await DynamicContentDialog.ShowAsync();
-            if (DynamicWallpaperBitmap.Count != 0) { DynamicDeleteButton.IsEnabled = true; }
-            else { DynamicDeleteButton.IsEnabled = false; }
         }
         private async void ModernIconClick(object sender, RoutedEventArgs e)
         {
@@ -373,8 +371,6 @@ namespace pendler
         private async void WeatherIconClick(object sender, RoutedEventArgs e)
         {
             await WeatherContentDialog.ShowAsync();
-            if (WeatherWallpaperBitmap.Count != 0 ) { WeatherDeleteButton.IsEnabled = true; }
-            else { WeatherDeleteButton.IsEnabled = false; }
         }
         private async Task RERegisterBackgroundTask()
         {
@@ -876,8 +872,6 @@ namespace pendler
             ErrorTextBlock.Text = "Theme has been deleted!";
             await LookUpLibrariesDynamic();
             AreYouSureFlyOut.Hide();
-            if (DynamicWallpaperBitmap.Count != 0) { DynamicDeleteButton.IsEnabled = true; }
-            else { DynamicDeleteButton.IsEnabled = false; }
         }
         private async void DeleteSelectedWeather(object sender, RoutedEventArgs e)
         {
@@ -895,8 +889,6 @@ namespace pendler
             ErrorTextBlock.Text = "Theme has been deleted!";
             await LookUpLibrariesWeather();
             AreYouSureFlyOut2.Hide();
-            if (WeatherWallpaperBitmap.Count != 0) { WeatherDeleteButton.IsEnabled = true; }
-            else { WeatherDeleteButton.IsEnabled = false; }
         }
         private void GoToCreatePage(object sender, RoutedEventArgs e)
         {
@@ -1328,6 +1320,11 @@ namespace pendler
         private void Tip1Closed(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
         {
             ToggleThemeTeachingTip2.IsOpen = true;
+        }
+
+        private void Tip2Closed(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+        {
+            ToggleThemeTeachingTip3.IsOpen = true;
         }
     }
 }
