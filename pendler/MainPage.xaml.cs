@@ -19,6 +19,9 @@ using Windows.Storage.Streams;
 using Windows.Graphics.Imaging;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Collections.Generic;
+using Windows.UI.Xaml.Controls.Maps;
+using Windows.Devices.Geolocation;
+using Windows.Foundation;
 
 namespace pendler
 {
@@ -34,6 +37,7 @@ namespace pendler
         public static string imageTimerRepeatForCollection { get; set; }
         public bool notfirstloaded { get; private set; }
         public bool SetBackgroundTaskForTimer { get; private set; }
+        public MapIcon MyPOI { get; private set; }
         private StorageFile selectedTimerImage;
 
         public MainPage()
@@ -1324,7 +1328,51 @@ namespace pendler
 
         private void Tip2Closed(Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
         {
+            ApplicationData.Current.LocalSettings.Values["SetLatitude"] = (string)ApplicationData.Current.LocalSettings.Values["Latitude"];
+            ApplicationData.Current.LocalSettings.Values["SetLongitude"] = (string)ApplicationData.Current.LocalSettings.Values["Longitude"];
             ToggleThemeTeachingTip3.IsOpen = true;
+        }
+        private void mainMap_MapTapped(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapInputEventArgs args)
+        {
+            var tappedGeoPosition = args.Location.Position;
+            Geopoint myPoint = new Geopoint(new BasicGeoposition() { Latitude = tappedGeoPosition.Latitude, Longitude = tappedGeoPosition.Longitude });
+            MyPOI = new MapIcon { Location = myPoint, NormalizedAnchorPoint = new Point(0.5, 1.0), Title = "Current position", ZIndex = 0 };
+            MyLocation.Text = "Selected Location:\nLatitude " + tappedGeoPosition.Latitude + " Longitude " + tappedGeoPosition.Longitude;
+            MyMap.MapElements.Clear();
+            MyMap.MapElements.Add(MyPOI);
+            ApplicationData.Current.LocalSettings.Values["SetLatitude"] = tappedGeoPosition.Latitude.ToString();
+            ApplicationData.Current.LocalSettings.Values["SetLongitude"] = tappedGeoPosition.Longitude.ToString();
+            ApplicationData.Current.LocalSettings.Values["SelectCustomLocation"] = "True";
+        }
+
+        private async void SetLocation(object sender, RoutedEventArgs e)
+        {
+            Geopoint myPoint = new Geopoint(new BasicGeoposition() { Latitude = Double.Parse((string)ApplicationData.Current.LocalSettings.Values["Latitude"]), Longitude = Double.Parse((string)ApplicationData.Current.LocalSettings.Values["Longitude"]) });
+            MyPOI = new MapIcon { Location = myPoint, NormalizedAnchorPoint = new Point(0.5, 1.0), Title = "Current position", ZIndex = 0 };
+            MyLocation.Text = "Current Location:\nLatitude " + (string)ApplicationData.Current.LocalSettings.Values["Latitude"] + " Longitude " + (string)ApplicationData.Current.LocalSettings.Values["Longitude"];
+            MyMap.MapElements.Add(MyPOI);
+            MyMap.Center = myPoint;
+            MyMap.ZoomLevel = 10;
+            await LocationDialog.ShowAsync();
+        }
+
+        private void CancelSelectedMap(object sender, RoutedEventArgs e)
+        {
+            LocationDialog.Hide();
+        }
+
+        private void AcceptSelectedMap(object sender, RoutedEventArgs e)
+        {
+            ApplicationData.Current.LocalSettings.Values["CustomLocation"] = "True";
+            ApplicationData.Current.LocalSettings.Values["Latitude"] = (string)ApplicationData.Current.LocalSettings.Values["SetLatitude"];
+            ApplicationData.Current.LocalSettings.Values["Longitude"] = (string)ApplicationData.Current.LocalSettings.Values["SetLongitude"];
+            LocationDialog.Hide();
+        }
+
+        private void UseTrueLocation(object sender, RoutedEventArgs e)
+        {
+            ApplicationData.Current.LocalSettings.Values["CustomLocation"] = null;
+            LocationDialog.Hide();
         }
     }
 }

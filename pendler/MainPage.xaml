@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
     <Page.Resources>
@@ -187,12 +188,17 @@
                         </StackPanel>
                         <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
-                            <Button CornerRadius="17" ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="200" Height="35" Click="CheckLocation" Margin="0,0,20,0">
+                            <Button CornerRadius="17" ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="130" Height="35" Click="CheckLocation" Margin="0,0,20,0">
                                 <Button.Content>
                                     <SymbolIcon Symbol="World"/>
                                 </Button.Content>
                             </Button>
-                            <Button CornerRadius="17" ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="200" Height="35" Click="CheckPermission" Margin="0,0,0,0">
+                            <Button CornerRadius="17" ToolTipService.ToolTip="Set Geo Data" HorizontalAlignment="Center" Width="130" Height="35" Click="SetLocation" Margin="0,0,20,0">
+                                <Button.Content>
+                                    <SymbolIcon Symbol="Pin"/>
+                                </Button.Content>
+                            </Button>
+                            <Button CornerRadius="17" ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="130" Height="35" Click="CheckPermission" Margin="0,0,0,0">
                                 <Button.Content>
                                     <SymbolIcon Symbol="ReportHacked"/>
                                 </Button.Content>
@@ -690,6 +696,39 @@
                     <Button Click="Start" Background="Red" Content="Lets Start !" Grid.Column="1" Grid.Row="3" CornerRadius="25" Height="50" Width="400" Name="TextIntro07" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="25"/>
                 </Grid>
             </FlipView>
+        </ContentDialog>
+        <ContentDialog CornerRadius="15" Padding="0" x:Name="LocationDialog" Height="500" Width="500" Background="{ThemeResource SystemControlAcrylicElementBrush}" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid Width="440" Height="440" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="355"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="MyLocation" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Maps:MapControl MapServiceToken="85VmS6q48Q5DENucYstA~uy2DClbpmMEfgCAzTB8CQg~Aqyj015PADbjkGV1J4PGs4TeO3noleYzOsyypsDe0t9jeGPBKyHBtL8y2h65NOgH" x:Name="MyMap" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MapTapped="mainMap_MapTapped" />
+                <Button ToolTipService.ToolTip="Cancel" Grid.Row="3" Grid.Column="0" CornerRadius="15" Width="70" Padding="0" Background="Transparent" Click="CancelSelectedMap" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Cancel"/>
+                    </Button.Content>
+                </Button>
+                <Button ToolTipService.ToolTip="Use true location" Grid.Row="3" Grid.Column="1" CornerRadius="15" Width="70" Padding="0" Background="Transparent" Click="UseTrueLocation" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Target"/>
+                    </Button.Content>
+                </Button>
+                <Button ToolTipService.ToolTip="Accept" Grid.Row="3" Grid.Column="3" CornerRadius="15" Width="70" Padding="0" Background="Transparent" Click="AcceptSelectedMap" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Accept"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
         </ContentDialog>
         <controls:TeachingTip CloseButtonClick="Tip1Closed" Target="{x:Bind ButtonChangeColomWidth}"  x:Name="ToggleThemeTeachingTip1" Title="Help us Debug this app!" Subtitle="if the app crashed or did something it wasn't supposed to do, try telling us about it at our GitHub page.">
             <controls:TeachingTip.IconSource>
