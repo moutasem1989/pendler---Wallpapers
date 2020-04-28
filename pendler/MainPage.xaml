@@ -163,84 +163,97 @@
                 </FlipView>
             </SplitView.Content>
             <SplitView.Pane>
-                <Grid x:Name="SettingsGrid" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="600"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="10"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
-                        <TextBlock Text="Looking for information about Wallpapers used, Icons or Libraries used?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                        <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
-                        <HyperlinkButton Content="Source Code on GitHub" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers"/>
-                        <HyperlinkButton Content="Magick.NET for HEIF Decoding" NavigateUri="https://github.com/dlemstra/Magick.NET"/>
-                        <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
-                        <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
-                            <Slider Width="380" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
-                            <Button Height="40" Width="40" CornerRadius="17" ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" HorizontalScrollMode="Disabled" ZoomMode="Disabled">
+                    <Grid x:Name="SettingsGrid" Width="500" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="680"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="10"/>
+                            
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+                            <TextBlock Text="Looking for information about Wallpapers used, Icons or Libraries used?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                            <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
+                            <HyperlinkButton Content="Source Code on GitHub" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers"/>
+                            <HyperlinkButton Content="Magick.NET for HEIF Decoding" NavigateUri="https://github.com/dlemstra/Magick.NET"/>
+                            <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
+                            <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
+                                <Slider Width="380" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
+                                <Button Height="40" Width="40" CornerRadius="17" ToolTipService.ToolTip="Apply Background Task Settings" Background="Transparent" Click="BackgroundTaskApplyClick" HorizontalAlignment="Right">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Sync"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
+                                <Button CornerRadius="17" ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="130" Height="35" Click="CheckLocation" Margin="0,0,20,0">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="World"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button CornerRadius="17" ToolTipService.ToolTip="Set Geo Data" HorizontalAlignment="Center" Width="130" Height="35" Click="SetLocation" Margin="0,0,20,0">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Pin"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button CornerRadius="17" ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="130" Height="35" Click="CheckPermission" Margin="0,0,0,0">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="ReportHacked"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,10" Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="3" VerticalAlignment="Center">
+                                <TextBlock Text="openweathermap.org API:" VerticalAlignment="Center"/>
+                                <TextBox Margin="5" x:Name="ApiKeyWeather" VerticalAlignment="Center"/>
+                                <Button CornerRadius="17" Click="UpdateAPIKey" VerticalAlignment="Center">
+                                    <Button.Content>
+                                        <SymbolIcon Symbol="Upload"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock Height="40" Text="Add or create collections of images to be used for Dynamic and Weather wallpapers:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Center">
+                            <Button Margin="10,0,10,0" CornerRadius="17" IsEnabled="False" Width="70" Height="35" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="H"/>
+                                </Button.KeyboardAccelerators>
+                            </Button>
+                            <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="H"/>
+                                </Button.KeyboardAccelerators>
+                            </Button>
+                            <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="Z"/>
+                                </Button.KeyboardAccelerators>
+                            </Button>
+                            <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
                                 <Button.Content>
-                                    <SymbolIcon Symbol="Sync"/>
+                                    <SymbolIcon Symbol="NewFolder"/>
                                 </Button.Content>
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="D"/>
+                                </Button.KeyboardAccelerators>
+                            </Button>
+                            <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" Click="GoToCreatePage">
+                                <Button.Content>
+                                    <SymbolIcon Symbol="Add"/>
+                                </Button.Content>
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="C"/>
+                                </Button.KeyboardAccelerators>
                             </Button>
                         </StackPanel>
-                        <TextBlock Text="Low accuracy location information for sunrise and sunset calculations." x:Name="CurrentLocation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="430" Height="35" Margin="0,10,0,30">
-                            <Button CornerRadius="17" ToolTipService.ToolTip="Get Geo Data" HorizontalAlignment="Left" Width="130" Height="35" Click="CheckLocation" Margin="0,0,20,0">
-                                <Button.Content>
-                                    <SymbolIcon Symbol="World"/>
-                                </Button.Content>
-                            </Button>
-                            <Button CornerRadius="17" ToolTipService.ToolTip="Set Geo Data" HorizontalAlignment="Center" Width="130" Height="35" Click="SetLocation" Margin="0,0,20,0">
-                                <Button.Content>
-                                    <SymbolIcon Symbol="Pin"/>
-                                </Button.Content>
-                            </Button>
-                            <Button CornerRadius="17" ToolTipService.ToolTip="Show App Settings Page" HorizontalAlignment="Right" Width="130" Height="35" Click="CheckPermission" Margin="0,0,0,0">
-                                <Button.Content>
-                                    <SymbolIcon Symbol="ReportHacked"/>
-                                </Button.Content>
-                            </Button>
-                        </StackPanel>
-                        <TextBlock Height="40" Text="Add or create collections of images to be used for Dynamic and Weather wallpapers:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="450" TextWrapping="Wrap"/>
-                    </StackPanel>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Center">
-                        <Button Margin="10,0,10,0" CornerRadius="17" IsEnabled="False" Width="70" Height="35" x:Name="AddHeifButton" Click="AddHEICFileToLibrary" Content=".HEIC">
-                            <Button.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="H"/>
-                            </Button.KeyboardAccelerators>
-                        </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddTIFButton" Click="AddTIFFileToLibrary" Content=".TIFF">
-                            <Button.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="H"/>
-                            </Button.KeyboardAccelerators>
-                        </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddZipButton" Click="AddZipFileToLibrary" Content=".ZIP">
-                            <Button.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="Z"/>
-                            </Button.KeyboardAccelerators>
-                        </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" x:Name="AddDirectoryButton" Click="AddFolderToLibrary">
-                            <Button.Content>
-                                <SymbolIcon Symbol="NewFolder"/>
-                            </Button.Content>
-                            <Button.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="D"/>
-                            </Button.KeyboardAccelerators>
-                        </Button>
-                        <Button Margin="10,0,10,0" CornerRadius="17" Width="70" Height="35" Click="GoToCreatePage">
-                            <Button.Content>
-                                <SymbolIcon Symbol="Add"/>
-                            </Button.Content>
-                            <Button.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="C"/>
-                            </Button.KeyboardAccelerators>
-                        </Button>
-                    </StackPanel>
-                    <Windows10FallCreatorsUpdate:ProgressBar IsIndeterminate="True" x:Name="ProgressBar" Grid.Row="3" Grid.Column="3"/>
-                </Grid>
+                        
+                        <Windows10FallCreatorsUpdate:ProgressBar IsIndeterminate="True" x:Name="ProgressBar" Grid.Row="3" Grid.Column="3"/>
+                    </Grid>
+                </ScrollViewer>
             </SplitView.Pane>
         </SplitView>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">

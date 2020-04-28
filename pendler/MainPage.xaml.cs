@@ -75,6 +75,8 @@ namespace pendler
             if (ApplicationData.Current.LocalSettings.Values["ModernFolder"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
             if (ApplicationData.Current.LocalSettings.Values["ModernFile"] == null) { ApplicationData.Current.LocalSettings.Values["ModernFile"] = String.Format("{0:X6}", random.Next(0x1000000)); }
             if (ApplicationData.Current.LocalSettings.Values["TimerFolder"] == null) { ApplicationData.Current.LocalSettings.Values["TimerFolder"] = String.Format("{0:X6}", random.Next(0x1000000)); }
+            if (ApplicationData.Current.LocalSettings.Values["WeatherAPI"] == null) { ApplicationData.Current.LocalSettings.Values["WeatherAPI"] = "a911c2c008c7668949ff5d980430d0c1"; }
+            ApiKeyWeather.Text = (string)ApplicationData.Current.LocalSettings.Values["WeatherAPI"];
             ApplicationData.Current.LocalSettings.Values["DynamicClicked"] = null;
             ApplicationData.Current.LocalSettings.Values["WeatherClicked"] = null;
             try
@@ -1373,6 +1375,11 @@ namespace pendler
         {
             ApplicationData.Current.LocalSettings.Values["CustomLocation"] = null;
             LocationDialog.Hide();
+        }
+
+        private void UpdateAPIKey(object sender, RoutedEventArgs e)
+        {
+            ApplicationData.Current.LocalSettings.Values["WeatherAPI"] = ApiKeyWeather.Text;
         }
     }
 }
