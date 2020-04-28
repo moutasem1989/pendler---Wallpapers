@@ -29,3 +29,4 @@
  
 <a href='//www.microsoft.com/store/apps/9NTZ5KFHZR50?cid=storebadge&ocid=badge'><img src='https://assets.windowsphone.com/13484911-a6ab-4170-8b7e-795c1e8b4165/English_get_L_InvariantCulture_Default.png' alt='English badge' style='width: 127px; height: 52px;'/></a>
  
+[To get started, try the Mac OS Mojave Wallpaper](https://drive.google.com/drive/folders/1hKge3c-jXvjhrWHUzY3oqcTyqVMDuUNZ?usp=sharing)
