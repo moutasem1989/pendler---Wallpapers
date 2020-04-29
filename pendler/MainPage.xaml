@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="pendler.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -177,8 +177,6 @@
                             <TextBlock Text="Looking for information about Wallpapers used, Icons or Libraries used?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                             <HyperlinkButton Content="Icons made by freepik" NavigateUri="https://www.flaticon.com/authors/freepik"/>
                             <HyperlinkButton Content="Source Code on GitHub" NavigateUri="https://github.com/moutasem1989/pendler---Wallpapers"/>
-                            <HyperlinkButton Content="Magick.NET for HEIF Decoding" NavigateUri="https://github.com/dlemstra/Magick.NET"/>
-                            <HyperlinkButton Content="Weather.NET for current forecast" NavigateUri="https://github.com/TopperDEL/weather-net" Margin="0,0,0,20"/>
                             <TextBlock Height="40" Text="Frequency of background process - How often to check for Wallpapers (in minutes)." HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" TextWrapping="Wrap" Margin="5"/>
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Width="450">
                                 <Slider Width="380" StepFrequency="10" TickFrequency="20" Minimum="15" Maximum="150" x:Name="BackgroundSlider" TickPlacement="Outside" HorizontalAlignment="Left"/>
@@ -207,8 +205,8 @@
                                 </Button>
                             </StackPanel>
                             <StackPanel Margin="0,10,0,10" Orientation="Horizontal" HorizontalAlignment="Center" Grid.RowSpan="3" VerticalAlignment="Center">
-                                <TextBlock Text="openweathermap.org API:" VerticalAlignment="Center"/>
-                                <TextBox Margin="5" x:Name="ApiKeyWeather" VerticalAlignment="Center"/>
+                                <TextBlock Text="openweathermap.org API key:" VerticalAlignment="Center"/>
+                                <TextBox Width="50" Margin="5" x:Name="ApiKeyWeather" VerticalAlignment="Center"/>
                                 <Button CornerRadius="17" Click="UpdateAPIKey" VerticalAlignment="Center">
                                     <Button.Content>
                                         <SymbolIcon Symbol="Upload"/>
